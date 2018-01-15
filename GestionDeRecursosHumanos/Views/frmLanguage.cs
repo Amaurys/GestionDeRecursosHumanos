@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GestionDeRecursosHumanos
+namespace GestionDeRecursosHumanos.Views
 {
-    public partial class Form1 : Form
+    public partial class FrmLanguage : Form
     {
-        public Form1()
+        public FrmLanguage()
         {
             InitializeComponent();
         }
