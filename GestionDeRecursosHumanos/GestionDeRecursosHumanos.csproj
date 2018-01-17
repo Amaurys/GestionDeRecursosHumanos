@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ClsConnectionClass.cs" />
     <Compile Include="Model\DatabaseConnection.cs" />
     <Compile Include="Model\Entities\Applicant.cs" />
     <Compile Include="Model\Entities\Competence.cs" />

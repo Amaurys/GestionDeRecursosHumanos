@@ -10,7 +10,7 @@ namespace GestionDeRecursosHumanos.Model
 {
     class DatabaseConnection
     {
-       /* static void Main(string[] args) {
+        /*static void Main(string[] args) {
             using (SqlConnection conn = new SqlConnection())
             {
                 try
@@ -18,7 +18,7 @@ namespace GestionDeRecursosHumanos.Model
                     conn.ConnectionString = "Server=28FZCH2;Database=recursosHumanos;Trusted_Connection=true";
                     conn.Open();
 
-                   /* SqlCommand comand = new SqlCommand("select * from idiomas", conn);
+                   SqlCommand comand = new SqlCommand("select * from idiomas", conn);
 
                     using (SqlDataReader reader = comand.ExecuteReader())
                     {
@@ -39,9 +39,10 @@ namespace GestionDeRecursosHumanos.Model
         }*/
 
         public void connect() {
-            using (SqlConnection conn = new SqlConnection())
+            
+           /* using (SqlConnection conn = new SqlConnection())
             {
-                conn.ConnectionString = "Server=28FZCH2;Database=recursosHumanos;TrustedConnection=true";
+                conn.ConnectionString = "Server=28FZCH2;Database=recursosHumanos;Trusted_Connection=true";
                 conn.Open();
 
                 /*SqlCommand comand = new SqlCommand("select * from idiomas", conn);
