@@ -1,4 +1,5 @@
 ﻿using GestionDeRecursosHumanos;
+using GestionDeRecursosHumanos.controller;
 using GestionDeRecursosHumanos.Model;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,10 @@ using System.Windows.Forms;
 
 namespace GestionDeRecursosHumanos.Views
 {
-    public partial class FrmLanguage : Form
+    public partial class FrmLanguage : Form, Maintainable
     {
         DatabaseConnection dbc = new DatabaseConnection();
-
+        string globalMode = "0";
         public FrmLanguage()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace GestionDeRecursosHumanos.Views
         {
             try
             {
+                dgvLanguage.Rows.Clear();
                 int numRow = 0;
                 DataSet ds = new DataSet();
                                 
@@ -49,9 +51,77 @@ namespace GestionDeRecursosHumanos.Views
             }
             catch(Exception e)
             {
-                MessageBox.Show("To run this example, replace the value of the " +
+                MessageBox.Show("To run this, replace the value of the " +
             "connectionString variable with a connection string that is " +
-            "valid for your system. \t" + e.ToString());
+            "valid for your system. \n " + e.ToString());
+            }
+        }
+       
+        public void deleteData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void insertUpdateData(string insertMode)
+        {
+            SqlCommand command = new SqlCommand("insertarActualizarIdioma",Program.conn.cnn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = insertMode;
+            command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
+            command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
+            command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
+            int result = command.ExecuteNonQuery();
+
+            if (result == 1)
+            {
+                MessageBox.Show("Información guardada.");
+                showData();
+                clearTextBox();               
+            }
+            else
+            {
+                MessageBox.Show("Algo pasó.","Algo pasó.");
+
+            }
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            insertUpdateData(globalMode);
+        }
+
+        public void clearTextBox()
+        {
+            tbName.Text = "";
+            tbDescription.Text = "";
+        }
+
+        private void dgvLanguage_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvLanguage.Columns[e.ColumnIndex].Name=="delete")
+                {
+                    DialogResult resultDelete = MessageBox.Show("¿Está seguro que quiere eliminar este registro de \n"
+                                                    +dgvLanguage.Rows[e.RowIndex].Cells[1].Value.ToString()+" ?","ATENCIÓN",MessageBoxButtons.YesNo);
+                    if (resultDelete == DialogResult.Yes)
+                    {
+                        SqlCommand command = new SqlCommand("eliminarIdioma", Program.conn.cnn);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@id",SqlDbType.Int).Value = dgvLanguage.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        int result = command.ExecuteNonQuery();
+                        if (result == -1)
+                        {
+                            MessageBox.Show("Información borrada.");
+                            showData();
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
     }
