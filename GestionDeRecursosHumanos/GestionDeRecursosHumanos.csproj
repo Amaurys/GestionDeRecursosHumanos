@@ -73,11 +73,47 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\FrmCompetence.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmCompetence.designer.cs">
+      <DependentUpon>FrmCompetence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmDepartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmDepartment.designer.cs">
+      <DependentUpon>FrmDepartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmLanguage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FrmLanguage.Designer.cs">
       <DependentUpon>FrmLanguage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmPosition.designer.cs">
+      <DependentUpon>FrmPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmRiskLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmRiskLevel.designer.cs">
+      <DependentUpon>FrmRiskLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmTraining.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmTraining.designer.cs">
+      <DependentUpon>FrmTraining.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmTrainingLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmTrainingLevel.designer.cs">
+      <DependentUpon>FrmTrainingLevel.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Views\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -87,8 +123,26 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmCompetence.resx">
+      <DependentUpon>FrmCompetence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmDepartment.resx">
+      <DependentUpon>FrmDepartment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmLanguage.resx">
       <DependentUpon>FrmLanguage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmPosition.resx">
+      <DependentUpon>FrmPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmRiskLevel.resx">
+      <DependentUpon>FrmRiskLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmTraining.resx">
+      <DependentUpon>FrmTraining.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmTrainingLevel.resx">
+      <DependentUpon>FrmTrainingLevel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

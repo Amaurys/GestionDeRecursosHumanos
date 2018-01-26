@@ -37,23 +37,27 @@
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.btnAccept = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
-            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLanguage)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvLanguage
             // 
+            this.dgvLanguage.BackgroundColor = System.Drawing.Color.CornflowerBlue;
+            this.dgvLanguage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLanguage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLanguage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Nombre,
             this.DESCRIPCION,
             this.EDITAR,
-            this.delete});
+            this.ELIMINAR});
             this.dgvLanguage.Location = new System.Drawing.Point(33, 158);
             this.dgvLanguage.Name = "dgvLanguage";
             this.dgvLanguage.Size = new System.Drawing.Size(544, 203);
@@ -71,7 +75,7 @@
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(236, 54);
+            this.tbName.Location = new System.Drawing.Point(245, 54);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(81, 20);
             this.tbName.TabIndex = 2;
@@ -87,7 +91,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(176, 57);
+            this.label2.Location = new System.Drawing.Point(185, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 4;
@@ -111,11 +115,11 @@
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(255, 101);
+            this.btnAccept.Location = new System.Drawing.Point(118, 116);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
             this.btnAccept.TabIndex = 7;
-            this.btnAccept.Text = "ACEPTAR";
+            this.btnAccept.Text = "AGREGAR";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
@@ -124,6 +128,27 @@
             this.dataGridViewImageColumn1.Frozen = true;
             this.dataGridViewImageColumn1.HeaderText = "EDITAR";
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(254, 116);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(84, 23);
+            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.Text = "ACTUALIZAR";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Visible = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Location = new System.Drawing.Point(429, 116);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(84, 23);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "CANCELAR";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // ID
             // 
@@ -153,18 +178,20 @@
             this.EDITAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
             this.EDITAR.Name = "EDITAR";
             // 
-            // delete
+            // ELIMINAR
             // 
-            this.delete.HeaderText = "DELETE";
-            this.delete.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
-            this.delete.Name = "delete";
+            this.ELIMINAR.HeaderText = "ELIMINAR";
+            this.ELIMINAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
+            this.ELIMINAR.Name = "ELIMINAR";
             // 
             // FrmLanguage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Teal;
+            this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(603, 402);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbDescription);
@@ -193,10 +220,12 @@
         private System.Windows.Forms.TextBox tbDescription;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCION;
         private System.Windows.Forms.DataGridViewImageColumn EDITAR;
-        private System.Windows.Forms.DataGridViewImageColumn delete;
+        private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
     }
 }
