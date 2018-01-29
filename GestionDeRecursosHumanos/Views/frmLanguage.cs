@@ -199,5 +199,27 @@ namespace GestionDeRecursosHumanos.Views
         {
             insertUpdateData(globalMode);
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            cancelAction();
+        }
+
+        private void cancelAction()
+        {
+            if (btnAccept.Visible) {
+                tbName.Text = "";
+                tbDescription.Text = "";
+            }
+            else
+            {
+                btnUpdate.Visible = false;
+                btnAccept.Visible = true;
+                tbId.Text = "";
+                tbName.Text = "";
+                tbDescription.Text = "";
+                globalMode = "0";
+            }
+        }
     }
 }

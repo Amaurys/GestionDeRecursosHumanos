@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace GestionDeRecursosHumanos.Model
 {
@@ -23,14 +24,16 @@ namespace GestionDeRecursosHumanos.Model
         private SqlConnection _cnn()
         {
             SqlConnection conn = null;
-            string server = "28FZCH2";
+            string server = "Desktop-6PFPSM8";
             string db = "recursosHumanos";
+            //var connectionString = ConfigurationManager.ConnectionStrings["mConnection"].ConnectionString;
 
             cnnString = string.Format("Server={0};Database={1};Trusted_Connection=true;", server, db);
+
             try
             {
                 conn = new SqlConnection();
-                conn.ConnectionString = cnnString;
+                conn.ConnectionString = cnnString /*connectionString*/;
                 conn.Open();
                 return conn;
             }

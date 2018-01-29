@@ -56,32 +56,10 @@ ALTER TABLE EMPLEADOS
 	ADD CONSTRAINT FK_Empleados_Departamentos FOREIGN KEY (idDepartamento)
 	REFERENCES DEPARTAMENTOS(id);
 
-	/****** Script for SelectTopNRows command from SSMS  ******/
-SELECT TOP 1000 [idCustomer]
-      ,[customerName]
-      ,[idCompany]
-  FROM [WBC].[dbo].[Customers]
-
-  select * from Companies;
-
-  select a.idCustomer,a.customerName,b.companyName from Customers a
-  INNER JOIN Companies b on a.idCompany=b.idCompany;
-  
   --STORED PROCEDURES
-  
-  GO
-  CREATE PROCEDURE obtenerIdioma(
-	@id int)
-as
-	SET NOCOUNT ON;
-	SELECT * FROM IDIOMAS
-	WHERE id = @id;
-  GO
-
-  EXEC obtenerIdioma;
-
+ 
 GO
-ALTER PROCEDURE obtenerIdioma
+CREATE PROCEDURE obtenerIdioma
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -90,7 +68,7 @@ END
 GO
 
 GO
-ALTER PROCEDURE insertarActualizarIdioma(
+CREATE PROCEDURE insertarActualizarIdioma(
 	@mode char(1) ,
 	@id int = '', 
 	@name nvarchar(60),

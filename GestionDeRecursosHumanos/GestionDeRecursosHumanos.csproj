@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -144,6 +145,7 @@
     <EmbeddedResource Include="Views\FrmTrainingLevel.resx">
       <DependentUpon>FrmTrainingLevel.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Model\app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.dgvLanguage = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbId = new System.Windows.Forms.MaskedTextBox();
@@ -39,11 +44,6 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLanguage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +63,40 @@
             this.dgvLanguage.Size = new System.Drawing.Size(544, 203);
             this.dgvLanguage.TabIndex = 0;
             this.dgvLanguage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLanguage_CellContentClick);
+            // 
+            // ID
+            // 
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.Frozen = true;
+            this.Nombre.HeaderText = "NOMBRE";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // DESCRIPCION
+            // 
+            this.DESCRIPCION.Frozen = true;
+            this.DESCRIPCION.HeaderText = "DESCRIPCION";
+            this.DESCRIPCION.Name = "DESCRIPCION";
+            this.DESCRIPCION.ReadOnly = true;
+            // 
+            // EDITAR
+            // 
+            this.EDITAR.Frozen = true;
+            this.EDITAR.HeaderText = "EDITAR";
+            this.EDITAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
+            this.EDITAR.Name = "EDITAR";
+            // 
+            // ELIMINAR
+            // 
+            this.ELIMINAR.HeaderText = "ELIMINAR";
+            this.ELIMINAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
+            this.ELIMINAR.Name = "ELIMINAR";
             // 
             // label1
             // 
@@ -142,47 +176,13 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Enabled = false;
             this.btnCancel.Location = new System.Drawing.Point(429, 116);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 23);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "CANCELAR";
             this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // ID
-            // 
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.Frozen = true;
-            this.Nombre.HeaderText = "NOMBRE";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // DESCRIPCION
-            // 
-            this.DESCRIPCION.Frozen = true;
-            this.DESCRIPCION.HeaderText = "DESCRIPCION";
-            this.DESCRIPCION.Name = "DESCRIPCION";
-            this.DESCRIPCION.ReadOnly = true;
-            // 
-            // EDITAR
-            // 
-            this.EDITAR.Frozen = true;
-            this.EDITAR.HeaderText = "EDITAR";
-            this.EDITAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
-            this.EDITAR.Name = "EDITAR";
-            // 
-            // ELIMINAR
-            // 
-            this.ELIMINAR.HeaderText = "ELIMINAR";
-            this.ELIMINAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
-            this.ELIMINAR.Name = "ELIMINAR";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // FrmLanguage
             // 
