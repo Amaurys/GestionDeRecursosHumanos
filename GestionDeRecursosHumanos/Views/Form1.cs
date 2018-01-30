@@ -25,9 +25,20 @@ namespace GestionDeRecursosHumanos
             frmLanguage.Show();
         }
 
+        public void openFormTrainingLevel() {
+            FrmTrainingLevel frmTrainingLevel = new FrmTrainingLevel();
+            frmTrainingLevel.MdiParent = this;
+            frmTrainingLevel.Show();
+        }
+
         private void iToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFormLanguage();
+        }
+
+        private void nivelesDeCapacitaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFormTrainingLevel();
         }
     }
 }

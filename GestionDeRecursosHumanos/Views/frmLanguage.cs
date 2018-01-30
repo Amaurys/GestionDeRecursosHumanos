@@ -16,8 +16,9 @@ namespace GestionDeRecursosHumanos.Views
 {
     public partial class FrmLanguage : Form, Maintainable
     {
-        DatabaseConnection dbc = new DatabaseConnection();
+        //DatabaseConnection dbc = new DatabaseConnection();
         string globalMode = "0"; //insert = 0; update = 1.
+
         public FrmLanguage()
         {
             InitializeComponent();
@@ -173,7 +174,7 @@ namespace GestionDeRecursosHumanos.Views
 
         public DataTable getDataToTextBox(int id)
         {
-            SqlCommand command = new SqlCommand("enviarDatosATextBox", Program.conn.cnn);
+            SqlCommand command = new SqlCommand("enviarDatosATextBoxIdioma", Program.conn.cnn);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = id;
             DataTable dt = new DataTable();
@@ -205,7 +206,7 @@ namespace GestionDeRecursosHumanos.Views
             cancelAction();
         }
 
-        private void cancelAction()
+        public void cancelAction()
         {
             if (btnAccept.Visible) {
                 tbName.Text = "";

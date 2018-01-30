@@ -35,6 +35,7 @@ namespace GestionDeRecursosHumanos
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nivelesDeCapacitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +53,8 @@ namespace GestionDeRecursosHumanos
             // 
             this.mantenimientoToolStripMenuItem.AutoSize = false;
             this.mantenimientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.iToolStripMenuItem});
+            this.iToolStripMenuItem,
+            this.nivelesDeCapacitaciónToolStripMenuItem});
             this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
             this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
@@ -60,9 +62,16 @@ namespace GestionDeRecursosHumanos
             // iToolStripMenuItem
             // 
             this.iToolStripMenuItem.Name = "iToolStripMenuItem";
-            this.iToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.iToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.iToolStripMenuItem.Text = "Idiomas";
             this.iToolStripMenuItem.Click += new System.EventHandler(this.iToolStripMenuItem_Click);
+            // 
+            // nivelesDeCapacitaciónToolStripMenuItem
+            // 
+            this.nivelesDeCapacitaciónToolStripMenuItem.Name = "nivelesDeCapacitaciónToolStripMenuItem";
+            this.nivelesDeCapacitaciónToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.nivelesDeCapacitaciónToolStripMenuItem.Text = "Niveles de Capacitación";
+            this.nivelesDeCapacitaciónToolStripMenuItem.Click += new System.EventHandler(this.nivelesDeCapacitaciónToolStripMenuItem_Click);
             // 
             // mdiParent
             // 
@@ -90,6 +99,7 @@ namespace GestionDeRecursosHumanos
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nivelesDeCapacitaciónToolStripMenuItem;
     }
 
     

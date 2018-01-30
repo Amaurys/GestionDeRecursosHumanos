@@ -41,9 +41,6 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvPosition = new System.Windows.Forms.DataGridView();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.tbInstitute = new System.Windows.Forms.TextBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIVELDETRAINING = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +49,11 @@
             this.INSTITUTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.tbInstitute = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosition)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +116,7 @@
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(382, 137);
+            this.btnAccept.Location = new System.Drawing.Point(212, 137);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
             this.btnAccept.TabIndex = 31;
@@ -149,6 +151,7 @@
             // 
             // tbName
             // 
+            this.tbName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbName.Location = new System.Drawing.Point(313, 35);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(81, 20);
@@ -165,6 +168,11 @@
             // 
             // dgvPosition
             // 
+            this.dgvPosition.AllowUserToAddRows = false;
+            this.dgvPosition.AllowUserToDeleteRows = false;
+            this.dgvPosition.BackgroundColor = System.Drawing.Color.CornflowerBlue;
+            this.dgvPosition.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPosition.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dgvPosition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPosition.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -175,30 +183,10 @@
             this.INSTITUTO,
             this.EDITAR,
             this.delete});
-            this.dgvPosition.Location = new System.Drawing.Point(15, 166);
+            this.dgvPosition.Location = new System.Drawing.Point(12, 166);
             this.dgvPosition.Name = "dgvPosition";
             this.dgvPosition.Size = new System.Drawing.Size(841, 203);
             this.dgvPosition.TabIndex = 25;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.Frozen = true;
-            this.dataGridViewImageColumn1.HeaderText = "EDITAR";
-            this.dataGridViewImageColumn1.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.HeaderText = "DELETE";
-            this.dataGridViewImageColumn2.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            // 
-            // tbInstitute
-            // 
-            this.tbInstitute.Location = new System.Drawing.Point(653, 78);
-            this.tbInstitute.Name = "tbInstitute";
-            this.tbInstitute.Size = new System.Drawing.Size(81, 20);
-            this.tbInstitute.TabIndex = 38;
             // 
             // ID
             // 
@@ -255,12 +243,54 @@
             this.delete.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
             this.delete.Name = "delete";
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.Frozen = true;
+            this.dataGridViewImageColumn1.HeaderText = "EDITAR";
+            this.dataGridViewImageColumn1.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "DELETE";
+            this.dataGridViewImageColumn2.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            // 
+            // tbInstitute
+            // 
+            this.tbInstitute.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbInstitute.Location = new System.Drawing.Point(653, 78);
+            this.tbInstitute.Name = "tbInstitute";
+            this.tbInstitute.Size = new System.Drawing.Size(81, 20);
+            this.tbInstitute.TabIndex = 38;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(516, 137);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(84, 23);
+            this.btnCancel.TabIndex = 40;
+            this.btnCancel.Text = "CANCELAR";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(359, 137);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(84, 23);
+            this.btnUpdate.TabIndex = 39;
+            this.btnUpdate.Text = "ACTUALIZAR";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Visible = false;
+            // 
             // FrmTraining
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Teal;
+            this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(871, 402);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.tbInstitute);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.mtbMaxSalary);
@@ -275,8 +305,9 @@
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvPosition);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmTraining";
-            this.Text = "FrmTraining";
+            this.Text = "Competencias";
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosition)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -308,5 +339,7 @@
         private System.Windows.Forms.DataGridViewImageColumn EDITAR;
         private System.Windows.Forms.DataGridViewImageColumn delete;
         private System.Windows.Forms.TextBox tbInstitute;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

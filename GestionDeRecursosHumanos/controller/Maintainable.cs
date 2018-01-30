@@ -15,6 +15,7 @@ namespace GestionDeRecursosHumanos.controller
         void deleteData(DataGridViewCellEventArgs e);
         DataTable getDataToTextBox(int id);
         void getDataForUpdate(DataTable dt);
-
+        void clearTextBox();
+        void cancelAction();
     }
 }
