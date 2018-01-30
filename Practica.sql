@@ -58,6 +58,7 @@ ALTER TABLE EMPLEADOS
 
   --STORED PROCEDURES
  
+ --IDIOMA
 GO
 CREATE PROCEDURE obtenerIdioma
 AS
@@ -110,7 +111,7 @@ END
 GO
 
 GO
-CREATE PROCEDURE enviarDatosATextBox(
+CREATE PROCEDURE enviarDatosATextBoxIdioma(
 	@id int)
 AS
 BEGIN
@@ -119,7 +120,68 @@ BEGIN
 END
 GO
 
-enviarDatosATextBox 1;
+
+--Nivel de capacitacion
+GO
+CREATE PROCEDURE obtenerNivelDeCap
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM NIVELESCAPACITACIONES;
+END
+GO
+
+GO
+CREATE PROCEDURE insertarActualizarNivelDeCap(
+	@mode char(1) ,
+	@id int = '', 
+	@name nvarchar(60))
+AS
+BEGIN
+	if(@mode=0)
+	BEGIN
+		INSERT INTO NIVELESCAPACITACIONES(nombre) 
+			VALUES(@name)
+	END
+
+	else if(@mode=1)
+	BEGIN
+		UPDATE NIVELESCAPACITACIONES SET nombre=@name
+		WHERE id=@id
+	END	
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerNivelDeCapWhere(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM NIVELESCAPACITACIONES where id = @id;
+END
+GO
+
+GO
+CREATE PROCEDURE eliminarNivelDeCap(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE from NIVELESCAPACITACIONES WHERE id=@id;
+END
+GO
+
+GO
+CREATE PROCEDURE enviarDatosATextBoxNivelDeCap(
+	@id int)
+AS
+BEGIN
+	select * from NIVELESCAPACITACIONES
+	where id = @id
+END
+GO
+
 
   /*
 GO
