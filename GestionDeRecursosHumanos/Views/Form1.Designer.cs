@@ -36,6 +36,7 @@ namespace GestionDeRecursosHumanos
             this.mantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nivelesDeCapacitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.capacitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +46,7 @@ namespace GestionDeRecursosHumanos
             this.mantenimientoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(898, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(998, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -54,7 +55,8 @@ namespace GestionDeRecursosHumanos
             this.mantenimientoToolStripMenuItem.AutoSize = false;
             this.mantenimientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.iToolStripMenuItem,
-            this.nivelesDeCapacitaciónToolStripMenuItem});
+            this.nivelesDeCapacitaciónToolStripMenuItem,
+            this.capacitacionesToolStripMenuItem});
             this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
             this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
@@ -73,18 +75,26 @@ namespace GestionDeRecursosHumanos
             this.nivelesDeCapacitaciónToolStripMenuItem.Text = "Niveles de Capacitación";
             this.nivelesDeCapacitaciónToolStripMenuItem.Click += new System.EventHandler(this.nivelesDeCapacitaciónToolStripMenuItem_Click);
             // 
+            // capacitacionesToolStripMenuItem
+            // 
+            this.capacitacionesToolStripMenuItem.Name = "capacitacionesToolStripMenuItem";
+            this.capacitacionesToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.capacitacionesToolStripMenuItem.Text = "Capacitaciones";
+            this.capacitacionesToolStripMenuItem.Click += new System.EventHandler(this.capacitacionesToolStripMenuItem_Click);
+            // 
             // mdiParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(898, 477);
+            this.ClientSize = new System.Drawing.Size(998, 477);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "mdiParent";
+            this.ShowIcon = false;
             this.Text = "Gestor de Recurso Humanos";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -100,6 +110,7 @@ namespace GestionDeRecursosHumanos
         private System.Windows.Forms.ToolStripMenuItem mantenimientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nivelesDeCapacitaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem capacitacionesToolStripMenuItem;
     }
 
     

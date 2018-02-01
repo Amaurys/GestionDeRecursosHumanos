@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GestionDeRecursosHumanos.controller;
+using System.Data.SqlClient;
 
 namespace GestionDeRecursosHumanos.Views
 {
@@ -18,6 +19,7 @@ namespace GestionDeRecursosHumanos.Views
         public FrmTraining()
         {
             InitializeComponent();
+            showData();
         }
 
         public void cancelAction()
@@ -52,7 +54,51 @@ namespace GestionDeRecursosHumanos.Views
 
         public void showData()
         {
-            throw new NotImplementedException();
+            try
+            {
+                dgvTraining.Rows.Clear();
+                int numRow = 0;
+                DataSet ds = new DataSet();
+
+                SqlCommand command = new SqlCommand("obtenerCapacitacion", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(ds);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        dgvTraining.Rows.Add();
+                        dgvTraining.Rows[numRow].Cells[0].Value = Convert.ToString(row["ID"]);
+                        dgvTraining.Rows[numRow].Cells[1].Value = Convert.ToString(row["NOMBRE"]);
+                        dgvTraining.Rows[numRow].Cells[2].Value = Convert.ToString(row["DESCRIPCION"]);
+                        dgvTraining.Rows[numRow].Cells[3].Value = Convert.ToString(row["NIVELDETRAINING"]);
+                        dgvTraining.Rows[numRow].Cells[4].Value = Convert.ToString(row["FECHAINICIO"]);
+                        dgvTraining.Rows[numRow].Cells[5].Value = Convert.ToString(row["FECHAFINALIZO"]);
+                        dgvTraining.Rows[numRow].Cells[6].Value = Convert.ToString(row["INSTITUTO"]);
+                        numRow++;
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        private void FrmTraining_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'recursosHumanosDataSet.NIVELESCAPACITACIONES' table. You can move, or remove it, as needed.
+            this.nIVELESCAPACITACIONESTableAdapter.Fill(this.recursosHumanosDataSet.NIVELESCAPACITACIONES);
+
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            //  tbInstitute.Text = dtpMinSalary.Value.ToString("yyyy/MM/dd"); -- Esto es para 'formatear' el valor del dateTimePicker para enviarlo a la DB.
+            //dtpMinSalary.Value = Convert.ToDateTime("2017/01/15"); -- Esto es para 'formatear' el valor de la DB y ponrlo en el dateTimePicker.
         }
     }
 }

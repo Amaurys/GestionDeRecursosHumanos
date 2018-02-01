@@ -19,6 +19,7 @@ namespace GestionDeRecursosHumanos.Views
         public FrmTrainingLevel()
         {
             InitializeComponent();
+            showData();
         }
 
         public void clearTextBox()

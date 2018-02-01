@@ -8,7 +8,7 @@ CREATE TABLE COMPETENCIAS(id int primary key identity, descripcion varchar(100)n
 							estado bit not null);
 CREATE TABLE IDIOMAS(id int primary key identity, nombre varchar(60) not null, descripcion varchar (100));
 
-CREATE TABLE CAPACITACIONES(id int primary key identity,descripcion varchar(100),idNivelCapacitacion int not null, 
+CREATE TABLE CAPACITACIONES(id int primary key identity,nombre varchar(50) not null,descripcion varchar(100),idNivelCapacitacion int not null, 
 							fechaDesde datetime not null,fechaHasta datetime not null,institutcion varchar(100));
 
 CREATE TABLE NIVELESCAPACITACIONES(id int primary key identity,nombre varchar(60)not null);
@@ -182,44 +182,75 @@ BEGIN
 END
 GO
 
-
-  /*
-GO
-CREATE PROCEDURE getCustomerTest
-	@Id int,
-	@CustomerName nvarchar(60),
-	@CompanyName nvarchar(60)
-as
-	SET NOCOUNT ON;
-	select a.idCustomer,a.customerName,b.companyName from Customers a
-	INNER JOIN Companies b on a.idCompany=b.idCompany
-	WHERE a.idCustomer = @Id and a.customerName = @CustomerName 
-	AND b.companyName = @CompanyName;
-GO
-
-EXEC getCustomerTest 1,'Jesus Mejia','CONSORCIO DE BANCAS FRANKLIN';
+--CAPACITACIONES
 
 GO
-ALTER PROCEDURE getCustomerTest (
-	@Id int)
+CREATE PROCEDURE obtenerCapacitacion
 AS
 BEGIN
 	SET NOCOUNT ON;
-	select a.idCustomer,a.customerName,b.companyName from Customers a
-	INNER JOIN Companies b on a.idCompany=b.idCompany
-	WHERE a.idCustomer = @Id;
+	select c.id,c.nombre,c.descripcion,d.nombre as 'nivel de capacitacion',c.fechaDesde,c.fechaHasta,c.institucion from CAPACITACIONES c
+	INNER JOIN NIVELESCAPACITACIONES d on c.id = d.id;
 END
 GO
 
-CREATE PROCEDURE insertCustomerTest (
-	@Name nvarchar(60),
-	@idCompany int )
+INSERT INTO CAPACITACIONES VALUES('DIPLOMADO PROGAMACION ADROID','DIPLOMADO DE PROGRAMACION AVANZADA EN PROGRAMACION MOVIL ANDROID',
+							5,'2017-08-01','2017-10-05','ITLA');
+exec obtenerCapacitacion;
+
+GO
+CREATE PROCEDURE insertarActualizarCapacitacion(
+	@mode char(1) ,
+	@id int = '', 
+	@name nvarchar(60),
+	@descr varchar(100),
+	@idNivelCapacitacion int,
+	@fechaDesde datetime, 
+	@fechaHasta datetime,
+	@institucion nvarchar(60))
+AS
+BEGIN
+	if(@mode=0)
+	BEGIN
+		INSERT INTO CAPACITACIONES(nombre) 
+			VALUES(@name,@descr,@idNivelCapacitacion,@fechaDesde,@fechaHasta,@institucion)
+	END
+
+	else if(@mode=1)
+	BEGIN
+		UPDATE CAPACITACIONES SET nombre=@name,descripcion=@descr,idNivelCapacitacion=@idNivelCapacitacion,
+				fechaDesde=@fechaDesde,fechaHasta=@fechaHasta,institucion=@institucion
+		WHERE id=@id
+	END	
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerNivelDeCapWhere(
+	@id int)
 AS
 BEGIN
 	SET NOCOUNT ON;
-	INSERT INTO Customers values(@Name,@idCompany);
+	SELECT * FROM NIVELESCAPACITACIONES where id = @id;
 END
+GO
 
-EXEC insertCustomerTest 'Diego Idelfonso', 2;
+GO
+CREATE PROCEDURE eliminarNivelDeCap(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE from NIVELESCAPACITACIONES WHERE id=@id;
+END
+GO
 
-EXEC getCustomerTest 4
+GO
+CREATE PROCEDURE enviarDatosATextBoxNivelDeCap(
+	@id int)
+AS
+BEGIN
+	select * from NIVELESCAPACITACIONES
+	where id = @id
+END
+GO

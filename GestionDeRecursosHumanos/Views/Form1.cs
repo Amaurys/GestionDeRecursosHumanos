@@ -31,6 +31,13 @@ namespace GestionDeRecursosHumanos
             frmTrainingLevel.Show();
         }
 
+        public void openFormTraining()
+        {
+            FrmTraining frmTraining = new FrmTraining();
+            frmTraining.MdiParent = this;
+            frmTraining.Show();
+        }
+
         private void iToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFormLanguage();
@@ -39,6 +46,11 @@ namespace GestionDeRecursosHumanos
         private void nivelesDeCapacitaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFormTrainingLevel();
+        }
+
+        private void capacitacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFormTraining();
         }
     }
 }

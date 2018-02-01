@@ -103,7 +103,7 @@
             this.Nombre,
             this.EDITAR,
             this.delete});
-            this.dgvTrainingLevel.Location = new System.Drawing.Point(28, 117);
+            this.dgvTrainingLevel.Location = new System.Drawing.Point(28, 115);
             this.dgvTrainingLevel.Name = "dgvTrainingLevel";
             this.dgvTrainingLevel.Size = new System.Drawing.Size(443, 203);
             this.dgvTrainingLevel.TabIndex = 22;
@@ -182,6 +182,7 @@
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvTrainingLevel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmTrainingLevel";
             this.Text = "Nivel de Capacitación";
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrainingLevel)).EndInit();
