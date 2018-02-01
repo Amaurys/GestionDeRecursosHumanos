@@ -185,11 +185,11 @@ GO
 --CAPACITACIONES
 
 GO
-CREATE PROCEDURE obtenerCapacitacion
+create PROCEDURE obtenerCapacitacion
 AS
 BEGIN
 	SET NOCOUNT ON;
-	select c.id,c.nombre,c.descripcion,d.nombre as 'nivel de capacitacion',c.fechaDesde,c.fechaHasta,c.institucion from CAPACITACIONES c
+	select c.id,c.nombre,c.descripcion,d.nombre as 'nivel',c.fechaDesde,c.fechaHasta,c.institucion from CAPACITACIONES c
 	INNER JOIN NIVELESCAPACITACIONES d on c.id = d.id;
 END
 GO

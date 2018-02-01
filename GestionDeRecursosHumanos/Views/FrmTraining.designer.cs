@@ -53,11 +53,11 @@
             this.nIVELESCAPACITACIONESTableAdapter = new GestionDeRecursosHumanos.recursosHumanosDataSetTableAdapters.NIVELESCAPACITACIONESTableAdapter();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCRIPCIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NIVELDETRAINING = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAINICIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAFINALIZO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INSTITUTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHADESDE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHAHASTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INSTITUCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraining)).BeginInit();
@@ -168,11 +168,11 @@
             this.dgvTraining.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Nombre,
-            this.DESCRIPCIO,
-            this.NIVELDETRAINING,
-            this.FECHAINICIO,
-            this.FECHAFINALIZO,
-            this.INSTITUTO,
+            this.DESCRIPCION,
+            this.nivel,
+            this.FECHADESDE,
+            this.FECHAHASTA,
+            this.INSTITUCION,
             this.EDITAR,
             this.delete});
             this.dgvTraining.Location = new System.Drawing.Point(12, 166);
@@ -267,40 +267,40 @@
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
             // 
-            // DESCRIPCIO
+            // DESCRIPCION
             // 
-            this.DESCRIPCIO.Frozen = true;
-            this.DESCRIPCIO.HeaderText = "DESCRIPCION";
-            this.DESCRIPCIO.Name = "DESCRIPCIO";
-            this.DESCRIPCIO.ReadOnly = true;
+            this.DESCRIPCION.Frozen = true;
+            this.DESCRIPCION.HeaderText = "DESCRIPCION";
+            this.DESCRIPCION.Name = "DESCRIPCION";
+            this.DESCRIPCION.ReadOnly = true;
             // 
-            // NIVELDETRAINING
+            // nivel
             // 
-            this.NIVELDETRAINING.Frozen = true;
-            this.NIVELDETRAINING.HeaderText = "NIVEL DE TRAINING";
-            this.NIVELDETRAINING.Name = "NIVELDETRAINING";
-            this.NIVELDETRAINING.ReadOnly = true;
+            this.nivel.Frozen = true;
+            this.nivel.HeaderText = "NIVEL DE CAPACITACION";
+            this.nivel.Name = "nivel";
+            this.nivel.ReadOnly = true;
             // 
-            // FECHAINICIO
+            // FECHADESDE
             // 
-            this.FECHAINICIO.Frozen = true;
-            this.FECHAINICIO.HeaderText = "FECHA INICIO";
-            this.FECHAINICIO.Name = "FECHAINICIO";
-            this.FECHAINICIO.ReadOnly = true;
+            this.FECHADESDE.Frozen = true;
+            this.FECHADESDE.HeaderText = "FECHA INICIO";
+            this.FECHADESDE.Name = "FECHADESDE";
+            this.FECHADESDE.ReadOnly = true;
             // 
-            // FECHAFINALIZO
+            // FECHAHASTA
             // 
-            this.FECHAFINALIZO.Frozen = true;
-            this.FECHAFINALIZO.HeaderText = "FECHAFINALIZO";
-            this.FECHAFINALIZO.Name = "FECHAFINALIZO";
-            this.FECHAFINALIZO.ReadOnly = true;
+            this.FECHAHASTA.Frozen = true;
+            this.FECHAHASTA.HeaderText = "FECHAFINALIZO";
+            this.FECHAHASTA.Name = "FECHAHASTA";
+            this.FECHAHASTA.ReadOnly = true;
             // 
-            // INSTITUTO
+            // INSTITUCION
             // 
-            this.INSTITUTO.Frozen = true;
-            this.INSTITUTO.HeaderText = "INSTITUTO";
-            this.INSTITUTO.Name = "INSTITUTO";
-            this.INSTITUTO.ReadOnly = true;
+            this.INSTITUCION.Frozen = true;
+            this.INSTITUCION.HeaderText = "INSTITUTO";
+            this.INSTITUCION.Name = "INSTITUCION";
+            this.INSTITUCION.ReadOnly = true;
             // 
             // EDITAR
             // 
@@ -373,11 +373,11 @@
         private recursosHumanosDataSetTableAdapters.NIVELESCAPACITACIONESTableAdapter nIVELESCAPACITACIONESTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCIO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NIVELDETRAINING;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAINICIO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAFINALIZO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn INSTITUTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nivel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHADESDE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAHASTA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INSTITUCION;
         private System.Windows.Forms.DataGridViewImageColumn EDITAR;
         private System.Windows.Forms.DataGridViewImageColumn delete;
     }

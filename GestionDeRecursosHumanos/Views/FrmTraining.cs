@@ -70,13 +70,13 @@ namespace GestionDeRecursosHumanos.Views
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         dgvTraining.Rows.Add();
-                        dgvTraining.Rows[numRow].Cells[0].Value = Convert.ToString(row["ID"]);
+                        dgvTraining.Rows[numRow].Cells[0].Value = Convert.ToString(row["ID"]);//"ID" is the name of the column in the DB.
                         dgvTraining.Rows[numRow].Cells[1].Value = Convert.ToString(row["NOMBRE"]);
                         dgvTraining.Rows[numRow].Cells[2].Value = Convert.ToString(row["DESCRIPCION"]);
-                        dgvTraining.Rows[numRow].Cells[3].Value = Convert.ToString(row["NIVELDETRAINING"]);
-                        dgvTraining.Rows[numRow].Cells[4].Value = Convert.ToString(row["FECHAINICIO"]);
-                        dgvTraining.Rows[numRow].Cells[5].Value = Convert.ToString(row["FECHAFINALIZO"]);
-                        dgvTraining.Rows[numRow].Cells[6].Value = Convert.ToString(row["INSTITUTO"]);
+                        dgvTraining.Rows[numRow].Cells[3].Value = Convert.ToString(row["nivel de capacitacion"]);
+                        dgvTraining.Rows[numRow].Cells[4].Value = Convert.ToString(row["fechaDesde"]);
+                        dgvTraining.Rows[numRow].Cells[5].Value = Convert.ToString(row["fechaHasta"]);
+                        dgvTraining.Rows[numRow].Cells[6].Value = Convert.ToString(row["institucion"]);
                         numRow++;
                     }
 
