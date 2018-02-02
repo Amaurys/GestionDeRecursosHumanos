@@ -24,32 +24,145 @@ namespace GestionDeRecursosHumanos.Views
 
         public void cancelAction()
         {
-            throw new NotImplementedException();
+            if (btnAccept.Visible)
+            {
+                clearTextBox();
+            }
+            else
+            {
+                btnUpdate.Visible = false;
+                btnAccept.Visible = true;
+                clearTextBox();
+                globalMode = "0";
+            }
         }
 
         public void clearTextBox()
         {
-            throw new NotImplementedException();
+            tbId.Text = "";
+            tbName.Text = "";
+            tbDescription.Text = "";
+            dtpStartDate.Value = DateTime.Today;
+            dtpFinishDate.Value = DateTime.Today;
+            tbInstitute.Text = "";
         }
 
         public void deleteData(DataGridViewCellEventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (dgvTraining.Columns[e.ColumnIndex].Name == "delete")
+                {
+                    DialogResult resultDelete = MessageBox.Show("¿Está seguro que quiere eliminar este registro de \n"
+                                                    + dgvTraining.Rows[e.RowIndex].Cells[1].Value.ToString() + " ?", "ATENCIÓN", MessageBoxButtons.YesNo);
+                    if (resultDelete == DialogResult.Yes)
+                    {
+                        SqlCommand command = new SqlCommand("eliminarCapacitacion", Program.conn.cnn);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = dgvTraining.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        int result = command.ExecuteNonQuery();
+                        if (result == -1)
+                        {
+                            MessageBox.Show("Información borrada.");
+                            showData();
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         public void getDataForUpdate(DataTable dt)
         {
-            throw new NotImplementedException();
+            try
+            {
+                tbId.Text = dt.Rows[0]["ID"].ToString();
+                tbName.Text = dt.Rows[0]["NOMBRE"].ToString();
+                tbDescription.Text = dt.Rows[0]["DESCRIPCION"].ToString();
+                cbTrainingLevel.SelectedIndex = Convert.ToInt32(dt.Rows[0]["idNivelCapacitacion"]);
+                dtpStartDate.Value = Convert.ToDateTime(dt.Rows[0]["fechaDesde"]);
+                dtpFinishDate.Value = Convert.ToDateTime(dt.Rows[0]["fechaHasta"]);
+                tbInstitute.Text = dt.Rows[0]["institucion"].ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         public DataTable getDataToTextBox(int id)
         {
-            throw new NotImplementedException();
+            SqlCommand command = new SqlCommand("enviarDatosATextBoxCapacitacion", Program.conn.cnn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = id;
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(dt);
+
+            return dt;
         }
 
         public void insertUpdateData(string mode)
         {
-            throw new NotImplementedException();
+            SqlCommand command = new SqlCommand("insertarActualizarCapacitacion", Program.conn.cnn);
+            command.CommandType = CommandType.StoredProcedure;
+
+            if (mode == "0")
+            {
+                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
+                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
+                command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
+                command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
+                command.Parameters.AddWithValue("@idNivelCapacitacion", SqlDbType.Int).Value = cbTrainingLevel.ValueMember;
+                command.Parameters.AddWithValue("@fechaDesde", SqlDbType.DateTime).Value = dtpStartDate.Value.ToString();
+                command.Parameters.AddWithValue("@fechaHasta", SqlDbType.DateTime).Value = dtpFinishDate.Value.ToString("yyyy/MM/dd");
+                command.Parameters.AddWithValue("@institucion", SqlDbType.VarChar).Value = tbInstitute.Text.Trim();
+                int result = command.ExecuteNonQuery();
+
+                if (result == 1)
+                {
+                    MessageBox.Show("Información guardada.");
+                    showData();
+                    clearTextBox();
+                }
+                else
+                {
+                    MessageBox.Show("Algo pasó.", "Algo pasó.");
+
+                }
+            }
+            else if (mode == "1")
+            {
+                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
+                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
+                command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
+                command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
+                command.Parameters.AddWithValue("@idNivelCapacitacion", SqlDbType.Int).Value = cbTrainingLevel.ValueMember;
+                command.Parameters.AddWithValue("@fechaDesde", SqlDbType.DateTime).Value = dtpStartDate.Value.ToString();
+                command.Parameters.AddWithValue("@fechaHasta", SqlDbType.DateTime).Value = dtpFinishDate.Value.ToString("yyyy/MM/dd");
+                command.Parameters.AddWithValue("@institucion", SqlDbType.VarChar).Value = tbInstitute.Text.Trim();
+                int result = command.ExecuteNonQuery();
+
+                if (result == 1)
+                {
+                    MessageBox.Show("Información guardada.");
+                    showData();
+                    clearTextBox();
+                    btnUpdate.Visible = false;
+                    btnAccept.Visible = true;
+                    globalMode = "0";
+                }
+                else
+                {
+                    MessageBox.Show("Algo pasó.", "Algo pasó.");
+
+                }
+
+            }
         }
 
         public void showData()
@@ -74,8 +187,8 @@ namespace GestionDeRecursosHumanos.Views
                         dgvTraining.Rows[numRow].Cells[1].Value = Convert.ToString(row["NOMBRE"]);
                         dgvTraining.Rows[numRow].Cells[2].Value = Convert.ToString(row["DESCRIPCION"]);
                         dgvTraining.Rows[numRow].Cells[3].Value = Convert.ToString(row["nivel de capacitacion"]);
-                        dgvTraining.Rows[numRow].Cells[4].Value = Convert.ToString(row["fechaDesde"]);
-                        dgvTraining.Rows[numRow].Cells[5].Value = Convert.ToString(row["fechaHasta"]);
+                        dgvTraining.Rows[numRow].Cells[4].Value = Convert.ToDateTime(row["fechaDesde"]).ToString("dd/MM/yyyy");
+                        dgvTraining.Rows[numRow].Cells[5].Value = Convert.ToDateTime(row["fechaHasta"]).ToString("dd/MM/yyyy");
                         dgvTraining.Rows[numRow].Cells[6].Value = Convert.ToString(row["institucion"]);
                         numRow++;
                     }
@@ -97,8 +210,41 @@ namespace GestionDeRecursosHumanos.Views
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            //  tbInstitute.Text = dtpMinSalary.Value.ToString("yyyy/MM/dd"); -- Esto es para 'formatear' el valor del dateTimePicker para enviarlo a la DB.
+            //tbInstitute.Text = dtpMinSalary.Value.ToString("yyyy/MM/dd"); --Esto es para 'formatear' el valor del dateTimePicker para enviarlo a la DB.
             //dtpMinSalary.Value = Convert.ToDateTime("2017/01/15"); -- Esto es para 'formatear' el valor de la DB y ponrlo en el dateTimePicker.
+            insertUpdateData(globalMode);
+        }
+
+        private void dgvTraining_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvTraining.Columns[e.ColumnIndex].Name == "edit")
+                {
+                    globalMode = "1";
+                    getDataForUpdate(getDataToTextBox(Convert.ToInt32(dgvTraining.Rows[e.RowIndex].Cells[0].Value.ToString())));
+                    btnUpdate.Visible = true;
+                    btnAccept.Visible = false;
+                }
+                else if (dgvTraining.Columns[e.ColumnIndex].Name == "delete")
+                {
+                    deleteData(e);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            insertUpdateData(globalMode);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            cancelAction();
         }
     }
 }

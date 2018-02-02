@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,8 +46,8 @@
             this.tbInstitute = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.dtpMinSalary = new System.Windows.Forms.DateTimePicker();
-            this.dtpMaxSalary = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpFinishDate = new System.Windows.Forms.DateTimePicker();
             this.recursosHumanosDataSet = new GestionDeRecursosHumanos.recursosHumanosDataSet();
             this.nIVELESCAPACITACIONESBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nIVELESCAPACITACIONESTableAdapter = new GestionDeRecursosHumanos.recursosHumanosDataSetTableAdapters.NIVELESCAPACITACIONESTableAdapter();
@@ -58,8 +58,10 @@
             this.FECHADESDE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAHASTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.INSTITUCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbDescription = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraining)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recursosHumanosDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nIVELESCAPACITACIONESBindingSource)).BeginInit();
@@ -98,10 +100,11 @@
             this.cbTrainingLevel.DisplayMember = "nombre";
             this.cbTrainingLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTrainingLevel.FormattingEnabled = true;
-            this.cbTrainingLevel.Location = new System.Drawing.Point(529, 35);
+            this.cbTrainingLevel.Location = new System.Drawing.Point(751, 32);
             this.cbTrainingLevel.Name = "cbTrainingLevel";
             this.cbTrainingLevel.Size = new System.Drawing.Size(121, 21);
             this.cbTrainingLevel.TabIndex = 32;
+            this.cbTrainingLevel.Tag = "";
             this.cbTrainingLevel.ValueMember = "id";
             // 
             // btnAccept
@@ -117,11 +120,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(412, 35);
+            this.label3.Location = new System.Drawing.Point(609, 32);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 13);
+            this.label3.Size = new System.Drawing.Size(136, 13);
             this.label3.TabIndex = 30;
-            this.label3.Text = "NIVEL DE TRAINING";
+            this.label3.Text = "NIVEL DE COMPETENCIA";
             // 
             // label2
             // 
@@ -173,12 +176,13 @@
             this.FECHADESDE,
             this.FECHAHASTA,
             this.INSTITUCION,
-            this.EDITAR,
+            this.edit,
             this.delete});
             this.dgvTraining.Location = new System.Drawing.Point(12, 166);
             this.dgvTraining.Name = "dgvTraining";
             this.dgvTraining.Size = new System.Drawing.Size(946, 203);
             this.dgvTraining.TabIndex = 25;
+            this.dgvTraining.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTraining_CellContentClick);
             // 
             // dataGridViewImageColumn1
             // 
@@ -209,6 +213,7 @@
             this.btnCancel.TabIndex = 40;
             this.btnCancel.Text = "CANCELAR";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnUpdate
             // 
@@ -219,23 +224,24 @@
             this.btnUpdate.Text = "ACTUALIZAR";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Visible = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // dtpMinSalary
+            // dtpStartDate
             // 
-            this.dtpMinSalary.CalendarTitleBackColor = System.Drawing.Color.CornflowerBlue;
-            this.dtpMinSalary.Location = new System.Drawing.Point(104, 80);
-            this.dtpMinSalary.Name = "dtpMinSalary";
-            this.dtpMinSalary.Size = new System.Drawing.Size(212, 20);
-            this.dtpMinSalary.TabIndex = 41;
-            this.dtpMinSalary.Value = new System.DateTime(2018, 1, 31, 13, 56, 16, 0);
+            this.dtpStartDate.CalendarTitleBackColor = System.Drawing.Color.CornflowerBlue;
+            this.dtpStartDate.Location = new System.Drawing.Point(104, 80);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(212, 20);
+            this.dtpStartDate.TabIndex = 41;
+            this.dtpStartDate.Value = new System.DateTime(2018, 1, 31, 13, 56, 16, 0);
             // 
-            // dtpMaxSalary
+            // dtpFinishDate
             // 
-            this.dtpMaxSalary.Location = new System.Drawing.Point(443, 80);
-            this.dtpMaxSalary.Name = "dtpMaxSalary";
-            this.dtpMaxSalary.Size = new System.Drawing.Size(212, 20);
-            this.dtpMaxSalary.TabIndex = 42;
-            this.dtpMaxSalary.Value = new System.DateTime(2018, 1, 31, 13, 56, 16, 0);
+            this.dtpFinishDate.Location = new System.Drawing.Point(443, 80);
+            this.dtpFinishDate.Name = "dtpFinishDate";
+            this.dtpFinishDate.Size = new System.Drawing.Size(212, 20);
+            this.dtpFinishDate.TabIndex = 42;
+            this.dtpFinishDate.Value = new System.DateTime(2018, 1, 31, 13, 56, 16, 0);
             // 
             // recursosHumanosDataSet
             // 
@@ -253,8 +259,8 @@
             // 
             // ID
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ID.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ID.DefaultCellStyle = dataGridViewCellStyle3;
             this.ID.Frozen = true;
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
@@ -302,18 +308,35 @@
             this.INSTITUCION.Name = "INSTITUCION";
             this.INSTITUCION.ReadOnly = true;
             // 
-            // EDITAR
+            // edit
             // 
-            this.EDITAR.Frozen = true;
-            this.EDITAR.HeaderText = "EDITAR";
-            this.EDITAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
-            this.EDITAR.Name = "EDITAR";
+            this.edit.Frozen = true;
+            this.edit.HeaderText = "EDITAR";
+            this.edit.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
+            this.edit.Name = "edit";
             // 
             // delete
             // 
-            this.delete.HeaderText = "DELETE";
+            this.delete.HeaderText = "ELIMINAR";
             this.delete.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
             this.delete.Name = "delete";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(428, 35);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 13);
+            this.label7.TabIndex = 44;
+            this.label7.Text = "DESCRIPCIÓN";
+            // 
+            // tbDescription
+            // 
+            this.tbDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbDescription.Location = new System.Drawing.Point(514, 35);
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(81, 20);
+            this.tbDescription.TabIndex = 43;
             // 
             // FrmTraining
             // 
@@ -321,8 +344,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(970, 402);
-            this.Controls.Add(this.dtpMaxSalary);
-            this.Controls.Add(this.dtpMinSalary);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.tbDescription);
+            this.Controls.Add(this.dtpFinishDate);
+            this.Controls.Add(this.dtpStartDate);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.tbInstitute);
@@ -366,8 +391,8 @@
         private System.Windows.Forms.TextBox tbInstitute;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.DateTimePicker dtpMinSalary;
-        private System.Windows.Forms.DateTimePicker dtpMaxSalary;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.DateTimePicker dtpFinishDate;
         private recursosHumanosDataSet recursosHumanosDataSet;
         private System.Windows.Forms.BindingSource nIVELESCAPACITACIONESBindingSource;
         private recursosHumanosDataSetTableAdapters.NIVELESCAPACITACIONESTableAdapter nIVELESCAPACITACIONESTableAdapter;
@@ -378,7 +403,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHADESDE;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAHASTA;
         private System.Windows.Forms.DataGridViewTextBoxColumn INSTITUCION;
-        private System.Windows.Forms.DataGridViewImageColumn EDITAR;
+        private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn delete;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbDescription;
     }
 }
