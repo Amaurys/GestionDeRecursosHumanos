@@ -96,7 +96,7 @@ namespace GestionDeRecursosHumanos.Views
 
         public DataTable getDataToTextBox(int id)
         {
-            SqlCommand command = new SqlCommand("enviarDatosATextBoxCapacitacion", Program.conn.cnn);
+            SqlCommand command = new SqlCommand("enviarDatosATextBoxCap", Program.conn.cnn);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = id;
             DataTable dt = new DataTable();
@@ -141,7 +141,7 @@ namespace GestionDeRecursosHumanos.Views
                 command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
                 command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
                 command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
-                command.Parameters.AddWithValue("@idNivelCapacitacion", SqlDbType.Int).Value = cbTrainingLevel.ValueMember;
+                command.Parameters.AddWithValue("@idNivelCapacitacion", SqlDbType.Int).Value = cbTrainingLevel.SelectedValue;
                 command.Parameters.AddWithValue("@fechaDesde", SqlDbType.DateTime).Value = dtpStartDate.Value.ToString();
                 command.Parameters.AddWithValue("@fechaHasta", SqlDbType.DateTime).Value = dtpFinishDate.Value.ToString("yyyy/MM/dd");
                 command.Parameters.AddWithValue("@institucion", SqlDbType.VarChar).Value = tbInstitute.Text.Trim();
