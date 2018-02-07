@@ -9,11 +9,8 @@ CREATE TABLE COMPETENCIAS(id int primary key identity, descripcion varchar(100)n
 CREATE TABLE IDIOMAS(id int primary key identity, nombre varchar(60) not null, descripcion varchar (100));
 
 CREATE TABLE CAPACITACIONES(id int primary key ident ity,nombre varchar(50) not null,descripcion varchar(100),idNivelCapacitacion int not null, 
-							fechaDesde datetime not null,fechaHasta datetime not null,institutcion varchar(100));
+							fechaDesde datetime not null,fechaHasta datetime not null,institutcion varchar(100)  );
 							
-select nombre, (select nombre from CANDIDATOS where cedula = CAPACITACIONES.cedulaTitutlar) as 'j' from CAPACITACIONES 
-where cedulaTitular = '223-0147748-9'
-
 CREATE TABLE NIVELESCAPACITACIONES(id int primary key identity,nombre varchar(60)not null);
 
 CREATE TABLE PUESTOS(id int primary key identity,nombre varchar(60) not null,idNivelRiesgo int not null,nivelMinimoSalario decimal(6,2) 
@@ -25,13 +22,8 @@ CREATE TABLE CANDIDATOS(id int primary key identity,cedula varchar(13)not null, 
 						puestoAspira varchar(60) not null, idDepartamento int not null,salarioAspira decimal(6,2), 
 						principalesCompetencias text,principalesCapacitaciones text, idExperienciaLaboral int not null,
 						recomendado varchar(60));
-
-insert into CANDIDATOS VALUES('223-0147748-9','AMAURYS SANCHEZ','PROGRAMADOR',1,6000.00,'PROGRAMAR','DESARROLLO ANDROID',
-								12,'');
 						
 CREATE TABLE DEPARTAMENTOS(id int primary key identity,nombre varchar(60) not null,descripcion varchar(100));
-
-
 
 CREATE TABLE EXPERIENCIASLABORALES(id int primary key identity,empresa varchar(60) not null,puestoOcupado varchar(60),
 									fechaDesde datetime,fechaHasta datetime,salario decimal(6,2));
@@ -193,17 +185,17 @@ GO
 --CAPACITACIONES
 
 GO
-CREATE PROCEDURE obtenerCapacitacion
+ALTER PROCEDURE obtenerCapacitacion
 AS
 BEGIN
 	SET NOCOUNT ON;
-	select c.id,c.nombre,c.descripcion,d.nombre as 'nivel de capacitacion',c.fechaDesde,c.fechaHasta,c.institucion from CAPACITACIONES c
+	select c.id,c.nombre,c.descripcion,d.nombre as 'nivel de capacitacion',c.fechaDesde,c.fechaHasta,c.institucion,c.cedulaTitular from CAPACITACIONES c
 	INNER JOIN NIVELESCAPACITACIONES d on c.id = d.id;
 END
 GO
 
 GO
-CREATE PROCEDURE insertarActualizarCapacitacion(
+ALTER PROCEDURE insertarActualizarCapacitacion(
 	@mode char(1) ,
 	@id int = '', 
 	@name nvarchar(60),
@@ -211,18 +203,20 @@ CREATE PROCEDURE insertarActualizarCapacitacion(
 	@idNivelCapacitacion int,
 	@fechaDesde datetime, 
 	@fechaHasta datetime,
-	@institucion nvarchar(60))
+	@institucion nvarchar(60),
+	@cedularTitular nvarchar(13))
 AS
 BEGIN
 	if(@mode=0)
 	BEGIN
-		INSERT INTO CAPACITACIONES(nombre,descripcion,idNivelCapacitacion,fechaDesde,fechaHasta,institucion) 
-			VALUES(@name,@descr,(select id from NIVELESCAPACITACIONES where id =  @idNivelCapacitacion),@fechaDesde,@fechaHasta,@institucion)
+		INSERT INTO CAPACITACIONES(nombre,descripcion,idNivelCapacitacion,fechaDesde,fechaHasta,institucion,cedulaTitular) 
+			VALUES(@name,@descr,(select id from NIVELESCAPACITACIONES where id =  @idNivelCapacitacion),@fechaDesde,
+					@fechaHasta,@institucion,@cedularTitular)
 	END
 
 	else if(@mode=1)
 	BEGIN
-		UPDATE CAPACITACIONES SET nombre=@name,descripcion=@descr,idNivelCapacitacion=@idNivelCapacitacion,
+		UPDATE CAPACITACIONES SET nombre=@name,descripcion=@descr,idNivelCapacitacion=@idNivelCapacitacion,cedulaTitular=@cedularTitular,
 				fechaDesde=@fechaDesde,fechaHasta=@fechaHasta,institucion=@institucion
 		WHERE id=@id
 	END	
