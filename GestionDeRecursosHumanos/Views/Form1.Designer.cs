@@ -37,6 +37,7 @@ namespace GestionDeRecursosHumanos
             this.iToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nivelesDeCapacitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.capacitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.departamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,8 @@ namespace GestionDeRecursosHumanos
             this.mantenimientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.iToolStripMenuItem,
             this.nivelesDeCapacitaciónToolStripMenuItem,
-            this.capacitacionesToolStripMenuItem});
+            this.capacitacionesToolStripMenuItem,
+            this.departamentosToolStripMenuItem});
             this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
             this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
@@ -81,6 +83,13 @@ namespace GestionDeRecursosHumanos
             this.capacitacionesToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.capacitacionesToolStripMenuItem.Text = "Capacitaciones";
             this.capacitacionesToolStripMenuItem.Click += new System.EventHandler(this.capacitacionesToolStripMenuItem_Click);
+            // 
+            // departamentosToolStripMenuItem
+            // 
+            this.departamentosToolStripMenuItem.Name = "departamentosToolStripMenuItem";
+            this.departamentosToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.departamentosToolStripMenuItem.Text = "Departamentos";
+            this.departamentosToolStripMenuItem.Click += new System.EventHandler(this.departamentosToolStripMenuItem_Click);
             // 
             // mdiParent
             // 
@@ -111,6 +120,7 @@ namespace GestionDeRecursosHumanos
         private System.Windows.Forms.ToolStripMenuItem iToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nivelesDeCapacitaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem capacitacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem departamentosToolStripMenuItem;
     }
 
     

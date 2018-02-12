@@ -201,8 +201,8 @@ ALTER PROCEDURE insertarActualizarCapacitacion(
 	@name nvarchar(60),
 	@descr varchar(100),
 	@idNivelCapacitacion int,
-	@fechaDesde datetime, 
-	@fechaHasta datetime,
+	@fechaDesde date, 
+	@fechaHasta date,
 	@institucion nvarchar(60),
 	@cedularTitular nvarchar(13))
 AS
@@ -252,3 +252,4 @@ BEGIN
 	where id = @id
 END
 GO
+

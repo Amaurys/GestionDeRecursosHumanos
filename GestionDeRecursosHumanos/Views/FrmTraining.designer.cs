@@ -43,15 +43,6 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvTraining = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHADESDE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAHASTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INSTITUCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.tbInstitute = new System.Windows.Forms.TextBox();
@@ -63,7 +54,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.mtbCedula = new System.Windows.Forms.MaskedTextBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHADESDE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHAHASTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INSTITUCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CEDULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nIVELESCAPACITACIONESBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recursosHumanosDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraining)).BeginInit();
@@ -188,77 +189,14 @@
             this.FECHADESDE,
             this.FECHAHASTA,
             this.INSTITUCION,
+            this.CEDULA,
             this.edit,
             this.delete});
             this.dgvTraining.Location = new System.Drawing.Point(12, 166);
             this.dgvTraining.Name = "dgvTraining";
-            this.dgvTraining.Size = new System.Drawing.Size(946, 203);
+            this.dgvTraining.Size = new System.Drawing.Size(1043, 203);
             this.dgvTraining.TabIndex = 25;
             this.dgvTraining.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTraining_CellContentClick);
-            // 
-            // ID
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ID.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.Frozen = true;
-            this.Nombre.HeaderText = "NOMBRE";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // DESCRIPCION
-            // 
-            this.DESCRIPCION.Frozen = true;
-            this.DESCRIPCION.HeaderText = "DESCRIPCION";
-            this.DESCRIPCION.Name = "DESCRIPCION";
-            this.DESCRIPCION.ReadOnly = true;
-            // 
-            // nivel
-            // 
-            this.nivel.Frozen = true;
-            this.nivel.HeaderText = "NIVEL DE CAPACITACION";
-            this.nivel.Name = "nivel";
-            this.nivel.ReadOnly = true;
-            // 
-            // FECHADESDE
-            // 
-            this.FECHADESDE.Frozen = true;
-            this.FECHADESDE.HeaderText = "FECHA INICIO";
-            this.FECHADESDE.Name = "FECHADESDE";
-            this.FECHADESDE.ReadOnly = true;
-            // 
-            // FECHAHASTA
-            // 
-            this.FECHAHASTA.Frozen = true;
-            this.FECHAHASTA.HeaderText = "FECHAFINALIZO";
-            this.FECHAHASTA.Name = "FECHAHASTA";
-            this.FECHAHASTA.ReadOnly = true;
-            // 
-            // INSTITUCION
-            // 
-            this.INSTITUCION.Frozen = true;
-            this.INSTITUCION.HeaderText = "INSTITUTO";
-            this.INSTITUCION.Name = "INSTITUCION";
-            this.INSTITUCION.ReadOnly = true;
-            // 
-            // edit
-            // 
-            this.edit.Frozen = true;
-            this.edit.HeaderText = "EDITAR";
-            this.edit.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
-            this.edit.Name = "edit";
-            // 
-            // delete
-            // 
-            this.delete.HeaderText = "ELIMINAR";
-            this.delete.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
-            this.delete.Name = "delete";
             // 
             // dataGridViewImageColumn1
             // 
@@ -345,25 +283,96 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(749, 38);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 13);
+            this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 45;
-            this.label8.Text = "INSTITUCIÓN";
+            this.label8.Text = "CEDULA";
             // 
-            // textBox1
+            // mtbCedula
             // 
-            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox1.Location = new System.Drawing.Point(831, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(81, 20);
-            this.textBox1.TabIndex = 46;
+            this.mtbCedula.Location = new System.Drawing.Point(805, 35);
+            this.mtbCedula.Mask = "000-0000000-0";
+            this.mtbCedula.Name = "mtbCedula";
+            this.mtbCedula.Size = new System.Drawing.Size(100, 20);
+            this.mtbCedula.TabIndex = 46;
+            // 
+            // ID
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ID.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.Frozen = true;
+            this.Nombre.HeaderText = "NOMBRE";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // DESCRIPCION
+            // 
+            this.DESCRIPCION.Frozen = true;
+            this.DESCRIPCION.HeaderText = "DESCRIPCION";
+            this.DESCRIPCION.Name = "DESCRIPCION";
+            this.DESCRIPCION.ReadOnly = true;
+            // 
+            // nivel
+            // 
+            this.nivel.Frozen = true;
+            this.nivel.HeaderText = "NIVEL DE CAPACITACION";
+            this.nivel.Name = "nivel";
+            this.nivel.ReadOnly = true;
+            // 
+            // FECHADESDE
+            // 
+            this.FECHADESDE.Frozen = true;
+            this.FECHADESDE.HeaderText = "FECHA INICIO";
+            this.FECHADESDE.Name = "FECHADESDE";
+            this.FECHADESDE.ReadOnly = true;
+            // 
+            // FECHAHASTA
+            // 
+            this.FECHAHASTA.Frozen = true;
+            this.FECHAHASTA.HeaderText = "FECHAFINALIZO";
+            this.FECHAHASTA.Name = "FECHAHASTA";
+            this.FECHAHASTA.ReadOnly = true;
+            // 
+            // INSTITUCION
+            // 
+            this.INSTITUCION.Frozen = true;
+            this.INSTITUCION.HeaderText = "INSTITUTO";
+            this.INSTITUCION.Name = "INSTITUCION";
+            this.INSTITUCION.ReadOnly = true;
+            // 
+            // CEDULA
+            // 
+            this.CEDULA.Frozen = true;
+            this.CEDULA.HeaderText = "CEDULA";
+            this.CEDULA.Name = "CEDULA";
+            this.CEDULA.ReadOnly = true;
+            // 
+            // edit
+            // 
+            this.edit.Frozen = true;
+            this.edit.HeaderText = "EDITAR";
+            this.edit.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
+            this.edit.Name = "edit";
+            // 
+            // delete
+            // 
+            this.delete.HeaderText = "ELIMINAR";
+            this.delete.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
+            this.delete.Name = "delete";
             // 
             // FrmTraining
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(970, 402);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1114, 402);
+            this.Controls.Add(this.mtbCedula);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbDescription);
@@ -417,6 +426,9 @@
         private recursosHumanosDataSet recursosHumanosDataSet;
         private System.Windows.Forms.BindingSource nIVELESCAPACITACIONESBindingSource;
         private recursosHumanosDataSetTableAdapters.NIVELESCAPACITACIONESTableAdapter nIVELESCAPACITACIONESTableAdapter;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbDescription;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCION;
@@ -424,11 +436,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHADESDE;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAHASTA;
         private System.Windows.Forms.DataGridViewTextBoxColumn INSTITUCION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CEDULA;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn delete;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tbDescription;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.MaskedTextBox mtbCedula;
     }
 }

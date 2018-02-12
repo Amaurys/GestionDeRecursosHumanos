@@ -38,6 +38,13 @@ namespace GestionDeRecursosHumanos
             frmTraining.Show();
         }
 
+        public void openFormDepartment()
+        {
+            FrmDepartment frmDepartment = new FrmDepartment();
+            frmDepartment.MdiParent = this;
+            frmDepartment.Show();
+        }
+
         private void iToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFormLanguage();
@@ -51,6 +58,11 @@ namespace GestionDeRecursosHumanos
         private void capacitacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFormTraining();
+        }
+
+        private void departamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
