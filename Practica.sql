@@ -316,3 +316,71 @@ BEGIN
 	where id = @id
 END
 GO
+
+--ExperienciasLaborales------------------------------------------------- select * from ExperienciasLaborales
+
+GO
+CREATE PROCEDURE obtenerExperienciaLaboral
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM EXPERIENCIASLABORALES;
+END
+GO
+
+GO
+CREATE PROCEDURE insertarActualizarExperienciaLaboral(
+	@mode char(1) ,
+	@id int = '', 
+	@company nvarchar(60),
+	@positionOccupied nvarchar(60),
+	@beginDate date,
+	@finishDate date,
+	@salary decimal(8,2),
+	@cedula nvarchar(13))
+AS
+BEGIN
+	if(@mode=0)
+	BEGIN
+		INSERT INTO EXPERIENCIASLABORALES(empresa,puestoOcupado,fechaDesde,fechaHasta,salario,cedula) 
+			VALUES(@company,@positionOccupied,@beginDate,@finishDate,@salary,@cedula)
+	END
+
+	else if(@mode=1)
+	BEGIN
+		UPDATE EXPERIENCIASLABORALES SET empresa = @company,puestoOcupado=@positionOccupied,fechaDesde=@beginDate,
+						fechaHasta=@finishDate,salario=@salary,cedula=@cedula
+		WHERE id=@id
+	END	
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerExperienciaLaboralWhere(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM EXPERIENCIASLABORALES where id = @id;
+END
+GO
+
+GO
+CREATE PROCEDURE eliminarExperienciaLaboral(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE from EXPERIENCIASLABORALES WHERE id=@id;
+END
+GO
+
+GO
+CREATE PROCEDURE enviarDatosATextBoxExperienciaLaboral(
+	@id int)
+AS
+BEGIN
+	select * from EXPERIENCIASLABORALES
+	where id = @id
+END
+GO
