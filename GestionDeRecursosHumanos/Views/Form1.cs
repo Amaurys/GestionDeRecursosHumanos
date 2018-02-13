@@ -62,7 +62,7 @@ namespace GestionDeRecursosHumanos
 
         private void departamentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            openFormDepartment();
         }
     }
 }

@@ -13,23 +13,23 @@ CREATE TABLE CAPACITACIONES(id int primary key ident ity,nombre varchar(50) not 
 							
 CREATE TABLE NIVELESCAPACITACIONES(id int primary key identity,nombre varchar(60)not null);
 
-CREATE TABLE PUESTOS(id int primary key identity,nombre varchar(60) not null,idNivelRiesgo int not null,nivelMinimoSalario decimal(6,2) 
-						not null,nivlMaximoSalario decimal(6,2) not null,estado bit not null); 
+CREATE TABLE PUESTOS(id int primary key identity,nombre varchar(60) not null,idNivelRiesgo int not null,nivelMinimoSalario decimal(8,2) 
+						not null,nivlMaximoSalario decimal(8,2) not null,estado bit not null); 
 
 CREATE TABLE NIVELESRIESGO(id int primary Key identity,nombre varchar(60)not null);
 
 CREATE TABLE CANDIDATOS(id int primary key identity,cedula varchar(13)not null, nombre varchar(60) not null,
-						puestoAspira varchar(60) not null, idDepartamento int not null,salarioAspira decimal(6,2), 
+						puestoAspira varchar(60) not null, idDepartamento int not null,salarioAspira decimal(8,2), 
 						principalesCompetencias text,principalesCapacitaciones text, idExperienciaLaboral int not null,
 						recomendado varchar(60));
 						
 CREATE TABLE DEPARTAMENTOS(id int primary key identity,nombre varchar(60) not null,descripcion varchar(100));
 
 CREATE TABLE EXPERIENCIASLABORALES(id int primary key identity,empresa varchar(60) not null,puestoOcupado varchar(60),
-									fechaDesde datetime,fechaHasta datetime,salario decimal(6,2));
+									fechaDesde datetime,fechaHasta datetime,salario decimal(8,2),cedula varchar(13));
 
 CREATE TABLE EMPLEADOS(id int primary key identity,cedula varchar(13) not null,nombre varchar(60) not null,fechaIngreso datetime not null,
-						 idPuesto int not null,idDepartamento int not null,salarioMensual decimal(6,2),estado bit);
+						 idPuesto int not null,idDepartamento int not null,salarioMensual decimal(8,2),estado bit);
 
 CREATE TABLE usuarios(id int identity, nombreUsuario varchar(60) not null, nombrePila varchar(60) not null,
 						contrasena varchar(30)not null, 
@@ -39,6 +39,8 @@ CREATE TABLE usuarios(id int identity, nombreUsuario varchar(60) not null, nombr
 ALTER TABLE PUESTOS
 ADD CONSTRAINT FK_Puestos_NivlesRiesgos FOREIGN KEY (idNivelRiesgo) 
 	REFERENCES NIVELESRIESGO(id);
+
+	
 
 ALTER TABLE CAPACITACIONES 
 	ADD CONSTRAINT FK_Capacitaciones_NivelesCapacitaciones FOREIGN KEY(IdNivelCapacitacion)
@@ -213,7 +215,6 @@ BEGIN
 			VALUES(@name,@descr,(select id from NIVELESCAPACITACIONES where id =  @idNivelCapacitacion),@fechaDesde,
 					@fechaHasta,@institucion,@cedularTitular)
 	END
-
 	else if(@mode=1)
 	BEGIN
 		UPDATE CAPACITACIONES SET nombre=@name,descripcion=@descr,idNivelCapacitacion=@idNivelCapacitacion,cedulaTitular=@cedularTitular,
@@ -253,3 +254,65 @@ BEGIN
 END
 GO
 
+--Department------------------------------------------------- select * from departamentos
+
+GO
+CREATE PROCEDURE obtenerDepartamento
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM DEPARTAMENTOS;
+END
+GO
+
+GO
+CREATE PROCEDURE insertarActualizarDepartamento(
+	@mode char(1) ,
+	@id int = '', 
+	@name nvarchar(60),
+	@descr nvarchar(60))
+AS
+BEGIN
+	if(@mode=0)
+	BEGIN
+		INSERT INTO DEPARTAMENTOS(nombre,descripcion) 
+			VALUES(@name,@descr)
+	END
+
+	else if(@mode=1)
+	BEGIN
+		UPDATE DEPARTAMENTOS SET nombre=@name,descripcion=@descr
+		WHERE id=@id
+	END	
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerDepartamentoWhere(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM DEPARTAMENTOS where id = @id;
+END
+GO
+
+GO
+CREATE PROCEDURE eliminarDepartamento(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE from DEPARTAMENTOS WHERE id=@id;
+END
+GO
+
+GO
+CREATE PROCEDURE enviarDatosATextBoxDepartamento(
+	@id int)
+AS
+BEGIN
+	select * from DEPARTAMENTOS
+	where id = @id
+END
+GO

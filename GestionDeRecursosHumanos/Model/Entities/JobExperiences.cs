@@ -10,7 +10,7 @@ namespace GestionDeRecursosHumanos.Entities
     {
         private int id;
         private string company;
-        private string occuppiedPosition;
+        private string occuppedPosition;
         private DateTime beginDate;
         private DateTime finishDate;
         private double salary;

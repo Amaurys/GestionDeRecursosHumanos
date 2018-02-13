@@ -19,6 +19,7 @@ namespace GestionDeRecursosHumanos.Views
         public FrmDepartment()
         {
             InitializeComponent();
+            showData();
         }
 
         public void cancelAction()
