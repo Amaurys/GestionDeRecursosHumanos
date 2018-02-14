@@ -26,16 +26,13 @@ namespace GestionDeRecursosHumanos.Views
         {
             if (btnAccept.Visible)
             {
-                tbName.Text = "";
-                tbDescription.Text = "";
+                clearTextBox();
             }
             else
             {
                 btnUpdate.Visible = false;
                 btnAccept.Visible = true;
-                tbId.Text = "";
-                tbName.Text = "";
-                tbDescription.Text = "";
+                clearTextBox();
                 globalMode = "0";
             }
         }

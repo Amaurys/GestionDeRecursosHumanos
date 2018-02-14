@@ -41,16 +41,16 @@ namespace GestionDeRecursosHumanos.Entities
             }
         }
 
-        public string OccuppiedPosition
+        public string OccuppedPosition
         {
             get
             {
-                return occuppiedPosition;
+                return occuppedPosition;
             }
 
             set
             {
-                occuppiedPosition = value;
+                occuppedPosition = value;
             }
         }
 

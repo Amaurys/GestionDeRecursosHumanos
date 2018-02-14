@@ -20,8 +20,6 @@ namespace GestionDeRecursosHumanos.Views
         {
             InitializeComponent();
             showData();
-            dtpStartDate.CustomFormat = "dd/MM/yyyy";
-            dtpFinishDate.CustomFormat = "dd/MM/yyyy";
         }
 
         public void cancelAction()
@@ -121,9 +119,9 @@ namespace GestionDeRecursosHumanos.Views
                 command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
                 command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
                 command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
-                command.Parameters.AddWithValue("@idNivelCapacitacion", SqlDbType.Int).Value = cbTrainingLevel.ValueMember;
-                command.Parameters.AddWithValue("@fechaDesde", SqlDbType.DateTime).Value = dtpStartDate.Value.ToString();
-                command.Parameters.AddWithValue("@fechaHasta", SqlDbType.DateTime).Value = dtpFinishDate.Value.ToString("yyyy/MM/dd");
+                command.Parameters.AddWithValue("@idNivelCapacitacion", SqlDbType.Int).Value = Convert.ToInt32(cbTrainingLevel.SelectedValue);
+                command.Parameters.AddWithValue("@fechaDesde", SqlDbType.DateTime).Value = dtpStartDate.Value;
+                command.Parameters.AddWithValue("@fechaHasta", SqlDbType.DateTime).Value = dtpFinishDate.Value;
                 command.Parameters.AddWithValue("@institucion", SqlDbType.VarChar).Value = tbInstitute.Text.Trim();
                 command.Parameters.AddWithValue("@cedularTitular", SqlDbType.VarChar).Value = mtbCedula.Text.Trim();
                 int result = command.ExecuteNonQuery();
@@ -146,13 +144,13 @@ namespace GestionDeRecursosHumanos.Views
                 command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
                 command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
                 command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
-                command.Parameters.AddWithValue("@idNivelCapacitacion", SqlDbType.Int).Value = cbTrainingLevel.SelectedValue;
-                command.Parameters.AddWithValue("@fechaDesde", SqlDbType.DateTime).Value = dtpStartDate.Value.ToString("dd/MM/yyyy");
-                command.Parameters.AddWithValue("@fechaHasta", SqlDbType.DateTime).Value = dtpFinishDate.Value.ToString("dd/MM/yyyy");
+                command.Parameters.AddWithValue("@idNivelCapacitacion", SqlDbType.Int).Value = Convert.ToInt32(cbTrainingLevel.SelectedValue);
+                command.Parameters.AddWithValue("@fechaDesde", SqlDbType.DateTime).Value = dtpStartDate.Value;
+                command.Parameters.AddWithValue("@fechaHasta", SqlDbType.DateTime).Value = dtpFinishDate.Value;
                 command.Parameters.AddWithValue("@institucion", SqlDbType.VarChar).Value = tbInstitute.Text.Trim();
                 command.Parameters.AddWithValue("@cedularTitular", SqlDbType.VarChar).Value = mtbCedula.Text.Trim();
                 int result = command.ExecuteNonQuery();
-                Console.WriteLine(dtpStartDate.Value);
+
                 if (result == 1)
                 {
                     MessageBox.Show("Información guardada.");

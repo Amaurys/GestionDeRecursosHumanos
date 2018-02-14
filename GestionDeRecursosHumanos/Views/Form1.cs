@@ -45,6 +45,12 @@ namespace GestionDeRecursosHumanos
             frmDepartment.Show();
         }
 
+        private void openFormJobExperiences()
+        {
+            FrmJobExperience frmJobExperience = new FrmJobExperience();
+            frmJobExperience.MdiParent = this;
+            frmJobExperience.Show();
+        }
         private void iToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFormLanguage();
@@ -64,5 +70,12 @@ namespace GestionDeRecursosHumanos
         {
             openFormDepartment();
         }
+
+        private void experienciasLaboralesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFormJobExperiences();
+        }
+
+       
     }
 }

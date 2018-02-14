@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvDepartment = new System.Windows.Forms.DataGridView();
+            this.dgvJobExperiences = new System.Windows.Forms.DataGridView();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
@@ -55,20 +55,20 @@
             this.FECHAHASTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SALARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CEDULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJobExperiences)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvDepartment
+            // dgvJobExperiences
             // 
-            this.dgvDepartment.AllowUserToAddRows = false;
-            this.dgvDepartment.AllowUserToDeleteRows = false;
-            this.dgvDepartment.BackgroundColor = System.Drawing.Color.CornflowerBlue;
-            this.dgvDepartment.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvDepartment.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.dgvDepartment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDepartment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvJobExperiences.AllowUserToAddRows = false;
+            this.dgvJobExperiences.AllowUserToDeleteRows = false;
+            this.dgvJobExperiences.BackgroundColor = System.Drawing.Color.CornflowerBlue;
+            this.dgvJobExperiences.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvJobExperiences.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dgvJobExperiences.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJobExperiences.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.COMPANY,
             this.PUESTO,
@@ -76,12 +76,13 @@
             this.FECHAHASTA,
             this.SALARIO,
             this.CEDULA,
-            this.EDITAR,
+            this.edit,
             this.ELIMINAR});
-            this.dgvDepartment.Location = new System.Drawing.Point(62, 221);
-            this.dgvDepartment.Name = "dgvDepartment";
-            this.dgvDepartment.Size = new System.Drawing.Size(956, 203);
-            this.dgvDepartment.TabIndex = 53;
+            this.dgvJobExperiences.Location = new System.Drawing.Point(62, 221);
+            this.dgvJobExperiences.Name = "dgvJobExperiences";
+            this.dgvJobExperiences.Size = new System.Drawing.Size(956, 203);
+            this.dgvJobExperiences.TabIndex = 53;
+            this.dgvJobExperiences.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJobExperiences_CellContentClick);
             // 
             // btnCancel
             // 
@@ -91,6 +92,7 @@
             this.btnCancel.TabIndex = 52;
             this.btnCancel.Text = "CANCELAR";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnUpdate
             // 
@@ -101,6 +103,7 @@
             this.btnUpdate.Text = "ACTUALIZAR";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Visible = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAccept
             // 
@@ -110,6 +113,7 @@
             this.btnAccept.TabIndex = 50;
             this.btnAccept.Text = "ACEPTAR";
             this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // label3
             // 
@@ -289,12 +293,12 @@
             this.CEDULA.Name = "CEDULA";
             this.CEDULA.ReadOnly = true;
             // 
-            // EDITAR
+            // edit
             // 
-            this.EDITAR.Frozen = true;
-            this.EDITAR.HeaderText = "EDITAR";
-            this.EDITAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
-            this.EDITAR.Name = "EDITAR";
+            this.edit.Frozen = true;
+            this.edit.HeaderText = "EDITAR";
+            this.edit.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
+            this.edit.Name = "edit";
             // 
             // ELIMINAR
             // 
@@ -316,7 +320,7 @@
             this.Controls.Add(this.dtpFinishDate);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dtpBeginDate);
-            this.Controls.Add(this.dgvDepartment);
+            this.Controls.Add(this.dgvJobExperiences);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAccept);
@@ -330,7 +334,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmJobExperience";
             this.Text = "EXPERIENCIAS LABORALES";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJobExperiences)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,7 +342,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvDepartment;
+        private System.Windows.Forms.DataGridView dgvJobExperiences;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAccept;
@@ -356,6 +360,8 @@
         private System.Windows.Forms.DateTimePicker dtpFinishDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox mtbSalary;
+        private System.Windows.Forms.MaskedTextBox mtbCedula;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn COMPANY;
         private System.Windows.Forms.DataGridViewTextBoxColumn PUESTO;
@@ -363,9 +369,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAHASTA;
         private System.Windows.Forms.DataGridViewTextBoxColumn SALARIO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CEDULA;
-        private System.Windows.Forms.DataGridViewImageColumn EDITAR;
+        private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
-        private System.Windows.Forms.MaskedTextBox mtbCedula;
-        private System.Windows.Forms.Label label7;
     }
 }
