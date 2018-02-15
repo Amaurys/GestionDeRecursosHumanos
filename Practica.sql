@@ -184,7 +184,7 @@ BEGIN
 END
 GO
 
---CAPACITACIONES
+--CAPACITACIONES--------------------------------------------- select * from CAPACITACIONES
 
 GO
 ALTER PROCEDURE obtenerCapacitacion
@@ -381,6 +381,93 @@ CREATE PROCEDURE enviarDatosATextBoxExperienciaLaboral(
 AS
 BEGIN
 	select * from EXPERIENCIASLABORALES
+	where id = @id
+END
+GO
+
+
+
+
+--EMPLEADOS--------------------------------------------- select * from EMPLEADOS
+
+GO
+ALTER PROCEDURE obtenerEmpleado
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select emp.id,emp.cedula,emp.nombre,emp.fechaIngreso,pue.nombre as 'puesto',dep.nombre as 'departamento',emp.salarioMensual,emp.estado from EMPLEADOS emp
+	INNER JOIN PUESTOS pue on emp.idPuesto = pue.id
+	INNER JOIN DEPARTAMENTOS dep on emp.idDepartamento = dep.id;
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerEmpleadoLike
+	(@nombreLike nvarchar(50))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select emp.id,emp.cedula,emp.nombre,emp.fechaIngreso,pue.nombre as 'puesto',dep.nombre as 'departamento',emp.salarioMensual,emp.estado from EMPLEADOS emp
+	INNER JOIN PUESTOS pue on emp.idPuesto = pue.id
+	INNER JOIN DEPARTAMENTOS dep on emp.idDepartamento = dep.id
+	where emp.nombre like @nombreLike
+END
+GO 
+
+GO
+CREATE PROCEDURE insertarActualizarEmpleado(
+	@mode char(1) ,
+	@id int = '',
+	@cedula nvarchar(13),
+	@nombre nvarchar(60),
+	@fechaIngreso date,
+	@idPuesto int,
+	@idDepartamento int,
+	@salarioMensual decimal(8,2),
+	@estado bit)
+AS
+BEGIN
+	if(@mode=0)
+	BEGIN
+		INSERT INTO EMPLEADOS(cedula, nombre,fechaIngreso,idPuesto,idDepartamento,salarioMensual,estado) 
+			VALUES(@cedula,@nombre, @fechaIngreso,(select id from PUESTOS where id =  @idPuesto),
+					(select id from DEPARTAMENTOS where id =  @idDepartamento),@salarioMensual,@estado)
+	END
+	else if(@mode=1)
+	BEGIN
+		UPDATE EMPLEADOS SET cedula=@cedula,nombre=@nombre,fechaIngreso=@fechaIngreso,idPuesto=@idPuesto,
+				idDepartamento=@idDepartamento,salarioMensual=@salarioMensual,estado=@estado
+		WHERE id=@id
+	END	
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerCapacitacionWhere(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM NIVELESCAPACITACIONES where id = @id;
+END
+GO
+
+GO
+CREATE PROCEDURE eliminarCapacitacion(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE from CAPACITACIONES WHERE id=@id;
+END
+GO
+
+GO
+CREATE PROCEDURE enviarDatosATextBoxCap(
+	@id int)
+AS
+BEGIN
+	select * from CAPACITACIONES
 	where id = @id
 END
 GO

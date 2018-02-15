@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -201,6 +202,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\delete-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\lupa.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
