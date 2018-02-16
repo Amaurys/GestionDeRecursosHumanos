@@ -141,7 +141,7 @@ namespace GestionDeRecursosHumanos.Views
             else if (mode == "1")
             {
                 command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
-                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
+                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
                 command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
                 command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
                 command.Parameters.AddWithValue("@idNivelCapacitacion", SqlDbType.Int).Value = Convert.ToInt32(cbTrainingLevel.SelectedValue);

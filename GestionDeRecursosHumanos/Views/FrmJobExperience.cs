@@ -139,7 +139,7 @@ namespace GestionDeRecursosHumanos.Views
             else if (mode == "1")
             {
                 command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
-                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
+                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
                 command.Parameters.AddWithValue("@company", SqlDbType.VarChar).Value = tbCompany.Text.Trim();
                 command.Parameters.AddWithValue("@positionOccupied", SqlDbType.VarChar).Value = tbOccuppedPosition.Text.Trim();
                 command.Parameters.AddWithValue("@beginDate", SqlDbType.DateTime).Value = dtpBeginDate.Value;

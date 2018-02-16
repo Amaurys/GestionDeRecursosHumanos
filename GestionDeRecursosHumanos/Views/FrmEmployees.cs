@@ -146,14 +146,6 @@ namespace GestionDeRecursosHumanos.Views
             }
         }
         
-        public static void ShowBox(string txtMessage)
-        {
-            //newMessageBox = new MyMessageBox();
-            //newMessageBox.label1.Text = txtMessage;
-            //newMessageBox.ShowDialog();
-        }
-
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             search();

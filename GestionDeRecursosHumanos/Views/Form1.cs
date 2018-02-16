@@ -57,6 +57,13 @@ namespace GestionDeRecursosHumanos
             frmEmployees.MdiParent = this;
             frmEmployees.Show();
         }
+        private void openFormPosition()
+        {
+            FrmPosition frmPosition = new FrmPosition();
+            frmPosition.MdiParent = this;
+            frmPosition.Show();
+        }
+
         private void iToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFormLanguage();
@@ -87,5 +94,11 @@ namespace GestionDeRecursosHumanos
             openFormEmployees();
         }
 
+        private void puestosLaboralesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFormPosition();
+        }
+
+       
     }
 }

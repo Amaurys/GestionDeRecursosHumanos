@@ -471,3 +471,62 @@ BEGIN
 	where id = @id
 END
 GO
+
+
+--PUESTOS---------------------------------------- select * from PUESTOS
+SELECT * FROM NIVELESRIESGO
+GO
+CREATE PROCEDURE obtenerPuesto
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select pues.id,pues.nombre,d.nombre as 'nivel de riesgo',pues.nivelMinimoSalario,pues.nivlMaximoSalario,pues.estado from PUESTOS pues
+	INNER JOIN NIVELESRIESGO d on pues.id = d.id;
+END
+GO
+
+GO
+CREATE PROCEDURE insertarActualizarPuesto(
+	@mode char(1),
+	@id int = '', 
+	@name nvarchar(60),
+	@idNivelRiesgo int,
+	@salarioMin decimal(8,2), 
+	@salarioMax decimal(8,2),
+	@estado bit)
+AS
+BEGIN
+	if(@mode=0)
+	BEGIN
+		INSERT INTO PUESTOS(nombre,idNivelRiesgo,nivelMinimoSalario,nivlMaximoSalario,estado) 
+			VALUES(@name,(select id from NIVELESRIESGO where id =  @idNivelRiesgo),@salarioMin,@salarioMax,@estado)
+	END
+	else if(@mode=1)
+	BEGIN
+		UPDATE PUESTOS SET nombre=@name,idNivelRiesgo=@idNivelRiesgo,nivelMinimoSalario=@salarioMin,
+				nivlMaximoSalario=@salarioMax,estado=@estado
+		WHERE id=@id
+	END	
+END
+GO
+
+GO
+CREATE PROCEDURE eliminarPuesto(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE from PUESTOS WHERE id=@id;
+END
+GO
+
+GO
+CREATE PROCEDURE enviarDatosATextBoxPuesto(
+	@id int)
+AS
+BEGIN
+	select * from PUESTOS
+	where id = @id
+END
+GO
+

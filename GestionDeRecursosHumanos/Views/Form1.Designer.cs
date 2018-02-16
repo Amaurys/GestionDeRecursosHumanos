@@ -40,6 +40,7 @@ namespace GestionDeRecursosHumanos
             this.departamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.experienciasLaboralesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.puestosLaboralesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +63,8 @@ namespace GestionDeRecursosHumanos
             this.nivelesDeCapacitaciónToolStripMenuItem,
             this.capacitacionesToolStripMenuItem,
             this.departamentosToolStripMenuItem,
-            this.experienciasLaboralesToolStripMenuItem});
+            this.experienciasLaboralesToolStripMenuItem,
+            this.puestosLaboralesToolStripMenuItem});
             this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
             this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
@@ -109,6 +111,13 @@ namespace GestionDeRecursosHumanos
             this.empleadosToolStripMenuItem.Text = "Empleados";
             this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
             // 
+            // puestosLaboralesToolStripMenuItem
+            // 
+            this.puestosLaboralesToolStripMenuItem.Name = "puestosLaboralesToolStripMenuItem";
+            this.puestosLaboralesToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.puestosLaboralesToolStripMenuItem.Text = "Puestos Laborales";
+            this.puestosLaboralesToolStripMenuItem.Click += new System.EventHandler(this.puestosLaboralesToolStripMenuItem_Click);
+            // 
             // mdiParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,6 +151,7 @@ namespace GestionDeRecursosHumanos
         private System.Windows.Forms.ToolStripMenuItem departamentosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem experienciasLaboralesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem puestosLaboralesToolStripMenuItem;
     }
 
     
