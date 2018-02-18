@@ -35,7 +35,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cbTrainingLevel = new System.Windows.Forms.ComboBox();
             this.nIVELESCAPACITACIONESBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.recursosHumanosDataSet = new GestionDeRecursosHumanos.recursosHumanosDataSet();
             this.btnAccept = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,7 +49,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFinishDate = new System.Windows.Forms.DateTimePicker();
-            this.nIVELESCAPACITACIONESTableAdapter = new GestionDeRecursosHumanos.recursosHumanosDataSetTableAdapters.NIVELESCAPACITACIONESTableAdapter();
             this.label7 = new System.Windows.Forms.Label();
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -66,7 +64,6 @@
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nIVELESCAPACITACIONESBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recursosHumanosDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraining)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,16 +106,7 @@
             this.cbTrainingLevel.TabIndex = 32;
             this.cbTrainingLevel.Tag = "";
             this.cbTrainingLevel.ValueMember = "id";
-            // 
-            // nIVELESCAPACITACIONESBindingSource
-            // 
-            this.nIVELESCAPACITACIONESBindingSource.DataMember = "NIVELESCAPACITACIONES";
-            this.nIVELESCAPACITACIONESBindingSource.DataSource = this.recursosHumanosDataSet;
-            // 
-            // recursosHumanosDataSet
-            // 
-            this.recursosHumanosDataSet.DataSetName = "recursosHumanosDataSet";
-            this.recursosHumanosDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+         
             // 
             // btnAccept
             // 
@@ -256,10 +244,7 @@
             this.dtpFinishDate.Size = new System.Drawing.Size(212, 20);
             this.dtpFinishDate.TabIndex = 42;
             this.dtpFinishDate.Value = new System.DateTime(2018, 1, 31, 13, 56, 16, 0);
-            // 
-            // nIVELESCAPACITACIONESTableAdapter
-            // 
-            this.nIVELESCAPACITACIONESTableAdapter.ClearBeforeFill = true;
+        
             // 
             // label7
             // 
@@ -397,7 +382,6 @@
             this.Text = "Competencias";
             this.Load += new System.EventHandler(this.FrmTraining_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nIVELESCAPACITACIONESBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recursosHumanosDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraining)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -423,9 +407,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.DateTimePicker dtpFinishDate;
-        private recursosHumanosDataSet recursosHumanosDataSet;
         private System.Windows.Forms.BindingSource nIVELESCAPACITACIONESBindingSource;
-        private recursosHumanosDataSetTableAdapters.NIVELESCAPACITACIONESTableAdapter nIVELESCAPACITACIONESTableAdapter;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbDescription;
         private System.Windows.Forms.Label label8;

@@ -63,6 +63,18 @@ namespace GestionDeRecursosHumanos
             frmPosition.MdiParent = this;
             frmPosition.Show();
         }
+        private void openFrmCompetences()
+        {
+            FrmCompetence frmCompetence = new FrmCompetence();
+            frmCompetence.MdiParent = this;
+            frmCompetence.Show();
+        }
+        private void opentFormApplicant()
+        {
+            FrmApplicant frmApplicant = new FrmApplicant();
+            frmApplicant.MdiParent = this;
+            frmApplicant.Show();
+        }
 
         private void iToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -99,6 +111,16 @@ namespace GestionDeRecursosHumanos
             openFormPosition();
         }
 
-       
+        private void cOMPETENCIAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFrmCompetences();
+        }
+
+        private void candidatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            opentFormApplicant();
+        }
+
+        
     }
 }

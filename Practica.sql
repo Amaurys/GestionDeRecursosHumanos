@@ -8,15 +8,15 @@ CREATE TABLE COMPETENCIAS(id int primary key identity, descripcion varchar(100)n
 							estado bit not null);
 CREATE TABLE IDIOMAS(id int primary key identity, nombre varchar(60) not null, descripcion varchar (100));
 
-CREATE TABLE CAPACITACIONES(id int primary key ident ity,nombre varchar(50) not null,descripcion varchar(100),idNivelCapacitacion int not null, 
-							fechaDesde datetime not null,fechaHasta datetime not null,institutcion varchar(100)  );
+CREATE TABLE CAPACITACIONES(id int primary key identity,nombre varchar(50) not null,descripcion varchar(100),idNivelCapacitacion int not null, 
+							fechaDesde datetime not null,fechaHasta datetime not null,institucion varchar(100),cedulaTitular varchar(13));
 							
 CREATE TABLE NIVELESCAPACITACIONES(id int primary key identity,nombre varchar(60)not null);
 
 CREATE TABLE PUESTOS(id int primary key identity,nombre varchar(60) not null,idNivelRiesgo int not null,nivelMinimoSalario decimal(8,2) 
 						not null,nivlMaximoSalario decimal(8,2) not null,estado bit not null); 
 
-CREATE TABLE NIVELESRIESGO(id int primary Key identity,nombre varchar(60)not null);
+CREATE TABLE NIVELESRIESGO(id int primary Key identity,nombre varchar(60)not null); 
 
 CREATE TABLE CANDIDATOS(id int primary key identity,cedula varchar(13)not null, nombre varchar(60) not null,
 						puestoAspira varchar(60) not null, idDepartamento int not null,salarioAspira decimal(8,2), 
@@ -34,13 +34,16 @@ CREATE TABLE EMPLEADOS(id int primary key identity,cedula varchar(13) not null,n
 CREATE TABLE usuarios(id int identity, nombreUsuario varchar(60) not null, nombrePila varchar(60) not null,
 						contrasena varchar(30)not null, 
 						CONSTRAINT PK_Users_IdNombreUsuario PRIMARY KEY (id,nombreUsuario));
+
+CREATE TABLE COMPETENCIASPERSONAS(id int primary key identity,cedula varchar(13) not null,idCompetencia int not null);
+
+CREATE TABLE IDIOMASPERSONAS(ID int primary key identity,cedula varchar(13) not null,idIdioma int not null);
+					
 					
 --FOREIGN KEYS
 ALTER TABLE PUESTOS
 ADD CONSTRAINT FK_Puestos_NivlesRiesgos FOREIGN KEY (idNivelRiesgo) 
 	REFERENCES NIVELESRIESGO(id);
-
-	
 
 ALTER TABLE CAPACITACIONES 
 	ADD CONSTRAINT FK_Capacitaciones_NivelesCapacitaciones FOREIGN KEY(IdNivelCapacitacion)
@@ -58,9 +61,22 @@ ALTER TABLE EMPLEADOS
 	ADD CONSTRAINT FK_Empleados_Departamentos FOREIGN KEY (idDepartamento)
 	REFERENCES DEPARTAMENTOS(id);
 
+ALTER TABLE COMPETENCIASPERSONAS
+	ADD CONSTRAINT FK_CompetenciasPersonas_Competencias FOREIGN KEY (idCompetencia)
+	REFERENCES COMPETENCIAS(id);
+
+ALTER TABLE IDIOMASPERSONAS
+	ADD CONSTRAINT FK_IdiomasPersonas_Idiomas FOREIGN KEY (idIdioma)
+	REFERENCES IDIOMAS(id);
+
+---------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
   --STORED PROCEDURES
+--------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
+
  
- --IDIOMA
+ --IDIOMA---------------------------------------------------------------- select * from IDIOMAS
 GO
 CREATE PROCEDURE obtenerIdioma
 AS
@@ -93,16 +109,6 @@ END
 GO
 
 GO
-CREATE PROCEDURE obtenerIdiomaWhere(
-	@id int)
-AS
-BEGIN
-	SET NOCOUNT ON;
-	SELECT * FROM IDIOMAS where id = @id;
-END
-GO
-
-GO
 CREATE PROCEDURE eliminarIdioma(
 	@id int)
 AS
@@ -122,6 +128,109 @@ BEGIN
 END
 GO
 
+--COMPETENCIA---------------------------------------------------------------- select * from COMPETENCIAS
+GO
+CREATE PROCEDURE obtenerCompetencia
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM COMPETENCIAS;
+END
+GO
+
+GO
+CREATE PROCEDURE insertarActualizarCompetencia(
+	@mode char(1) ,
+	@id int = '', 
+	@descr nvarchar(100),
+	@status bit)
+AS
+BEGIN
+	if(@mode=0)
+	BEGIN
+		INSERT INTO COMPETENCIAS(descripcion,estado) 
+			VALUES(@descr,@status)
+	END
+
+	else if(@mode=1)
+	BEGIN
+		UPDATE COMPETENCIAS SET descripcion=@descr,estado=@status
+		WHERE id=@id
+	END	
+END
+GO
+
+GO
+CREATE PROCEDURE eliminarCompetencia(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE from COMPETENCIAS WHERE id=@id;
+END
+GO
+
+GO
+CREATE PROCEDURE enviarDatosATextBoxCompetencia(
+	@id int)
+AS
+BEGIN
+	select * from COMPETENCIAS
+	where id = @id
+END
+GO
+
+
+ --NIVELES DE RIESGO --------------------------- SELECT * FROM NIVELESRIESGO
+GO
+CREATE PROCEDURE obtenernNivelDeRiesgo
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM NIVELESRIESGO;
+END
+GO
+
+GO
+CREATE PROCEDURE insertarActualizarNivelDeRiesgo(
+	@mode char(1) ,
+	@id int = '', 
+	@name nvarchar(60))
+AS
+BEGIN
+	if(@mode=0)
+	BEGIN
+		INSERT INTO NIVELESRIESGO(nombre) 
+			VALUES(@name)
+	END
+
+	else if(@mode=1)
+	BEGIN
+		UPDATE NIVELESRIESGO SET nombre=@name
+		WHERE id=@id
+	END	
+END
+GO
+
+GO
+CREATE PROCEDURE eliminarNivelDeRiesgo(
+	@id int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE from NIVELESRIESGO WHERE id=@id;
+END
+GO
+
+GO
+CREATE PROCEDURE enviarDatosATextBoxNivelDeRiesgo(
+	@id int)
+AS
+BEGIN
+	select * from NIVELESRIESGO
+	where id = @id
+END
+GO
 
 --Nivel de capacitacion
 GO
@@ -155,16 +264,6 @@ END
 GO
 
 GO
-CREATE PROCEDURE obtenerNivelDeCapWhere(
-	@id int)
-AS
-BEGIN
-	SET NOCOUNT ON;
-	SELECT * FROM NIVELESCAPACITACIONES where id = @id;
-END
-GO
-
-GO
 CREATE PROCEDURE eliminarNivelDeCap(
 	@id int)
 AS
@@ -187,7 +286,7 @@ GO
 --CAPACITACIONES--------------------------------------------- select * from CAPACITACIONES
 
 GO
-ALTER PROCEDURE obtenerCapacitacion
+CREATE PROCEDURE obtenerCapacitacion
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -197,7 +296,7 @@ END
 GO
 
 GO
-ALTER PROCEDURE insertarActualizarCapacitacion(
+CREATE PROCEDURE insertarActualizarCapacitacion(
 	@mode char(1) ,
 	@id int = '', 
 	@name nvarchar(60),
@@ -221,16 +320,6 @@ BEGIN
 				fechaDesde=@fechaDesde,fechaHasta=@fechaHasta,institucion=@institucion
 		WHERE id=@id
 	END	
-END
-GO
-
-GO
-CREATE PROCEDURE obtenerCapacitacionWhere(
-	@id int)
-AS
-BEGIN
-	SET NOCOUNT ON;
-	SELECT * FROM NIVELESCAPACITACIONES where id = @id;
 END
 GO
 
@@ -284,16 +373,6 @@ BEGIN
 		UPDATE DEPARTAMENTOS SET nombre=@name,descripcion=@descr
 		WHERE id=@id
 	END	
-END
-GO
-
-GO
-CREATE PROCEDURE obtenerDepartamentoWhere(
-	@id int)
-AS
-BEGIN
-	SET NOCOUNT ON;
-	SELECT * FROM DEPARTAMENTOS where id = @id;
 END
 GO
 
@@ -355,17 +434,7 @@ BEGIN
 END
 GO
 
-GO
-CREATE PROCEDURE obtenerExperienciaLaboralWhere(
-	@id int)
-AS
-BEGIN
-	SET NOCOUNT ON;
-	SELECT * FROM EXPERIENCIASLABORALES where id = @id;
-END
-GO
-
-GO
+Go
 CREATE PROCEDURE eliminarExperienciaLaboral(
 	@id int)
 AS
@@ -385,13 +454,10 @@ BEGIN
 END
 GO
 
-
-
-
 --EMPLEADOS--------------------------------------------- select * from EMPLEADOS
 
 GO
-ALTER PROCEDURE obtenerEmpleado
+CREATE PROCEDURE obtenerEmpleado
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -412,11 +478,11 @@ BEGIN
 	INNER JOIN DEPARTAMENTOS dep on emp.idDepartamento = dep.id
 	where emp.nombre like @nombreLike
 END
-GO 
+GO
 
 GO
 CREATE PROCEDURE insertarActualizarEmpleado(
-	@mode char(1) ,
+	@mode char(1),
 	@id int = '',
 	@cedula nvarchar(13),
 	@nombre nvarchar(60),
@@ -443,16 +509,6 @@ END
 GO
 
 GO
-CREATE PROCEDURE obtenerCapacitacionWhere(
-	@id int)
-AS
-BEGIN
-	SET NOCOUNT ON;
-	SELECT * FROM NIVELESCAPACITACIONES where id = @id;
-END
-GO
-
-GO
 CREATE PROCEDURE eliminarCapacitacion(
 	@id int)
 AS
@@ -474,7 +530,7 @@ GO
 
 
 --PUESTOS---------------------------------------- select * from PUESTOS
-SELECT * FROM NIVELESRIESGO
+
 GO
 CREATE PROCEDURE obtenerPuesto
 AS
@@ -529,4 +585,116 @@ BEGIN
 	where id = @id
 END
 GO
+--Relacion entre Competencias y personas--------------------------select * from COMPETENCIASPERSONAS
+
+Go
+create PROCEDURE obtenerCompetenciaPersona(
+	@cedula nvarchar(13))
+AS
+BEGIN 
+	SET NOCOUNT ON;
+	select c.descripcion from COMPETENCIASPERSONAS cp
+	INNER JOIN COMPETENCIAS c on cp.idCompetencia = c.id
+	where cedula=@cedula; 
+END
+GO
+
+Go
+CREATE PROCEDURE insertarCompetenciaPersona(
+	@cedula nvarchar (13),
+	@idCompetencia int)
+AS
+BEGIN 
+	SET NOCOUNT ON;
+	insert into COMPETENCIASPERSONAS(cedula, idCompetencia) 
+		values(@cedula,(select id from COMPETENCIAS WHERE id = @idCompetencia))
+END
+GO
+
+GO 
+CREATE PROCEDURE eliminarCompetenciaPersona(
+	@cedula nvarchar(13),
+	@idCompetencia int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE from COMPETENCIASPERSONAS where cedula = @cedula and idCompetencia=@idCompetencia;
+END
+GO
+
+--Relacion entre Idiomas y personas--------------------------select * from IDIOMASPERSONAS
+
+Go
+create PROCEDURE obtenerIdiomaPersona(
+	@cedula nvarchar(13))
+AS
+BEGIN 
+	SET NOCOUNT ON;
+	select i.nombre from IDIOMASPERSONAS Ip
+	INNER JOIN IDIOMAS i on ip.idIdioma = i.id
+	where cedula=@cedula; 
+END
+GO
+
+Go
+CREATE PROCEDURE insertarIdiomaPersona(
+	@cedula nvarchar (13),
+	@idIdioma int)
+AS
+BEGIN 
+	SET NOCOUNT ON;
+	insert into IDIOMASPERSONAS(cedula, idIdioma) 
+		values(@cedula,(select id from IDIOMAS WHERE id = @idIdioma))
+END
+GO
+
+GO 
+CREATE PROCEDURE eliminarIdiomaPersona(
+	@cedula nvarchar(13),
+	@idIdioma int)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	DELETE from IDIOMASPERSONAS where cedula = @cedula and idIdioma=@idIdioma;
+END
+GO
+
+--Ver Perfil del empleado----------------------------- select * from EMPLEADO
+
+GO
+CREATE PROCEDURE obtenerEmpleadoConCedula(
+	@cedula nvarchar(13))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select emp.id,emp.cedula,emp.nombre,emp.fechaIngreso,pue.nombre as 'puesto',dep.nombre as 'departamento',emp.salarioMensual,emp.estado from EMPLEADOS emp
+	INNER JOIN PUESTOS pue on emp.idPuesto = pue.id
+	INNER JOIN DEPARTAMENTOS dep on emp.idDepartamento = dep.id
+	where cedula = @cedula;
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerExperienciaLaboraConCedula(
+	@cedula nvarchar(13))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM EXPERIENCIASLABORALES
+	where cedula = @cedula;
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerCapacitacionConCedula(
+	@cedula nvarchar(13))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select c.id,c.nombre,c.descripcion,d.nombre as 'nivel de capacitacion',c.fechaDesde,c.fechaHasta,c.institucion,c.cedulaTitular from CAPACITACIONES c
+	INNER JOIN NIVELESCAPACITACIONES d on c.id = d.id
+	where cedulaTitular=@cedula;
+END
+GO
+
 

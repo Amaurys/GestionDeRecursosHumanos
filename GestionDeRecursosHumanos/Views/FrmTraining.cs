@@ -209,7 +209,7 @@ namespace GestionDeRecursosHumanos.Views
         private void FrmTraining_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'recursosHumanosDataSet.NIVELESCAPACITACIONES' table. You can move, or remove it, as needed.
-            this.nIVELESCAPACITACIONESTableAdapter.Fill(this.recursosHumanosDataSet.NIVELESCAPACITACIONES);
+            
 
         }
 

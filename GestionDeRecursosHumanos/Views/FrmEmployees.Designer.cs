@@ -37,16 +37,14 @@
             this.DEPARTAMENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SALARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,10 +67,11 @@
             this.ESTADO,
             this.edit,
             this.ELIMINAR});
-            this.dgvEmployees.Location = new System.Drawing.Point(36, 144);
+            this.dgvEmployees.Location = new System.Drawing.Point(-8, 144);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.Size = new System.Drawing.Size(1049, 203);
             this.dgvEmployees.TabIndex = 54;
+            this.dgvEmployees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployees_CellContentClick);
             // 
             // ID
             // 
@@ -130,8 +129,22 @@
             this.ESTADO.Name = "ESTADO";
             this.ESTADO.ReadOnly = true;
             // 
+            // edit
+            // 
+            this.edit.Frozen = true;
+            this.edit.HeaderText = "EDITAR";
+            this.edit.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
+            this.edit.Name = "edit";
+            // 
+            // ELIMINAR
+            // 
+            this.ELIMINAR.HeaderText = "ELIMINAR";
+            this.ELIMINAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
+            this.ELIMINAR.Name = "ELIMINAR";
+            // 
             // tbSearch
             // 
+            this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbSearch.Location = new System.Drawing.Point(437, 108);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(213, 20);
@@ -171,19 +184,6 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // edit
-            // 
-            this.edit.Frozen = true;
-            this.edit.HeaderText = "EDITAR";
-            this.edit.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
-            this.edit.Name = "edit";
-            // 
-            // ELIMINAR
-            // 
-            this.ELIMINAR.HeaderText = "ELIMINAR";
-            this.ELIMINAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
-            this.ELIMINAR.Name = "ELIMINAR";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -194,32 +194,12 @@
             this.label2.TabIndex = 58;
             this.label2.Text = "BUSQUEDA DE EMPLEADOS POR NOMBRE";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(656, 372);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 68);
-            this.button1.TabIndex = 59;
-            this.button1.Text = "CANCELAR";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(341, 372);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 68);
-            this.button2.TabIndex = 60;
-            this.button2.Text = "VISUALIZAR EMPLEADO";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // FrmEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(1097, 530);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1028, 530);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label1);
@@ -254,7 +234,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }

@@ -146,9 +146,37 @@ namespace GestionDeRecursosHumanos.Views
             }
         }
         
+        public void viewEmployeeProfile(string cedula)
+        {
+            FrmViewEmployees frmViewEmployees = new FrmViewEmployees(cedula);
+            frmViewEmployees.ShowDialog(this);
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             search();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvEmployees_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string cedula = dgvEmployees.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            try
+            {
+                if (dgvEmployees.Columns[e.ColumnIndex].Name=="CEDULA")
+                {
+                    viewEmployeeProfile(cedula);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }            
         }
     }
 }

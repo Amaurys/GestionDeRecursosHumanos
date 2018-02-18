@@ -39,8 +39,10 @@ namespace GestionDeRecursosHumanos
             this.capacitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.experienciasLaboralesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.puestosLaboralesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cOMPETENCIAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.candidatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,10 +50,11 @@ namespace GestionDeRecursosHumanos
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mantenimientoToolStripMenuItem,
-            this.empleadosToolStripMenuItem});
+            this.empleadosToolStripMenuItem,
+            this.candidatosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1153, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1028, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -64,7 +67,8 @@ namespace GestionDeRecursosHumanos
             this.capacitacionesToolStripMenuItem,
             this.departamentosToolStripMenuItem,
             this.experienciasLaboralesToolStripMenuItem,
-            this.puestosLaboralesToolStripMenuItem});
+            this.puestosLaboralesToolStripMenuItem,
+            this.cOMPETENCIAToolStripMenuItem});
             this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
             this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
@@ -104,13 +108,6 @@ namespace GestionDeRecursosHumanos
             this.experienciasLaboralesToolStripMenuItem.Text = "Experiencias Laborales";
             this.experienciasLaboralesToolStripMenuItem.Click += new System.EventHandler(this.experienciasLaboralesToolStripMenuItem_Click);
             // 
-            // empleadosToolStripMenuItem
-            // 
-            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
-            this.empleadosToolStripMenuItem.Text = "Empleados";
-            this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
-            // 
             // puestosLaboralesToolStripMenuItem
             // 
             this.puestosLaboralesToolStripMenuItem.Name = "puestosLaboralesToolStripMenuItem";
@@ -118,13 +115,34 @@ namespace GestionDeRecursosHumanos
             this.puestosLaboralesToolStripMenuItem.Text = "Puestos Laborales";
             this.puestosLaboralesToolStripMenuItem.Click += new System.EventHandler(this.puestosLaboralesToolStripMenuItem_Click);
             // 
+            // cOMPETENCIAToolStripMenuItem
+            // 
+            this.cOMPETENCIAToolStripMenuItem.Name = "cOMPETENCIAToolStripMenuItem";
+            this.cOMPETENCIAToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.cOMPETENCIAToolStripMenuItem.Text = "Competencias";
+            this.cOMPETENCIAToolStripMenuItem.Click += new System.EventHandler(this.cOMPETENCIAToolStripMenuItem_Click);
+            // 
+            // empleadosToolStripMenuItem
+            // 
+            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
+            this.empleadosToolStripMenuItem.Text = "Empleados";
+            this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
+            // 
+            // candidatosToolStripMenuItem
+            // 
+            this.candidatosToolStripMenuItem.Name = "candidatosToolStripMenuItem";
+            this.candidatosToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.candidatosToolStripMenuItem.Text = "Candidatos";
+            this.candidatosToolStripMenuItem.Click += new System.EventHandler(this.candidatosToolStripMenuItem_Click);
+            // 
             // mdiParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1153, 659);
+            this.ClientSize = new System.Drawing.Size(1028, 659);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.IsMdiContainer = true;
@@ -152,6 +170,8 @@ namespace GestionDeRecursosHumanos
         private System.Windows.Forms.ToolStripMenuItem experienciasLaboralesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem puestosLaboralesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cOMPETENCIAToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem candidatosToolStripMenuItem;
     }
 
     

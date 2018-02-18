@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbId = new System.Windows.Forms.MaskedTextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbRiskLevel = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.mtbMinSalary = new System.Windows.Forms.MaskedTextBox();
             this.mtbMaxSalary = new System.Windows.Forms.MaskedTextBox();
@@ -42,9 +40,6 @@
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvPosition = new System.Windows.Forms.DataGridView();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnAccept = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIVELRIESGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,14 +47,13 @@
             this.SALARIOMAXIMO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAccept = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.nivelesDeRiesgoDataSet = new GestionDeRecursosHumanos.nivelesDeRiesgoDataSet();
-            this.nIVELESRIESGOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nIVELESRIESGOTableAdapter = new GestionDeRecursosHumanos.nivelesDeRiesgoDataSetTableAdapters.NIVELESRIESGOTableAdapter();
+            this.cbRiskLevel = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosition)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nivelesDeRiesgoDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nIVELESRIESGOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -90,6 +84,7 @@
             // 
             // tbName
             // 
+            this.tbName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbName.Location = new System.Drawing.Point(310, 73);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(81, 20);
@@ -103,18 +98,6 @@
             this.label1.Size = new System.Drawing.Size(18, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "ID";
-            // 
-            // cbRiskLevel
-            // 
-            this.cbRiskLevel.DataSource = this.nIVELESRIESGOBindingSource;
-            this.cbRiskLevel.DisplayMember = "nombre";
-            this.cbRiskLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRiskLevel.FormattingEnabled = true;
-            this.cbRiskLevel.Location = new System.Drawing.Point(515, 72);
-            this.cbRiskLevel.Name = "cbRiskLevel";
-            this.cbRiskLevel.Size = new System.Drawing.Size(121, 21);
-            this.cbRiskLevel.TabIndex = 17;
-            this.cbRiskLevel.ValueMember = "id";
             // 
             // label4
             // 
@@ -187,43 +170,12 @@
             this.SALARIOMAXIMO,
             this.STATUS,
             this.edit,
-            this.ELIMINAR});
+            this.delete});
             this.dgvPosition.Location = new System.Drawing.Point(8, 231);
             this.dgvPosition.Name = "dgvPosition";
             this.dgvPosition.Size = new System.Drawing.Size(851, 203);
             this.dgvPosition.TabIndex = 57;
             this.dgvPosition.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPosition_CellContentClick);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(543, 193);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(93, 23);
-            this.btnCancel.TabIndex = 56;
-            this.btnCancel.Text = "CANCELAR";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(386, 193);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(93, 23);
-            this.btnUpdate.TabIndex = 55;
-            this.btnUpdate.Text = "ACTUALIZAR";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Visible = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnAccept
-            // 
-            this.btnAccept.Location = new System.Drawing.Point(254, 193);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(84, 23);
-            this.btnAccept.TabIndex = 54;
-            this.btnAccept.Text = "ACEPTAR";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // ID
             // 
@@ -271,11 +223,42 @@
             this.edit.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
             this.edit.Name = "edit";
             // 
-            // ELIMINAR
+            // delete
             // 
-            this.ELIMINAR.HeaderText = "ELIMINAR";
-            this.ELIMINAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
-            this.ELIMINAR.Name = "ELIMINAR";
+            this.delete.HeaderText = "ELIMINAR";
+            this.delete.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
+            this.delete.Name = "delete";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(543, 193);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(93, 23);
+            this.btnCancel.TabIndex = 56;
+            this.btnCancel.Text = "CANCELAR";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(386, 193);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(93, 23);
+            this.btnUpdate.TabIndex = 55;
+            this.btnUpdate.Text = "ACTUALIZAR";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Visible = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.Location = new System.Drawing.Point(254, 193);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(84, 23);
+            this.btnAccept.TabIndex = 54;
+            this.btnAccept.Text = "ACEPTAR";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // label7
             // 
@@ -287,19 +270,16 @@
             this.label7.TabIndex = 58;
             this.label7.Text = "POSICIÓN";
             // 
-            // nivelesDeRiesgoDataSet
+            // cbRiskLevel
             // 
-            this.nivelesDeRiesgoDataSet.DataSetName = "nivelesDeRiesgoDataSet";
-            this.nivelesDeRiesgoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // nIVELESRIESGOBindingSource
-            // 
-            this.nIVELESRIESGOBindingSource.DataMember = "NIVELESRIESGO";
-            this.nIVELESRIESGOBindingSource.DataSource = this.nivelesDeRiesgoDataSet;
-            // 
-            // nIVELESRIESGOTableAdapter
-            // 
-            this.nIVELESRIESGOTableAdapter.ClearBeforeFill = true;
+            this.cbRiskLevel.DisplayMember = "id";
+            this.cbRiskLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRiskLevel.FormattingEnabled = true;
+            this.cbRiskLevel.Location = new System.Drawing.Point(515, 72);
+            this.cbRiskLevel.Name = "cbRiskLevel";
+            this.cbRiskLevel.Size = new System.Drawing.Size(121, 21);
+            this.cbRiskLevel.TabIndex = 17;
+            this.cbRiskLevel.ValueMember = "id";
             // 
             // FrmPosition
             // 
@@ -329,8 +309,6 @@
             this.Text = "FrmPosition";
             this.Load += new System.EventHandler(this.FrmPosition_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosition)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nivelesDeRiesgoDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nIVELESRIESGOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,7 +320,6 @@
         private System.Windows.Forms.MaskedTextBox tbId;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbRiskLevel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox mtbMinSalary;
         private System.Windows.Forms.MaskedTextBox mtbMaxSalary;
@@ -350,6 +327,11 @@
         private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgvPosition;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbRiskLevel;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
         private System.Windows.Forms.DataGridViewTextBoxColumn NIVELRIESGO;
@@ -357,13 +339,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SALARIOMAXIMO;
         private System.Windows.Forms.DataGridViewTextBoxColumn STATUS;
         private System.Windows.Forms.DataGridViewImageColumn edit;
-        private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnAccept;
-        private System.Windows.Forms.Label label7;
-        private nivelesDeRiesgoDataSet nivelesDeRiesgoDataSet;
-        private System.Windows.Forms.BindingSource nIVELESRIESGOBindingSource;
-        private nivelesDeRiesgoDataSetTableAdapters.NIVELESRIESGOTableAdapter nIVELESRIESGOTableAdapter;
+        private System.Windows.Forms.DataGridViewImageColumn delete;
     }
 }

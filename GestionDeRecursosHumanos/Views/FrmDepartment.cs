@@ -89,65 +89,82 @@ namespace GestionDeRecursosHumanos.Views
 
         public DataTable getDataToTextBox(int id)
         {
-            SqlCommand command = new SqlCommand("enviarDatosATextBoxDepartamento", Program.conn.cnn);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = id;
-            DataTable dt = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            adapter.Fill(dt);
+            try
+            {
 
-            return dt;
+                SqlCommand command = new SqlCommand("enviarDatosATextBoxDepartamento", Program.conn.cnn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = id;
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public void insertUpdateData(string mode)
         {
-            SqlCommand command = new SqlCommand("insertarActualizarDepartamento", Program.conn.cnn);
-            command.CommandType = CommandType.StoredProcedure;
-
-            if (mode == "0")
+            try
             {
-                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
-                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
-                command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
-                command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
-                int result = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand("insertarActualizarDepartamento", Program.conn.cnn);
+                command.CommandType = CommandType.StoredProcedure;
 
-                if (result == 1)
+                if (mode == "0")
                 {
-                    MessageBox.Show("Información guardada.");
-                    showData();
-                    clearTextBox();
+                    command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
+                    command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
+                    command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
+                    command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
+                    int result = command.ExecuteNonQuery();
+
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Información guardada.");
+                        showData();
+                        clearTextBox();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Algo pasó.", "Algo pasó.");
+
+                    }
                 }
-                else
+                else if (mode == "1")
                 {
-                    MessageBox.Show("Algo pasó.", "Algo pasó.");
+                    command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
+                    command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
+                    command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
+                    command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
+                    int result = command.ExecuteNonQuery();
+
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Información guardada.");
+                        showData();
+                        clearTextBox();
+                        btnUpdate.Visible = false;
+                        btnAccept.Visible = true;
+                        globalMode = "0";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Algo pasó.", "Algo pasó.");
+
+                    }
 
                 }
             }
-            else if (mode == "1")
+            catch (Exception e)
             {
-                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
-                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
-                command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
-                command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
-                int result = command.ExecuteNonQuery();
 
-                if (result == 1)
-                {
-                    MessageBox.Show("Información guardada.");
-                    showData();
-                    clearTextBox();
-                    btnUpdate.Visible = false;
-                    btnAccept.Visible = true;
-                    globalMode = "0";
-                }
-                else
-                {
-                    MessageBox.Show("Algo pasó.", "Algo pasó.");
-
-                }
-
-            }
+                MessageBox.Show(e.ToString());
+            }            
         }
 
         public void showData()

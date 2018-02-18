@@ -69,6 +69,7 @@
             // 
             // tbDescription
             // 
+            this.tbDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbDescription.Location = new System.Drawing.Point(425, 48);
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(81, 20);
@@ -93,6 +94,7 @@
             // 
             // tbName
             // 
+            this.tbName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbName.Location = new System.Drawing.Point(232, 48);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(81, 20);

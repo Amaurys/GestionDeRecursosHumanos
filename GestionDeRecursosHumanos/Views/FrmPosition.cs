@@ -106,77 +106,92 @@ namespace GestionDeRecursosHumanos.Views
 
         public void insertUpdateData(string mode)
         {
-            SqlCommand command = new SqlCommand("insertarActualizarPuesto", Program.conn.cnn);
-            command.CommandType = CommandType.StoredProcedure;
-
-            if (mode == "0")
+            if (compareSalary() == true)
             {
-                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
-                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
-                command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
-                command.Parameters.AddWithValue("@idNivelRiesgo", SqlDbType.Int).Value = Convert.ToInt32(cbRiskLevel.SelectedValue);
-                command.Parameters.AddWithValue("@salarioMin", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMinSalary.Text);
-                command.Parameters.AddWithValue("@salarioMax", SqlDbType.DateTime).Value = Convert.ToDecimal(mtbMaxSalary.Text);
-
-                if (cbStatus.SelectedText.ToString() == "ACTIVO")
-                {
-                    command.Parameters.AddWithValue("@estado", SqlDbType.Bit).Value = 1;
-                }
-                else
-                {
-                    command.Parameters.AddWithValue("@estado", SqlDbType.Bit).Value = 0;
-                }
-
-                int result = command.ExecuteNonQuery();
-
-                if (result == 1)
-                {
-                    MessageBox.Show("Información guardada.");
-                    showData();
-                    clearTextBox();
-                }
-                else
-                {
-                    MessageBox.Show("Algo pasó.", "Algo pasó.");
-
-                }
+                return;
             }
-            else if (mode == "1")
+            else
             {
-                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
-                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
-                command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
-                command.Parameters.AddWithValue("@idNivelRiesgo", SqlDbType.Int).Value = Convert.ToInt32(cbRiskLevel.SelectedValue);
-                command.Parameters.AddWithValue("@salarioMin", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMinSalary.Text);
-                command.Parameters.AddWithValue("@salarioMax", SqlDbType.DateTime).Value = Convert.ToDecimal(mtbMaxSalary.Text);
-
-                if (cbStatus.SelectedText == "DISPONIBLE")
+                try
                 {
-                    command.Parameters.AddWithValue("@estado", SqlDbType.Bit).Value = 1;
+                    SqlCommand command = new SqlCommand("insertarActualizarPuesto", Program.conn.cnn);
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    if (mode == "0")
+                    {
+                        command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
+                        command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
+                        command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
+                        command.Parameters.AddWithValue("@idNivelRiesgo", SqlDbType.Int).Value = cbRiskLevel.SelectedValue;
+                        command.Parameters.AddWithValue("@salarioMin", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMinSalary.Text);
+                        command.Parameters.AddWithValue("@salarioMax", SqlDbType.DateTime).Value = Convert.ToDecimal(mtbMaxSalary.Text);
+
+                        if (cbStatus.SelectedText.ToString() == "ACTIVO")
+                        {
+                            command.Parameters.AddWithValue("@estado", SqlDbType.Bit).Value = 1;
+                        }
+                        else
+                        {
+                            command.Parameters.AddWithValue("@estado", SqlDbType.Bit).Value = 0;
+                        }
+
+                        int result = command.ExecuteNonQuery();
+
+                        if (result == 1)
+                        {
+                            MessageBox.Show("Información guardada.");
+                            showData();
+                            clearTextBox();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Algo pasó.", "Algo pasó.");
+
+                        }
+                    }
+                    else if (mode == "1")
+                    {
+                        command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
+                        command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
+                        command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
+                        command.Parameters.AddWithValue("@idNivelRiesgo", SqlDbType.Int).Value = Convert.ToInt32(cbRiskLevel.SelectedValue);
+                        command.Parameters.AddWithValue("@salarioMin", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMinSalary.Text);
+                        command.Parameters.AddWithValue("@salarioMax", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMaxSalary.Text);
+
+                        if (cbStatus.SelectedText == "DISPONIBLE")
+                        {
+                            command.Parameters.AddWithValue("@estado", SqlDbType.Bit).Value = 1;
+                        }
+                        else
+                        {
+                            command.Parameters.AddWithValue("@estado", SqlDbType.Bit).Value = 0;
+                        }
+
+                        int result = command.ExecuteNonQuery();
+
+                        if (result == 1)
+                        {
+                            MessageBox.Show("Información guardada.");
+                            showData();
+                            clearTextBox();
+                            btnUpdate.Visible = false;
+                            btnAccept.Visible = true;
+                            globalMode = "0";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Algo pasó.", "Algo pasó.");
+
+                        }
+
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    command.Parameters.AddWithValue("@estado", SqlDbType.Bit).Value = 0;
+
+                    MessageBox.Show(e.ToString());
                 }
-
-                int result = command.ExecuteNonQuery();
-
-                if (result == 1)
-                {
-                    MessageBox.Show("Información guardada.");
-                    showData();
-                    clearTextBox();
-                    btnUpdate.Visible = false;
-                    btnAccept.Visible = true;
-                    globalMode = "0";
-                }
-                else
-                {
-                    MessageBox.Show("Algo pasó.", "Algo pasó.");
-
-                }
-
-            }
+            }            
         }
 
         public void showData()
@@ -191,7 +206,7 @@ namespace GestionDeRecursosHumanos.Views
                 command.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 dataAdapter.Fill(ds);
-
+                
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
@@ -216,6 +231,7 @@ namespace GestionDeRecursosHumanos.Views
                     }
 
                 }
+                BindComboBox();
             }
             catch (Exception e)
             {
@@ -226,7 +242,7 @@ namespace GestionDeRecursosHumanos.Views
         private void FrmPosition_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'nivelesDeRiesgoDataSet.NIVELESRIESGO' table. You can move, or remove it, as needed.
-            this.nIVELESRIESGOTableAdapter.Fill(this.nivelesDeRiesgoDataSet.NIVELESRIESGO);
+           // this.nIVELESRIESGOTableAdapter.Fill(this.nivelesDeRiesgoDataSet.NIVELESRIESGO);
 
         }
 
@@ -265,6 +281,31 @@ namespace GestionDeRecursosHumanos.Views
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cancelAction();
+        }
+
+        private void BindComboBox()
+        {
+            DataSet ds = new DataSet();
+            SqlCommand command = new SqlCommand("obtenernNivelDeRiesgo", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
+            command.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            dataAdapter.Fill(ds);
+
+            cbRiskLevel.DataSource = ds.Tables[0];
+            cbRiskLevel.DisplayMember = "nombre";
+        }
+
+        public bool compareSalary()
+        {
+            if (Convert.ToDecimal(mtbMinSalary)>= Convert.ToDecimal(mtbMaxSalary))
+            {
+                MessageBox.Show("El SALARIO MÍNIMO no puede ser mayor o igual que el SALARIO MÁXIMO");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

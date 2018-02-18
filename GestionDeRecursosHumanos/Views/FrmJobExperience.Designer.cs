@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.dgvJobExperiences = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COMPANY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PUESTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHAINICIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHAHASTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SALARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CEDULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
@@ -48,15 +57,6 @@
             this.mtbSalary = new System.Windows.Forms.MaskedTextBox();
             this.mtbCedula = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.COMPANY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PUESTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAINICIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAHASTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SALARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CEDULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJobExperiences)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,6 +83,68 @@
             this.dgvJobExperiences.Size = new System.Drawing.Size(956, 203);
             this.dgvJobExperiences.TabIndex = 53;
             this.dgvJobExperiences.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJobExperiences_CellContentClick);
+            // 
+            // ID
+            // 
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // COMPANY
+            // 
+            this.COMPANY.Frozen = true;
+            this.COMPANY.HeaderText = "COMPANY";
+            this.COMPANY.Name = "COMPANY";
+            this.COMPANY.ReadOnly = true;
+            // 
+            // PUESTO
+            // 
+            this.PUESTO.Frozen = true;
+            this.PUESTO.HeaderText = "PUESTO";
+            this.PUESTO.Name = "PUESTO";
+            this.PUESTO.ReadOnly = true;
+            // 
+            // FECHAINICIO
+            // 
+            this.FECHAINICIO.Frozen = true;
+            this.FECHAINICIO.HeaderText = "FECHAINICIO";
+            this.FECHAINICIO.Name = "FECHAINICIO";
+            this.FECHAINICIO.ReadOnly = true;
+            // 
+            // FECHAHASTA
+            // 
+            this.FECHAHASTA.Frozen = true;
+            this.FECHAHASTA.HeaderText = "FECHAHASTA";
+            this.FECHAHASTA.Name = "FECHAHASTA";
+            this.FECHAHASTA.ReadOnly = true;
+            // 
+            // SALARIO
+            // 
+            this.SALARIO.Frozen = true;
+            this.SALARIO.HeaderText = "SALARIO";
+            this.SALARIO.Name = "SALARIO";
+            this.SALARIO.ReadOnly = true;
+            // 
+            // CEDULA
+            // 
+            this.CEDULA.Frozen = true;
+            this.CEDULA.HeaderText = "CEDULA";
+            this.CEDULA.Name = "CEDULA";
+            this.CEDULA.ReadOnly = true;
+            // 
+            // edit
+            // 
+            this.edit.Frozen = true;
+            this.edit.HeaderText = "EDITAR";
+            this.edit.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
+            this.edit.Name = "edit";
+            // 
+            // ELIMINAR
+            // 
+            this.ELIMINAR.HeaderText = "ELIMINAR";
+            this.ELIMINAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
+            this.ELIMINAR.Name = "ELIMINAR";
             // 
             // btnCancel
             // 
@@ -126,6 +188,7 @@
             // 
             // tbOccuppedPosition
             // 
+            this.tbOccuppedPosition.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbOccuppedPosition.Location = new System.Drawing.Point(600, 55);
             this.tbOccuppedPosition.Name = "tbOccuppedPosition";
             this.tbOccuppedPosition.Size = new System.Drawing.Size(81, 20);
@@ -150,6 +213,7 @@
             // 
             // tbCompany
             // 
+            this.tbCompany.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbCompany.Location = new System.Drawing.Point(371, 52);
             this.tbCompany.Name = "tbCompany";
             this.tbCompany.Size = new System.Drawing.Size(81, 20);
@@ -244,74 +308,12 @@
             this.label7.TabIndex = 60;
             this.label7.Text = "CÉDULA";
             // 
-            // ID
-            // 
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // COMPANY
-            // 
-            this.COMPANY.Frozen = true;
-            this.COMPANY.HeaderText = "COMPANY";
-            this.COMPANY.Name = "COMPANY";
-            this.COMPANY.ReadOnly = true;
-            // 
-            // PUESTO
-            // 
-            this.PUESTO.Frozen = true;
-            this.PUESTO.HeaderText = "PUESTO";
-            this.PUESTO.Name = "PUESTO";
-            this.PUESTO.ReadOnly = true;
-            // 
-            // FECHAINICIO
-            // 
-            this.FECHAINICIO.Frozen = true;
-            this.FECHAINICIO.HeaderText = "FECHAINICIO";
-            this.FECHAINICIO.Name = "FECHAINICIO";
-            this.FECHAINICIO.ReadOnly = true;
-            // 
-            // FECHAHASTA
-            // 
-            this.FECHAHASTA.Frozen = true;
-            this.FECHAHASTA.HeaderText = "FECHAHASTA";
-            this.FECHAHASTA.Name = "FECHAHASTA";
-            this.FECHAHASTA.ReadOnly = true;
-            // 
-            // SALARIO
-            // 
-            this.SALARIO.Frozen = true;
-            this.SALARIO.HeaderText = "SALARIO";
-            this.SALARIO.Name = "SALARIO";
-            this.SALARIO.ReadOnly = true;
-            // 
-            // CEDULA
-            // 
-            this.CEDULA.Frozen = true;
-            this.CEDULA.HeaderText = "CEDULA";
-            this.CEDULA.Name = "CEDULA";
-            this.CEDULA.ReadOnly = true;
-            // 
-            // edit
-            // 
-            this.edit.Frozen = true;
-            this.edit.HeaderText = "EDITAR";
-            this.edit.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
-            this.edit.Name = "edit";
-            // 
-            // ELIMINAR
-            // 
-            this.ELIMINAR.HeaderText = "ELIMINAR";
-            this.ELIMINAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
-            this.ELIMINAR.Name = "ELIMINAR";
-            // 
             // FrmJobExperience
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(1077, 456);
+            this.ClientSize = new System.Drawing.Size(1028, 456);
             this.Controls.Add(this.mtbCedula);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.mtbSalary);

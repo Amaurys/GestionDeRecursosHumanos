@@ -62,20 +62,10 @@
     <Compile Include="Model\Entities\RiskLevel.cs" />
     <Compile Include="Model\Entities\TrainingLevels.cs" />
     <Compile Include="Model\Entities\Trainings.cs" />
-    <Compile Include="nivelesDeRiesgoDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>nivelesDeRiesgoDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="recursosHumanosDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>recursosHumanosDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Views\Form1.cs">
       <SubType>Form</SubType>
@@ -85,6 +75,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\FrmApplicant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmApplicant.Designer.cs">
+      <DependentUpon>FrmApplicant.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmCompetence.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +135,12 @@
     <Compile Include="Views\FrmTrainingLevel.designer.cs">
       <DependentUpon>FrmTrainingLevel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmViewEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmViewEmployees.Designer.cs">
+      <DependentUpon>FrmViewEmployees.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +148,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmApplicant.resx">
+      <DependentUpon>FrmApplicant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmCompetence.resx">
       <DependentUpon>FrmCompetence.cs</DependentUpon>
@@ -174,18 +179,10 @@
     <EmbeddedResource Include="Views\FrmTrainingLevel.resx">
       <DependentUpon>FrmTrainingLevel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmViewEmployees.resx">
+      <DependentUpon>FrmViewEmployees.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Model\app.config" />
-    <None Include="nivelesDeRiesgoDataSet.xsc">
-      <DependentUpon>nivelesDeRiesgoDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="nivelesDeRiesgoDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>nivelesDeRiesgoDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="nivelesDeRiesgoDataSet.xss">
-      <DependentUpon>nivelesDeRiesgoDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -195,17 +192,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="recursosHumanosDataSet.xsc">
-      <DependentUpon>recursosHumanosDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="recursosHumanosDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>recursosHumanosDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="recursosHumanosDataSet.xss">
-      <DependentUpon>recursosHumanosDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
