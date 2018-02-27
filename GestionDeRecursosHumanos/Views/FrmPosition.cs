@@ -294,7 +294,7 @@ namespace GestionDeRecursosHumanos.Views
             cbRiskLevel.DataSource = ds.Tables[0];
             cbRiskLevel.DisplayMember = "nombre";
         }
-
+        //lol
         public bool compareSalary()
         {
             if (Convert.ToDecimal(mtbMinSalary)>= Convert.ToDecimal(mtbMaxSalary))
