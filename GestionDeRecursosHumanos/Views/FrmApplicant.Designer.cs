@@ -42,10 +42,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvCompetence = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbCompetences = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnAddCompetence = new System.Windows.Forms.Button();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompetence)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,8 +177,15 @@
             this.dgvCompetence.Location = new System.Drawing.Point(136, 361);
             this.dgvCompetence.Name = "dgvCompetence";
             this.dgvCompetence.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvCompetence.Size = new System.Drawing.Size(199, 143);
+            this.dgvCompetence.Size = new System.Drawing.Size(179, 143);
             this.dgvCompetence.TabIndex = 48;
+            // 
+            // Nombre
+            // 
+            this.Nombre.Frozen = true;
+            this.Nombre.HeaderText = "COMPETENCIAS";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // cbCompetences
             // 
@@ -208,13 +215,6 @@
             this.btnAddCompetence.Text = "Agregar competencia";
             this.btnAddCompetence.UseVisualStyleBackColor = true;
             this.btnAddCompetence.Click += new System.EventHandler(this.btnAddCompetence_Click);
-            // 
-            // Nombre
-            // 
-            this.Nombre.Frozen = true;
-            this.Nombre.HeaderText = "COMPETENCIAS";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
             // 
             // FrmApplicant
             // 

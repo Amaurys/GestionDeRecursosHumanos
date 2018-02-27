@@ -20,6 +20,7 @@ namespace GestionDeRecursosHumanos.Views
         {
             InitializeComponent();
             showData();
+            BindComboBox();
         }
 
         public void cancelAction()
@@ -124,7 +125,15 @@ namespace GestionDeRecursosHumanos.Views
                 command.Parameters.AddWithValue("@fechaHasta", SqlDbType.DateTime).Value = dtpFinishDate.Value;
                 command.Parameters.AddWithValue("@institucion", SqlDbType.VarChar).Value = tbInstitute.Text.Trim();
                 command.Parameters.AddWithValue("@cedularTitular", SqlDbType.VarChar).Value = mtbCedula.Text.Trim();
-                int result = command.ExecuteNonQuery();
+
+                //comparando las fechas de inicio y final
+                if (dtpFinishDate.Value <= dtpStartDate.Value)
+                {
+                    MessageBox.Show("LA FECHA DE INICIO NO PUEDE SER MAYOR A LA FECHA DE FINALIZACIÓN");
+                    return;
+                }
+
+                int result = command.ExecuteNonQuery();                
 
                 if (result == 1)
                 {
@@ -134,7 +143,8 @@ namespace GestionDeRecursosHumanos.Views
                 }
                 else
                 {
-                    MessageBox.Show("Algo pasó.", "Algo pasó.");
+                    MessageBox.Show("Algo pasó", "No se pudo ejecutar la acción. Favor de revisar su conexión " +
+                        "a la Base de Datos o comuníquese con el administrador.");
 
                 }
             }
@@ -149,8 +159,16 @@ namespace GestionDeRecursosHumanos.Views
                 command.Parameters.AddWithValue("@fechaHasta", SqlDbType.DateTime).Value = dtpFinishDate.Value;
                 command.Parameters.AddWithValue("@institucion", SqlDbType.VarChar).Value = tbInstitute.Text.Trim();
                 command.Parameters.AddWithValue("@cedularTitular", SqlDbType.VarChar).Value = mtbCedula.Text.Trim();
-                int result = command.ExecuteNonQuery();
 
+                //comparando las fechas de inicio y final
+                if (dtpFinishDate.Value <= dtpStartDate.Value)
+                {
+                    MessageBox.Show("LA FECHA DE INICIO NO PUEDE SER MAYOR A LA FECHA DE FINALIZACIÓN");
+                    return;
+                }
+            
+                int result = command.ExecuteNonQuery();
+                
                 if (result == 1)
                 {
                     MessageBox.Show("Información guardada.");
@@ -162,7 +180,8 @@ namespace GestionDeRecursosHumanos.Views
                 }
                 else
                 {
-                    MessageBox.Show("Algo pasó.", "Algo pasó.");
+                    MessageBox.Show("Algo pasó", "No se pudo ejecutar la acción. Favor de revisar su conexión " +
+                        "a la Base de Datos o comuníquese con el administrador.");
 
                 }
 
@@ -250,6 +269,28 @@ namespace GestionDeRecursosHumanos.Views
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cancelAction();
+        }
+
+        private void BindComboBox()
+        {
+            DataSet ds = new DataSet();
+            SqlCommand command = new SqlCommand("obtenerNivelDeCap", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
+            command.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            dataAdapter.Fill(ds);
+
+            cbTrainingLevel.DataSource = ds.Tables[0];
+            cbTrainingLevel.DisplayMember = "nombre";
+            cbTrainingLevel.ValueMember = "id";
+        }
+
+        private void compareDates()
+        {
+            if (dtpFinishDate.Value < dtpStartDate.Value)
+            {
+                MessageBox.Show("LA FECHA DE INICIO NO PUEDE SER MAYOR A LA FECHA DE FINALIZACIÓN");
+                return;
+            }
         }
     }
 }

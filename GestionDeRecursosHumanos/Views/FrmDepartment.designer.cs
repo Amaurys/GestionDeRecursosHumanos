@@ -213,8 +213,9 @@
             this.Controls.Add(this.tbId);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmDepartment";
-            this.Text = "FrmDepartment";
+            this.Text = "DEPARTAMENTOS";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

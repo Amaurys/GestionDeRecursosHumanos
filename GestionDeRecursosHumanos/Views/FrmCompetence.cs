@@ -77,7 +77,15 @@ namespace GestionDeRecursosHumanos.Views
             {
                 tbId.Text = dt.Rows[0]["ID"].ToString();
                 tbDescription.Text = dt.Rows[0]["descripcion"].ToString();
-                cbStatus.SelectedIndex = Convert.ToInt32(dt.Rows[0]["estado"]);
+                //cbStatus.SelectedIndex = Convert.ToInt32(dt.Rows[0]["estado"]);
+                if (Convert.ToInt32(dt.Rows[0]["ESTADO"]) == 1)
+                {
+                    cbStatus.SelectedIndex = 0;
+                }
+                else
+                {
+                    cbStatus.SelectedIndex = 1;
+                }
             }
             catch (Exception ex)
             {
@@ -118,7 +126,7 @@ namespace GestionDeRecursosHumanos.Views
                     command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
                     command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
                     command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
-                    if (cbStatus.SelectedText.ToString() == "DISPONIBLE")
+                    if (cbStatus.SelectedItem.ToString() == "ACTIVO")
                     {
                         command.Parameters.AddWithValue("@status", SqlDbType.Bit).Value = 1;
                     }
@@ -145,7 +153,7 @@ namespace GestionDeRecursosHumanos.Views
                     command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
                     command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
                     command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
-                    if (cbStatus.SelectedText.ToString() == "DISPONIBLE")
+                    if (cbStatus.SelectedItem.ToString() == "ACTIVO")
                     {
                         command.Parameters.AddWithValue("@status", SqlDbType.Bit).Value = 1;
                     }
@@ -199,7 +207,16 @@ namespace GestionDeRecursosHumanos.Views
                         dgvCompetence.Rows.Add();
                         dgvCompetence.Rows[numRow].Cells[0].Value = Convert.ToString(row["ID"]);
                         dgvCompetence.Rows[numRow].Cells[1].Value = Convert.ToString(row["DESCRIPCION"]);
-                        dgvCompetence.Rows[numRow].Cells[2].Value = Convert.ToString(row["ESTADO"]);
+                        //dgvCompetence.Rows[numRow].Cells[2].Value = Convert.ToString(row["ESTADO"]);
+
+                        if (Convert.ToInt32(row["ESTADO"]) == 1)
+                        {
+                            dgvCompetence.Rows[numRow].Cells[2].Value = "ACTIVO";
+                        }
+                        else
+                        {
+                            dgvCompetence.Rows[numRow].Cells[2].Value = "INACTIVO";
+                        }
                         numRow++;
                     }
 

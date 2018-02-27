@@ -94,8 +94,8 @@
             this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatus.FormattingEnabled = true;
             this.cbStatus.Items.AddRange(new object[] {
-            "DISPONIBLE",
-            "NO DISPONIBLE"});
+            "ACTIVO",
+            "INACTIVO"});
             this.cbStatus.Location = new System.Drawing.Point(453, 54);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(121, 21);
@@ -204,7 +204,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmCompetence";
-            this.Text = "FrmCompetence";
+            this.Text = "COMPETENCIAS";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompetence)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

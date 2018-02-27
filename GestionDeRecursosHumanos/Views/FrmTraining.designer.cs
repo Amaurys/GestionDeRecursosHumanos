@@ -42,6 +42,16 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvTraining = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHADESDE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHAHASTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INSTITUCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CEDULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.tbInstitute = new System.Windows.Forms.TextBox();
@@ -53,16 +63,6 @@
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mtbCedula = new System.Windows.Forms.MaskedTextBox();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHADESDE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAHASTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.INSTITUCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CEDULA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nIVELESCAPACITACIONESBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraining)).BeginInit();
             this.SuspendLayout();
@@ -106,7 +106,6 @@
             this.cbTrainingLevel.TabIndex = 32;
             this.cbTrainingLevel.Tag = "";
             this.cbTrainingLevel.ValueMember = "id";
-         
             // 
             // btnAccept
             // 
@@ -123,9 +122,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(466, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 13);
+            this.label3.Size = new System.Drawing.Size(137, 13);
             this.label3.TabIndex = 30;
-            this.label3.Text = "NIVEL DE COMPETENCIA";
+            this.label3.Text = "NIVEL DE CAPACITACIÓN";
             // 
             // label2
             // 
@@ -185,100 +184,6 @@
             this.dgvTraining.Size = new System.Drawing.Size(1043, 203);
             this.dgvTraining.TabIndex = 25;
             this.dgvTraining.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTraining_CellContentClick);
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.Frozen = true;
-            this.dataGridViewImageColumn1.HeaderText = "EDITAR";
-            this.dataGridViewImageColumn1.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.HeaderText = "DELETE";
-            this.dataGridViewImageColumn2.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            // 
-            // tbInstitute
-            // 
-            this.tbInstitute.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbInstitute.Location = new System.Drawing.Point(792, 82);
-            this.tbInstitute.Name = "tbInstitute";
-            this.tbInstitute.Size = new System.Drawing.Size(81, 20);
-            this.tbInstitute.TabIndex = 38;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(516, 137);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(84, 23);
-            this.btnCancel.TabIndex = 40;
-            this.btnCancel.Text = "CANCELAR";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(359, 137);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(84, 23);
-            this.btnUpdate.TabIndex = 39;
-            this.btnUpdate.Text = "ACTUALIZAR";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Visible = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // dtpStartDate
-            // 
-            this.dtpStartDate.CalendarTitleBackColor = System.Drawing.Color.CornflowerBlue;
-            this.dtpStartDate.Location = new System.Drawing.Point(130, 82);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(212, 20);
-            this.dtpStartDate.TabIndex = 41;
-            this.dtpStartDate.Value = new System.DateTime(2018, 1, 31, 13, 56, 16, 0);
-            // 
-            // dtpFinishDate
-            // 
-            this.dtpFinishDate.Location = new System.Drawing.Point(469, 82);
-            this.dtpFinishDate.Name = "dtpFinishDate";
-            this.dtpFinishDate.Size = new System.Drawing.Size(212, 20);
-            this.dtpFinishDate.TabIndex = 42;
-            this.dtpFinishDate.Value = new System.DateTime(2018, 1, 31, 13, 56, 16, 0);
-        
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(283, 35);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 13);
-            this.label7.TabIndex = 44;
-            this.label7.Text = "DESCRIPCIÓN";
-            // 
-            // tbDescription
-            // 
-            this.tbDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbDescription.Location = new System.Drawing.Point(369, 35);
-            this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(81, 20);
-            this.tbDescription.TabIndex = 43;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(749, 38);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(50, 13);
-            this.label8.TabIndex = 45;
-            this.label8.Text = "CEDULA";
-            // 
-            // mtbCedula
-            // 
-            this.mtbCedula.Location = new System.Drawing.Point(805, 35);
-            this.mtbCedula.Mask = "000-0000000-0";
-            this.mtbCedula.Name = "mtbCedula";
-            this.mtbCedula.Size = new System.Drawing.Size(100, 20);
-            this.mtbCedula.TabIndex = 46;
             // 
             // ID
             // 
@@ -351,12 +256,105 @@
             this.delete.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
             this.delete.Name = "delete";
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.Frozen = true;
+            this.dataGridViewImageColumn1.HeaderText = "EDITAR";
+            this.dataGridViewImageColumn1.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "DELETE";
+            this.dataGridViewImageColumn2.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            // 
+            // tbInstitute
+            // 
+            this.tbInstitute.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbInstitute.Location = new System.Drawing.Point(792, 82);
+            this.tbInstitute.Name = "tbInstitute";
+            this.tbInstitute.Size = new System.Drawing.Size(81, 20);
+            this.tbInstitute.TabIndex = 38;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(516, 137);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(84, 23);
+            this.btnCancel.TabIndex = 40;
+            this.btnCancel.Text = "CANCELAR";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(359, 137);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(84, 23);
+            this.btnUpdate.TabIndex = 39;
+            this.btnUpdate.Text = "ACTUALIZAR";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Visible = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.CalendarTitleBackColor = System.Drawing.Color.CornflowerBlue;
+            this.dtpStartDate.Location = new System.Drawing.Point(130, 82);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(212, 20);
+            this.dtpStartDate.TabIndex = 41;
+            this.dtpStartDate.Value = new System.DateTime(2018, 1, 31, 13, 56, 16, 0);
+            // 
+            // dtpFinishDate
+            // 
+            this.dtpFinishDate.Location = new System.Drawing.Point(469, 82);
+            this.dtpFinishDate.Name = "dtpFinishDate";
+            this.dtpFinishDate.Size = new System.Drawing.Size(212, 20);
+            this.dtpFinishDate.TabIndex = 42;
+            this.dtpFinishDate.Value = new System.DateTime(2018, 1, 31, 13, 56, 16, 0);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(283, 35);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 13);
+            this.label7.TabIndex = 44;
+            this.label7.Text = "DESCRIPCIÓN";
+            // 
+            // tbDescription
+            // 
+            this.tbDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbDescription.Location = new System.Drawing.Point(369, 35);
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(81, 20);
+            this.tbDescription.TabIndex = 43;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(749, 38);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 13);
+            this.label8.TabIndex = 45;
+            this.label8.Text = "CEDULA";
+            // 
+            // mtbCedula
+            // 
+            this.mtbCedula.Location = new System.Drawing.Point(805, 35);
+            this.mtbCedula.Mask = "000-0000000-0";
+            this.mtbCedula.Name = "mtbCedula";
+            this.mtbCedula.Size = new System.Drawing.Size(100, 20);
+            this.mtbCedula.TabIndex = 46;
+            // 
             // FrmTraining
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(1114, 402);
+            this.ClientSize = new System.Drawing.Size(1028, 402);
             this.Controls.Add(this.mtbCedula);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -379,7 +377,7 @@
             this.Controls.Add(this.dgvTraining);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmTraining";
-            this.Text = "Competencias";
+            this.Text = "CAPACITACIONES";
             this.Load += new System.EventHandler(this.FrmTraining_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nIVELESCAPACITACIONESBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraining)).EndInit();

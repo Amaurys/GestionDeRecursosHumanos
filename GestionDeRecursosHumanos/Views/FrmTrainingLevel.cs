@@ -32,7 +32,7 @@ namespace GestionDeRecursosHumanos.Views
         {
             try
             {
-                if (dgvTrainingLevel.Columns[e.ColumnIndex].Name == "ELIMINAR")
+                if (dgvTrainingLevel.Columns[e.ColumnIndex].Name == "delete")
                 {
                     DialogResult resultDelete = MessageBox.Show("¿Está seguro que quiere eliminar este registro de \n"
                                                     + dgvTrainingLevel.Rows[e.RowIndex].Cells[1].Value.ToString() + " ?", "ATENCIÓN", MessageBoxButtons.YesNo);
@@ -180,7 +180,7 @@ namespace GestionDeRecursosHumanos.Views
                     btnUpdate.Visible = true;
                     btnAccept.Visible = false;
                 }
-                else if (dgvTrainingLevel.Columns[e.ColumnIndex].Name == "ELIMINAR")
+                else if (dgvTrainingLevel.Columns[e.ColumnIndex].Name == "delete")
                 {
                     deleteData(e);
                 }

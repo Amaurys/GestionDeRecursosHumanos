@@ -34,14 +34,14 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvTrainingLevel = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
-            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrainingLevel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,32 +109,6 @@
             this.dgvTrainingLevel.TabIndex = 22;
             this.dgvTrainingLevel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrainingLevel_CellContentClick);
             // 
-            // ID
-            // 
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.Frozen = true;
-            this.Nombre.HeaderText = "NOMBRE";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // EDITAR
-            // 
-            this.EDITAR.HeaderText = "EDITAR";
-            this.EDITAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
-            this.EDITAR.Name = "EDITAR";
-            // 
-            // delete
-            // 
-            this.delete.HeaderText = "DELETE";
-            this.delete.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
-            this.delete.Name = "delete";
-            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.HeaderText = "EDITAR";
@@ -168,6 +142,32 @@
             this.btnUpdate.Visible = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // ID
+            // 
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.Frozen = true;
+            this.Nombre.HeaderText = "NOMBRE";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // EDITAR
+            // 
+            this.EDITAR.HeaderText = "EDITAR";
+            this.EDITAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
+            this.EDITAR.Name = "EDITAR";
+            // 
+            // delete
+            // 
+            this.delete.HeaderText = "ELIMINAR";
+            this.delete.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
+            this.delete.Name = "delete";
+            // 
             // FrmTrainingLevel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,13 +199,13 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvTrainingLevel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewImageColumn EDITAR;
-        private System.Windows.Forms.DataGridViewImageColumn delete;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewImageColumn EDITAR;
+        private System.Windows.Forms.DataGridViewImageColumn delete;
     }
 }
