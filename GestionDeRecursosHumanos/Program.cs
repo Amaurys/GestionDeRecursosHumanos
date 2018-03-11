@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GestionDeRecursosHumanos.Views;
 
 namespace GestionDeRecursosHumanos
 {
@@ -18,7 +19,7 @@ namespace GestionDeRecursosHumanos
             conn = new Model.ClsConnectionClass();//Line added to have de hability of call the connection in all the program. 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mdiParent());
+            Application.Run(new FrmLogin());
         }
     }
 }

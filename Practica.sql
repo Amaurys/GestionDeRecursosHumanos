@@ -32,8 +32,10 @@ CREATE TABLE EMPLEADOS(id int primary key identity,cedula varchar(13) not null,n
 						 idPuesto int not null,idDepartamento int not null,salarioMensual decimal(8,2),estado bit);
 
 CREATE TABLE usuarios(id int identity, nombreUsuario varchar(60) not null, nombrePila varchar(60) not null,
-						contrasena varchar(30)not null, 
+						contrasena varchar(30)not null, rol varchar(20) not null, 
 						CONSTRAINT PK_Users_IdNombreUsuario PRIMARY KEY (id,nombreUsuario));
+
+						
 
 CREATE TABLE COMPETENCIASPERSONAS(id int primary key identity,cedula varchar(13) not null,idCompetencia int not null);
 
@@ -534,10 +536,10 @@ GO
 GO
 CREATE PROCEDURE obtenerPuesto
 AS
-BEGIN
+BEGIN 
 	SET NOCOUNT ON;
 	select pues.id,pues.nombre,d.nombre as 'nivel de riesgo',pues.nivelMinimoSalario,pues.nivlMaximoSalario,pues.estado from PUESTOS pues
-	INNER JOIN NIVELESRIESGO d on pues.id = d.id;
+	INNER JOIN NIVELESRIESGO d on pues.idNivelRiesgo = d.id;
 END
 GO
 
@@ -697,4 +699,21 @@ BEGIN
 END
 GO
 
+------Usuarios--------------------------------------------select * from usuarios
 
+GO
+ALTER PROCEDURE insertarUsuario(
+	@nombreUsuario nvarchar(60),
+	@nombrePila nvarchar(60),
+	@password nvarchar(300),
+	@rol nvarchar(20))
+AS 
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO usuarios VALUES(@nombreUsuario,@nombrePila,@password,@rol);
+END
+GO
+--select * from tblUserRegistration where UserName='" + txtUserName.Text + "'"
+GO
+
+GO

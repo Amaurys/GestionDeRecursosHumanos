@@ -109,61 +109,94 @@ namespace GestionDeRecursosHumanos.Views
 
         public void insertUpdateData(string mode)
         {
-            SqlCommand command = new SqlCommand("insertarActualizarExperienciaLaboral", Program.conn.cnn);
-            command.CommandType = CommandType.StoredProcedure;
+            try{
+                SqlCommand command = new SqlCommand("insertarActualizarExperienciaLaboral", Program.conn.cnn);
+                command.CommandType = CommandType.StoredProcedure;
 
-            if (mode == "0")
-            {
-                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
-                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
-                command.Parameters.AddWithValue("@company", SqlDbType.VarChar).Value = tbCompany.Text.Trim();
-                command.Parameters.AddWithValue("@positionOccupied", SqlDbType.VarChar).Value = tbOccuppedPosition.Text.Trim();
-                command.Parameters.AddWithValue("@beginDate", SqlDbType.DateTime).Value = dtpBeginDate.Value;
-                command.Parameters.AddWithValue("@finishDate", SqlDbType.DateTime).Value = dtpFinishDate.Value;
-                command.Parameters.AddWithValue("@salary", SqlDbType.VarChar).Value = Convert.ToDecimal(mtbSalary.Text.Trim());
-                command.Parameters.AddWithValue("@cedula", SqlDbType.VarChar).Value = mtbCedula.Text.Trim();
-                int result = command.ExecuteNonQuery();
-
-                if (result == 1)
+                if (mode == "0")
                 {
-                    MessageBox.Show("Información guardada.");
-                    showData();
-                    clearTextBox();
+                    command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
+                    command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
+                    command.Parameters.AddWithValue("@company", SqlDbType.VarChar).Value = tbCompany.Text.Trim();
+                    command.Parameters.AddWithValue("@positionOccupied", SqlDbType.VarChar).Value = tbOccuppedPosition.Text.Trim();
+                    command.Parameters.AddWithValue("@beginDate", SqlDbType.DateTime).Value = dtpBeginDate.Value;
+                    command.Parameters.AddWithValue("@finishDate", SqlDbType.DateTime).Value = dtpFinishDate.Value;
+                    command.Parameters.AddWithValue("@salary", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbSalary.Text.Trim());
+                    command.Parameters.AddWithValue("@cedula", SqlDbType.VarChar).Value = mtbCedula.Text.Trim();
+
+                    //comparando las fechas de inicio y final
+                    if (dtpFinishDate.Value < dtpBeginDate.Value)
+                    {
+                        MessageBox.Show("LA FECHA DE INICIO NO PUEDE SER MAYOR A LA FECHA DE FINALIZACIÓN.",
+                                            "ERROR EN LAS FECHAS");
+                        return;
+                    }
+                    //validating if salary is less or equals to zero
+                    if (Convert.ToDecimal(mtbSalary.Text) <= 0)
+                    {
+                        MessageBox.Show("EL SALARIO NO PUEDE SER MENOR O IGUAL QUE CERO (0).","ERROR EN EL SALARIO");
+                        return;
+                    }
+
+                    int result = command.ExecuteNonQuery();
+
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Información guardada.");
+                        showData();
+                        clearTextBox();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Algo pasó.", "Algo pasó.");
+
+                    }
                 }
-                else
+                else if (mode == "1")
                 {
-                    MessageBox.Show("Algo pasó.", "Algo pasó.");
+                    command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
+                    command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
+                    command.Parameters.AddWithValue("@company", SqlDbType.VarChar).Value = tbCompany.Text.Trim();
+                    command.Parameters.AddWithValue("@positionOccupied", SqlDbType.VarChar).Value = tbOccuppedPosition.Text.Trim();
+                    command.Parameters.AddWithValue("@beginDate", SqlDbType.DateTime).Value = dtpBeginDate.Value;
+                    command.Parameters.AddWithValue("@finishDate", SqlDbType.DateTime).Value = dtpFinishDate.Value;
+                    command.Parameters.AddWithValue("@salary", SqlDbType.Decimal).Value = mtbSalary.Text.Trim();
+                    command.Parameters.AddWithValue("@cedula", SqlDbType.VarChar).Value = mtbCedula.Text.Trim();
 
+                    //comparando las fechas de inicio y final
+                    if (dtpFinishDate.Value < dtpBeginDate.Value)
+                    {
+                        MessageBox.Show("LA FECHA DE INICIO NO PUEDE SER MAYOR A LA FECHA DE FINALIZACIÓN.",
+                                            "ERROR EN LAS FECHAS");
+                        return;
+                    }
+                    //validating if salary is less or equals to zero
+                    if (Convert.ToDecimal(mtbSalary.Text) <= 0)
+                    {
+                        MessageBox.Show("EL SALARIO NO PUEDE SER MENOR O IGUAL QUE CERO (0).", "ERROR EN EL SALARIO");
+                        return;
+                    }
+
+                    int result = command.ExecuteNonQuery();
+
+                    if (result == 1)
+                    {
+                        MessageBox.Show("Información guardada.");
+                        showData();
+                        clearTextBox();
+                        btnUpdate.Visible = false;
+                        btnAccept.Visible = true;
+                        globalMode = "0";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Algo pasó.", "Algo pasó.");
+
+                    }
                 }
-            }
-            else if (mode == "1")
-            {
-                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
-                command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
-                command.Parameters.AddWithValue("@company", SqlDbType.VarChar).Value = tbCompany.Text.Trim();
-                command.Parameters.AddWithValue("@positionOccupied", SqlDbType.VarChar).Value = tbOccuppedPosition.Text.Trim();
-                command.Parameters.AddWithValue("@beginDate", SqlDbType.DateTime).Value = dtpBeginDate.Value;
-                command.Parameters.AddWithValue("@finishDate", SqlDbType.DateTime).Value = dtpFinishDate.Value;
-                command.Parameters.AddWithValue("@salary", SqlDbType.VarChar).Value = mtbSalary.Text.Trim();
-                command.Parameters.AddWithValue("@cedula", SqlDbType.VarChar).Value = mtbCedula.Text.Trim();
-                int result = command.ExecuteNonQuery();
+            } catch (Exception e) { MessageBox.Show(e.ToString()); }
 
-                if (result == 1)
-                {
-                    MessageBox.Show("Información guardada.");
-                    showData();
-                    clearTextBox();
-                    btnUpdate.Visible = false;
-                    btnAccept.Visible = true;
-                    globalMode = "0";
-                }
-                else
-                {
-                    MessageBox.Show("Algo pasó.", "Algo pasó.");
-
-                }
-
-            }
+           
         }
 
         public void showData()
@@ -242,6 +275,6 @@ namespace GestionDeRecursosHumanos.Views
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cancelAction();
-        }
+        }        
     }
 }

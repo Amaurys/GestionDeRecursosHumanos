@@ -69,11 +69,18 @@ namespace GestionDeRecursosHumanos
             frmCompetence.MdiParent = this;
             frmCompetence.Show();
         }
-        private void opentFormApplicant()
+        private void openFormApplicant()
         {
             FrmApplicant frmApplicant = new FrmApplicant();
             frmApplicant.MdiParent = this;
             frmApplicant.Show();
+        }
+
+        private void openFormRegisterUser()
+        {
+            FrmRegisterUser frmRegisterUser = new FrmRegisterUser();
+            frmRegisterUser.MdiParent = this;
+            frmRegisterUser.Show();
         }
 
         private void iToolStripMenuItem_Click(object sender, EventArgs e)
@@ -118,9 +125,12 @@ namespace GestionDeRecursosHumanos
 
         private void candidatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            opentFormApplicant();
+            openFormApplicant();
         }
 
-        
+        private void registrarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFormRegisterUser();
+        }
     }
 }

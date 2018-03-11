@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\Cryptography.cs" />
     <Compile Include="controller\Maintainable.cs" />
     <Compile Include="Model\ClsConnectionClass.cs" />
     <Compile Include="Model\DatabaseConnection.cs" />
@@ -126,11 +127,23 @@
     <Compile Include="Views\FrmLanguage.Designer.cs">
       <DependentUpon>FrmLanguage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmPosition.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FrmPosition.designer.cs">
       <DependentUpon>FrmPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmRegisterUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmRegisterUser.Designer.cs">
+      <DependentUpon>FrmRegisterUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmRiskLevel.cs">
       <SubType>Form</SubType>
@@ -182,8 +195,14 @@
     <EmbeddedResource Include="Views\FrmLanguage.resx">
       <DependentUpon>FrmLanguage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmPosition.resx">
       <DependentUpon>FrmPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmRegisterUser.resx">
+      <DependentUpon>FrmRegisterUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmRiskLevel.resx">
       <DependentUpon>FrmRiskLevel.cs</DependentUpon>

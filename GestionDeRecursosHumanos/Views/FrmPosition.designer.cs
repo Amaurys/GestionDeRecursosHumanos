@@ -138,8 +138,8 @@
             this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatus.FormattingEnabled = true;
             this.cbStatus.Items.AddRange(new object[] {
-            "DISPONIBLE",
-            "NO DISPONIBLE"});
+            "ACTIVO",
+            "INACTIVO"});
             this.cbStatus.Location = new System.Drawing.Point(638, 119);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(121, 21);

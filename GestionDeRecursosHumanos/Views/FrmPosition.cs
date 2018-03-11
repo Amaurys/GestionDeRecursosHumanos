@@ -82,8 +82,8 @@ namespace GestionDeRecursosHumanos.Views
                 tbId.Text = dt.Rows[0]["ID"].ToString();
                 tbName.Text = dt.Rows[0]["NOMBRE"].ToString();
                 cbRiskLevel.SelectedValue = Convert.ToInt32(dt.Rows[0]["idNivelRiesgo"]);
-                mtbMinSalary.Text = dt.Rows[0]["nivelMinimoSalario"].ToString();
-                mtbMaxSalary.Text = dt.Rows[0]["nivlMaximoSalario"].ToString();
+                mtbMinSalary.Text = fillSalaryTextBox(dt.Rows[0]["nivelMinimoSalario"].ToString());
+                mtbMaxSalary.Text = fillSalaryTextBox(dt.Rows[0]["nivlMaximoSalario"].ToString());
                 cbStatus.SelectedIndex = Convert.ToInt32(dt.Rows[0]["estado"]);
             }
             catch (Exception ex)
@@ -155,10 +155,10 @@ namespace GestionDeRecursosHumanos.Views
                         command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
                         command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
                         command.Parameters.AddWithValue("@idNivelRiesgo", SqlDbType.Int).Value = Convert.ToInt32(cbRiskLevel.SelectedValue);
-                        command.Parameters.AddWithValue("@salarioMin", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMinSalary.Text);
-                        command.Parameters.AddWithValue("@salarioMax", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMaxSalary.Text);
+                        command.Parameters.AddWithValue("@salarioMin", SqlDbType.Decimal).Value = Convert.ToDecimal(fillSalaryTextBox(mtbMinSalary.Text)); //Convert.ToDecimal(mtbMinSalary.Text);
+                        command.Parameters.AddWithValue("@salarioMax", SqlDbType.Decimal).Value = Convert.ToDecimal(fillSalaryTextBox(mtbMaxSalary.Text)); //Convert.ToDecimal(mtbMaxSalary.Text);
 
-                        if (cbStatus.SelectedText == "DISPONIBLE")
+                        if (cbStatus.SelectedText == "ACTIVO")
                         {
                             command.Parameters.AddWithValue("@estado", SqlDbType.Bit).Value = 1;
                         }
@@ -294,10 +294,13 @@ namespace GestionDeRecursosHumanos.Views
             cbRiskLevel.DataSource = ds.Tables[0];
             cbRiskLevel.DisplayMember = "nombre";
         }
-        //lol
+
+        //method to validate minimun salary can't be higher than maximun salary
         public bool compareSalary()
         {
-            if (Convert.ToDecimal(mtbMinSalary)>= Convert.ToDecimal(mtbMaxSalary))
+            mtbMinSalary.Text.Length.ToString();
+
+            if (Convert.ToDecimal(fillSalaryTextBox(mtbMinSalary.Text))>= Convert.ToDecimal(fillSalaryTextBox(mtbMaxSalary.Text)))
             {
                 MessageBox.Show("El SALARIO MÍNIMO no puede ser mayor o igual que el SALARIO MÁXIMO");
                 return true;
@@ -306,6 +309,19 @@ namespace GestionDeRecursosHumanos.Views
             {
                 return false;
             }
+        }
+
+        //method to fill salary textbox with zeros (0)
+        private string fillSalaryTextBox(string salary)
+        {
+            if (salary.Length<9)
+            {
+                for (int i = 0; salary.Length < 9; i++)
+                {
+                    salary = "0"+salary;
+                }
+            }
+            return salary;
         }
     }
 }
