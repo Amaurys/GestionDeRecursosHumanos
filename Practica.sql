@@ -192,7 +192,7 @@ BEGIN
 	SELECT * FROM NIVELESRIESGO;
 END
 GO
-
+insertarActualizarNivelDeRiesgo 0,0,BAJO
 GO
 CREATE PROCEDURE insertarActualizarNivelDeRiesgo(
 	@mode char(1) ,
@@ -700,9 +700,9 @@ END
 GO
 
 ------Usuarios--------------------------------------------select * from usuarios
-
+DESKTOP-DPQHHPC
 GO
-ALTER PROCEDURE insertarUsuario(
+create PROCEDURE insertarUsuario(
 	@nombreUsuario nvarchar(60),
 	@nombrePila nvarchar(60),
 	@password nvarchar(300),
@@ -713,7 +713,13 @@ BEGIN
 	INSERT INTO usuarios VALUES(@nombreUsuario,@nombrePila,@password,@rol);
 END
 GO
---select * from tblUserRegistration where UserName='" + txtUserName.Text + "'"
-GO
 
+GO
+CREATE PROCEDURE iniciarSesion(
+	@user nvarchar(60))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select * from usuarios where nombreUsuario = @user;
+END
 GO
