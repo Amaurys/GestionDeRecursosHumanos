@@ -53,6 +53,8 @@
             this.btnAccept = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.cbRiskLevel = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosition)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,7 +173,7 @@
             this.STATUS,
             this.edit,
             this.delete});
-            this.dgvPosition.Location = new System.Drawing.Point(8, 231);
+            this.dgvPosition.Location = new System.Drawing.Point(8, 323);
             this.dgvPosition.Name = "dgvPosition";
             this.dgvPosition.Size = new System.Drawing.Size(851, 203);
             this.dgvPosition.TabIndex = 57;
@@ -281,12 +283,33 @@
             this.cbRiskLevel.TabIndex = 17;
             this.cbRiskLevel.ValueMember = "id";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::GestionDeRecursosHumanos.Properties.Resources.lupa2;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSearch.Location = new System.Drawing.Point(498, 275);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(74, 42);
+            this.btnSearch.TabIndex = 60;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbSearch.Location = new System.Drawing.Point(279, 287);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(213, 20);
+            this.tbSearch.TabIndex = 59;
+            // 
             // FrmPosition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(871, 461);
+            this.ClientSize = new System.Drawing.Size(871, 570);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dgvPosition);
             this.Controls.Add(this.btnCancel);
@@ -340,5 +363,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn STATUS;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn delete;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox tbSearch;
     }
 }
