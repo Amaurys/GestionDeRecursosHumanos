@@ -185,14 +185,16 @@ GO
 
  --NIVELES DE RIESGO --------------------------- SELECT * FROM NIVELESRIESGO
 GO
-CREATE PROCEDURE obtenernNivelDeRiesgo
+CREATE PROCEDURE obtenerNivelDeRiesgo
 AS
 BEGIN
 	SET NOCOUNT ON;
 	SELECT * FROM NIVELESRIESGO;
 END
 GO
-insertarActualizarNivelDeRiesgo 0,0,BAJO
+
+--insertarActualizarNivelDeRiesgo 0,0,BAJO
+
 GO
 CREATE PROCEDURE insertarActualizarNivelDeRiesgo(
 	@mode char(1) ,
@@ -700,7 +702,7 @@ END
 GO
 
 ------Usuarios--------------------------------------------select * from usuarios
-DESKTOP-DPQHHPC
+--1	admin	ADMINISTRADOR	lGKhkUvThw5+qE/OxJhPpA==	ADMINISTRADOR
 GO
 create PROCEDURE insertarUsuario(
 	@nombreUsuario nvarchar(60),

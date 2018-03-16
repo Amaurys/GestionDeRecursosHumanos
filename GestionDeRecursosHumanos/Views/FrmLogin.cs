@@ -49,6 +49,10 @@ namespace GestionDeRecursosHumanos.Views
                         mdiParent.Show();
                         this.Hide();
                     }
+                    else
+                    {
+                        MessageBox.Show("CONTRASEÑA INVALIDA.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
@@ -57,7 +61,7 @@ namespace GestionDeRecursosHumanos.Views
             }
             else
             {
-                MessageBox.Show("USUARIO O CONTRASEÑA INVALIDOS.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("LOS CAMPOS USUARIO Y/O CONTRASEÑA NO PUEEN ESTAR VACÍOS.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

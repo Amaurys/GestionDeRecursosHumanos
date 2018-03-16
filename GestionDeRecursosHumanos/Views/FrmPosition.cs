@@ -286,7 +286,7 @@ namespace GestionDeRecursosHumanos.Views
         private void BindComboBox()
         {
             DataSet ds = new DataSet();
-            SqlCommand command = new SqlCommand("obtenernNivelDeRiesgo", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
+            SqlCommand command = new SqlCommand("obtenerNivelDeRiesgo", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
             command.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
             dataAdapter.Fill(ds);
@@ -314,9 +314,9 @@ namespace GestionDeRecursosHumanos.Views
         //method to fill salary textbox with zeros (0)
         private string fillSalaryTextBox(string salary)
         {
-            if (salary.Length<9)
+            if (salary.Length<8)
             {
-                for (int i = 0; salary.Length < 9; i++)
+                for (int i = 0; salary.Length < 8; i++)
                 {
                     salary = "0"+salary;
                 }

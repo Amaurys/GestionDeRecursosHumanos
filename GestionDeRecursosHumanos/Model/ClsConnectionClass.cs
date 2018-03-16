@@ -24,7 +24,7 @@ namespace GestionDeRecursosHumanos.Model
         private SqlConnection _cnn()
         {
             SqlConnection conn = null;
-            string server = "DESKTOP-PQ7IHPC"; //Server home: Desktop-6PFPSM8; server work: 28FZCH2; server laptop: DESKTOP-PQ7IHPC
+            string server = "28FZCH2"; //Server home: Desktop-6PFPSM8; server work: 28FZCH2; server laptop: DESKTOP-PQ7IHPC
             string db = "recursosHumanos";
             //var connectionString = ConfigurationManager.ConnectionStrings["mConnection"].ConnectionString;
 

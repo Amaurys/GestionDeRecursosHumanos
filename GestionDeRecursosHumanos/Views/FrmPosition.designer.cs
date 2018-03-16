@@ -113,7 +113,7 @@
             // mtbMinSalary
             // 
             this.mtbMinSalary.Location = new System.Drawing.Point(195, 116);
-            this.mtbMinSalary.Mask = "000000.00";
+            this.mtbMinSalary.Mask = "00000000";
             this.mtbMinSalary.Name = "mtbMinSalary";
             this.mtbMinSalary.Size = new System.Drawing.Size(100, 20);
             this.mtbMinSalary.TabIndex = 20;
@@ -121,7 +121,7 @@
             // mtbMaxSalary
             // 
             this.mtbMaxSalary.Location = new System.Drawing.Point(455, 119);
-            this.mtbMaxSalary.Mask = "000000.00";
+            this.mtbMaxSalary.Mask = "00000000";
             this.mtbMaxSalary.Name = "mtbMaxSalary";
             this.mtbMaxSalary.Size = new System.Drawing.Size(100, 20);
             this.mtbMaxSalary.TabIndex = 22;
