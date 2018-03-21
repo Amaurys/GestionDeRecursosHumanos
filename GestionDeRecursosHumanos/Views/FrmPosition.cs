@@ -82,8 +82,8 @@ namespace GestionDeRecursosHumanos.Views
                 tbId.Text = dt.Rows[0]["ID"].ToString();
                 tbName.Text = dt.Rows[0]["NOMBRE"].ToString();
                 cbRiskLevel.SelectedValue = Convert.ToInt32(dt.Rows[0]["idNivelRiesgo"]);
-                mtbMinSalary.Text = fillSalaryTextBox(dt.Rows[0]["nivelMinimoSalario"].ToString());
-                mtbMaxSalary.Text = fillSalaryTextBox(dt.Rows[0]["nivlMaximoSalario"].ToString());
+                mtbMinSalary.Text = Convert.ToInt32(dt.Rows[0]["nivelMinimoSalario"]).ToString();//fillSalaryTextBox(dt.Rows[0]["nivelMinimoSalario"].ToString());
+                mtbMaxSalary.Text = Convert.ToInt32(dt.Rows[0]["nivlMaximoSalario"]).ToString();//fillSalaryTextBox(dt.Rows[0]["nivlMaximoSalario"].ToString());
                 cbStatus.SelectedIndex = Convert.ToInt32(dt.Rows[0]["estado"]);
             }
             catch (Exception ex)
@@ -155,8 +155,8 @@ namespace GestionDeRecursosHumanos.Views
                         command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
                         command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
                         command.Parameters.AddWithValue("@idNivelRiesgo", SqlDbType.Int).Value = Convert.ToInt32(cbRiskLevel.SelectedValue);
-                        command.Parameters.AddWithValue("@salarioMin", SqlDbType.Decimal).Value = Convert.ToDecimal(fillSalaryTextBox(mtbMinSalary.Text)); //Convert.ToDecimal(mtbMinSalary.Text);
-                        command.Parameters.AddWithValue("@salarioMax", SqlDbType.Decimal).Value = Convert.ToDecimal(fillSalaryTextBox(mtbMaxSalary.Text)); //Convert.ToDecimal(mtbMaxSalary.Text);
+                        command.Parameters.AddWithValue("@salarioMin", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMinSalary.Text);//Convert.ToDecimal(fillSalaryTextBox(mtbMinSalary.Text)); //
+                        command.Parameters.AddWithValue("@salarioMax", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMaxSalary.Text); //Convert.ToDecimal(fillSalaryTextBox(mtbMaxSalary.Text)); //
 
                         if (cbStatus.SelectedText == "ACTIVO")
                         {
