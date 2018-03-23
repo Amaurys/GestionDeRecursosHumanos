@@ -275,6 +275,11 @@ namespace GestionDeRecursosHumanos.Views
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cancelAction();
-        }        
+        }
+
+        public void search()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

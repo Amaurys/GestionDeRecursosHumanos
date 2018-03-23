@@ -266,5 +266,10 @@ namespace GestionDeRecursosHumanos.Views
         {
             insertUpdateData(globalMode);
         }
+
+        public void search()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

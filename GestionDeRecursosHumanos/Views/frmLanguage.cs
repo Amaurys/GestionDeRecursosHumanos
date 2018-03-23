@@ -222,5 +222,10 @@ namespace GestionDeRecursosHumanos.Views
                 globalMode = "0";
             }
         }
+
+        public void search()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

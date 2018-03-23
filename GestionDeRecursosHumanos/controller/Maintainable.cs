@@ -17,5 +17,6 @@ namespace GestionDeRecursosHumanos.controller
         void getDataForUpdate(DataTable dt);
         void clearTextBox();
         void cancelAction();
+        void search();
     }
 }

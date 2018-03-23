@@ -158,7 +158,7 @@ namespace GestionDeRecursosHumanos.Views
                         command.Parameters.AddWithValue("@salarioMin", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMinSalary.Text);//Convert.ToDecimal(fillSalaryTextBox(mtbMinSalary.Text)); //
                         command.Parameters.AddWithValue("@salarioMax", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMaxSalary.Text); //Convert.ToDecimal(fillSalaryTextBox(mtbMaxSalary.Text)); //
 
-                        if (cbStatus.SelectedText == "ACTIVO")
+                        if (cbStatus.Text == "ACTIVO")
                         {
                             command.Parameters.AddWithValue("@estado", SqlDbType.Bit).Value = 1;
                         }
@@ -281,6 +281,7 @@ namespace GestionDeRecursosHumanos.Views
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cancelAction();
+            showData();
         }
 
         private void BindComboBox()
@@ -322,6 +323,57 @@ namespace GestionDeRecursosHumanos.Views
                 }
             }
             return salary;
+        }
+
+        public void search()
+        {
+            try
+            {
+                dgvPosition.Rows.Clear();
+                int numRow = 0;
+                DataSet ds = new DataSet();
+
+                SqlCommand command = new SqlCommand("obtenerPuestosLike", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@nombreLike", SqlDbType.VarChar).Value = "%" + tbSearch.Text.Trim() + "%";
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(ds);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        dgvPosition.Rows.Add();
+                        dgvPosition.Rows[numRow].Cells[0].Value = Convert.ToString(row["ID"]);//"ID" is the name of the column in the DB.
+                        dgvPosition.Rows[numRow].Cells[1].Value = Convert.ToString(row["NOMBRE"]);
+                        dgvPosition.Rows[numRow].Cells[2].Value = Convert.ToString(row["nivel de riesgo"]);
+                        dgvPosition.Rows[numRow].Cells[3].Value = row["nivelMinimoSalario"].ToString();
+                        dgvPosition.Rows[numRow].Cells[4].Value = Convert.ToString(row["nivlMaximoSalario"]);
+
+                        if (Convert.ToInt32(row["estado"]) == 1)
+                        {
+                            dgvPosition.Rows[numRow].Cells[5].Value = "ACTIVO";
+                        }
+                        else
+                        {
+                            dgvPosition.Rows[numRow].Cells[5].Value = "INACTIVO";
+                        }
+
+                        numRow++;
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            search();
         }
     }
 }

@@ -215,6 +215,11 @@ namespace GestionDeRecursosHumanos.Views
                 tbName.Text = "";
                 globalMode = "0";
             }
-        }        
+        }
+
+        public void search()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

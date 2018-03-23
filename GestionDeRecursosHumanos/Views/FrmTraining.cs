@@ -308,5 +308,10 @@ namespace GestionDeRecursosHumanos.Views
             else
                 return false;
         }
+
+        public void search()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
