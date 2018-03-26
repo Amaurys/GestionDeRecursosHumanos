@@ -45,6 +45,8 @@
             this.DESCRIPCION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,7 +159,7 @@
             this.DESCRIPCION,
             this.EDITAR,
             this.ELIMINAR});
-            this.dgvDepartment.Location = new System.Drawing.Point(28, 157);
+            this.dgvDepartment.Location = new System.Drawing.Point(25, 239);
             this.dgvDepartment.Name = "dgvDepartment";
             this.dgvDepartment.Size = new System.Drawing.Size(544, 203);
             this.dgvDepartment.TabIndex = 43;
@@ -197,12 +199,34 @@
             this.ELIMINAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
             this.ELIMINAR.Name = "ELIMINAR";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::GestionDeRecursosHumanos.Properties.Resources.lupa2;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSearch.Location = new System.Drawing.Point(365, 191);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(74, 42);
+            this.btnSearch.TabIndex = 62;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbSearch.Location = new System.Drawing.Point(146, 203);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(213, 20);
+            this.tbSearch.TabIndex = 61;
+            // 
             // FrmDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(603, 402);
+            this.ClientSize = new System.Drawing.Size(603, 462);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.dgvDepartment);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
@@ -241,5 +265,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCION;
         private System.Windows.Forms.DataGridViewImageColumn EDITAR;
         private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox tbSearch;
     }
 }

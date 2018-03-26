@@ -132,5 +132,10 @@ namespace GestionDeRecursosHumanos
         {
             openFormRegisterUser();
         }
+
+        private void mdiParent_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //With this method the application will exit. 
+        }
     }
 }

@@ -359,6 +359,17 @@ END
 GO
 
 GO
+create PROCEDURE obtenerDepartamentoLike(
+	@nombreLike nvarchar(50))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM DEPARTAMENTOS
+	where nombre like @nombreLike;
+END
+GO
+
+GO
 CREATE PROCEDURE insertarActualizarDepartamento(
 	@mode char(1) ,
 	@id int = '', 
@@ -542,6 +553,18 @@ BEGIN
 	SET NOCOUNT ON;
 	select pues.id,pues.nombre,d.nombre as 'nivel de riesgo',pues.nivelMinimoSalario,pues.nivlMaximoSalario,pues.estado from PUESTOS pues
 	INNER JOIN NIVELESRIESGO d on pues.idNivelRiesgo = d.id;
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerPuestosLike
+	(@nombreLike nvarchar(50))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select pues.id,pues.nombre,d.nombre as 'nivel de riesgo',pues.nivelMinimoSalario,pues.nivlMaximoSalario,pues.estado from PUESTOS pues
+	INNER JOIN NIVELESRIESGO d on pues.idNivelRiesgo = d.id
+	where pues.nombre like @nombreLike
 END
 GO
 

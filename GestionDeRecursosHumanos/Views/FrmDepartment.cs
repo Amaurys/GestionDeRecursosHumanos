@@ -42,6 +42,7 @@ namespace GestionDeRecursosHumanos.Views
             tbId.Text = "";
             tbName.Text = "";
             tbDescription.Text = "";
+            tbSearch.Text = "";
         }
 
         public void deleteData(DataGridViewCellEventArgs e)
@@ -231,6 +232,7 @@ namespace GestionDeRecursosHumanos.Views
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cancelAction();
+            showData();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -240,7 +242,42 @@ namespace GestionDeRecursosHumanos.Views
 
         public void search()
         {
-            throw new NotImplementedException();
+            try
+            {
+                dgvDepartment.Rows.Clear();
+                int numRow = 0;
+                DataSet ds = new DataSet();
+
+                SqlCommand command = new SqlCommand("obtenerDepartamentoLike", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@nombreLike", SqlDbType.VarChar).Value = "%" + tbSearch.Text.Trim() + "%";
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(ds);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        dgvDepartment.Rows.Add();
+                        dgvDepartment.Rows[numRow].Cells[0].Value = Convert.ToString(row["ID"]);
+                        dgvDepartment.Rows[numRow].Cells[1].Value = Convert.ToString(row["NOMBRE"]);
+                        dgvDepartment.Rows[numRow].Cells[2].Value = Convert.ToString(row["DESCRIPCION"]);
+
+                        numRow++;
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            search();
         }
     }
 }

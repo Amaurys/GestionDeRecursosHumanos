@@ -26,6 +26,7 @@ namespace GestionDeRecursosHumanos.Views
             if (btnAccept.Visible)
             {
                 clearTextBox();
+                search();
             }
             else
             {
@@ -44,6 +45,7 @@ namespace GestionDeRecursosHumanos.Views
             mtbMaxSalary.Text = "";
             cbRiskLevel.SelectedIndex = 1;
             cbStatus.SelectedIndex = 1;
+            tbSearch.Text = "";
         }
 
         public void deleteData(DataGridViewCellEventArgs e)
@@ -126,7 +128,7 @@ namespace GestionDeRecursosHumanos.Views
                         command.Parameters.AddWithValue("@salarioMin", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbMinSalary.Text);
                         command.Parameters.AddWithValue("@salarioMax", SqlDbType.DateTime).Value = Convert.ToDecimal(mtbMaxSalary.Text);
 
-                        if (cbStatus.SelectedText.ToString() == "ACTIVO")
+                        if (cbStatus.Text == "ACTIVO")
                         {
                             command.Parameters.AddWithValue("@estado", SqlDbType.Bit).Value = 1;
                         }
