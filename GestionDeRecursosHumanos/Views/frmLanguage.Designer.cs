@@ -45,12 +45,13 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLanguage)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvLanguage
             // 
-            resources.ApplyResources(this.dgvLanguage, "dgvLanguage");
             this.dgvLanguage.AllowUserToAddRows = false;
             this.dgvLanguage.AllowUserToDeleteRows = false;
             this.dgvLanguage.BackgroundColor = System.Drawing.Color.CornflowerBlue;
@@ -63,6 +64,7 @@
             this.DESCRIPCION,
             this.EDITAR,
             this.ELIMINAR});
+            resources.ApplyResources(this.dgvLanguage, "dgvLanguage");
             this.dgvLanguage.Name = "dgvLanguage";
             this.dgvLanguage.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLanguage_CellContentClick);
             // 
@@ -107,8 +109,8 @@
             // 
             // tbName
             // 
-            resources.ApplyResources(this.tbName, "tbName");
             this.tbName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            resources.ApplyResources(this.tbName, "tbName");
             this.tbName.Name = "tbName";
             // 
             // tbId
@@ -128,8 +130,8 @@
             // 
             // tbDescription
             // 
-            resources.ApplyResources(this.tbDescription, "tbDescription");
             this.tbDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            resources.ApplyResources(this.tbDescription, "tbDescription");
             this.tbDescription.Name = "tbDescription";
             // 
             // btnAccept
@@ -159,11 +161,28 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::GestionDeRecursosHumanos.Properties.Resources.lupa2;
+            resources.ApplyResources(this.btnSearch, "btnSearch");
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            resources.ApplyResources(this.tbSearch, "tbSearch");
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            // 
             // FrmLanguage
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAccept);
@@ -200,5 +219,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCION;
         private System.Windows.Forms.DataGridViewImageColumn EDITAR;
         private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox tbSearch;
     }
 }

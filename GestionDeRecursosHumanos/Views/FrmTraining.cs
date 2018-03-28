@@ -36,6 +36,7 @@ namespace GestionDeRecursosHumanos.Views
                 clearTextBox();
                 globalMode = "0";
             }
+            showData();
         }
 
         public void clearTextBox()
@@ -47,6 +48,7 @@ namespace GestionDeRecursosHumanos.Views
             dtpFinishDate.Value = DateTime.Today;
             tbInstitute.Text = "";
             mtbCedula.Text = "";
+            tbSearch.Text = "";
         }
 
         public void deleteData(DataGridViewCellEventArgs e)
@@ -311,7 +313,46 @@ namespace GestionDeRecursosHumanos.Views
 
         public void search()
         {
-            throw new NotImplementedException();
+            try
+            {
+                dgvTraining.Rows.Clear();
+                int numRow = 0;
+                DataSet ds = new DataSet();
+
+                SqlCommand command = new SqlCommand("obtenerCapacitacionLike", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@nombreLike", SqlDbType.VarChar).Value = "%" + tbSearch.Text.Trim() + "%";
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(ds);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        dgvTraining.Rows.Add();
+                        dgvTraining.Rows[numRow].Cells[0].Value = Convert.ToString(row["ID"]);//"ID" is the name of the column in the DB.
+                        dgvTraining.Rows[numRow].Cells[1].Value = Convert.ToString(row["NOMBRE"]);
+                        dgvTraining.Rows[numRow].Cells[2].Value = Convert.ToString(row["DESCRIPCION"]);
+                        dgvTraining.Rows[numRow].Cells[3].Value = Convert.ToString(row["nivel de capacitacion"]);
+                        dgvTraining.Rows[numRow].Cells[4].Value = Convert.ToDateTime(row["fechaDesde"]).ToString("dd/MM/yyyy");
+                        dgvTraining.Rows[numRow].Cells[5].Value = Convert.ToDateTime(row["fechaHasta"]).ToString("dd/MM/yyyy");
+                        dgvTraining.Rows[numRow].Cells[6].Value = Convert.ToString(row["institucion"]);
+                        dgvTraining.Rows[numRow].Cells[7].Value = Convert.ToString(row["cedulaTitular"]);
+                        numRow++;
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            search();
         }
     }
 }

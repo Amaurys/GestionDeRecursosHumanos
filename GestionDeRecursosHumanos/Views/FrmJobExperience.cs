@@ -35,6 +35,7 @@ namespace GestionDeRecursosHumanos.Views
                 clearTextBox();
                 globalMode = "0";
             }
+            showData();
         }
 
         public void clearTextBox()
@@ -46,13 +47,14 @@ namespace GestionDeRecursosHumanos.Views
             dtpBeginDate.Value = DateTime.Today;
             dtpFinishDate.Value = DateTime.Today;
             mtbSalary.Text = "";
+            tbSearch.Text = "";
         }
 
         public void deleteData(DataGridViewCellEventArgs e)
         {
             try
             {
-                if (dgvJobExperiences.Columns[e.ColumnIndex].Name == "delete")
+                if (dgvJobExperiences.Columns[e.ColumnIndex].Name == "ELIMINAR")
                 {
                     DialogResult resultDelete = MessageBox.Show("¿Está seguro que quiere eliminar este registro de \n"
                                                     + dgvJobExperiences.Rows[e.RowIndex].Cells[1].Value.ToString() + " ?", "ATENCIÓN", MessageBoxButtons.YesNo);
@@ -86,7 +88,7 @@ namespace GestionDeRecursosHumanos.Views
                 tbOccuppedPosition.Text = dt.Rows[0]["puestoOcupado"].ToString();
                 dtpBeginDate.Value = Convert.ToDateTime(dt.Rows[0]["fechaDesde"]);
                 dtpFinishDate.Value = Convert.ToDateTime(dt.Rows[0]["fechaHasta"]);
-                mtbSalary.Text = dt.Rows[0]["salario"].ToString();
+                mtbSalary.Text = Convert.ToInt32(dt.Rows[0]["salario"]).ToString();
                 mtbCedula.Text = dt.Rows[0]["cedula"].ToString();
             }
             catch (Exception ex)
@@ -121,7 +123,7 @@ namespace GestionDeRecursosHumanos.Views
                     command.Parameters.AddWithValue("@positionOccupied", SqlDbType.VarChar).Value = tbOccuppedPosition.Text.Trim();
                     command.Parameters.AddWithValue("@beginDate", SqlDbType.DateTime).Value = dtpBeginDate.Value;
                     command.Parameters.AddWithValue("@finishDate", SqlDbType.DateTime).Value = dtpFinishDate.Value;
-                    command.Parameters.AddWithValue("@salary", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbSalary.Text.Trim());
+                    command.Parameters.AddWithValue("@salary", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbSalary.Text);
                     command.Parameters.AddWithValue("@cedula", SqlDbType.VarChar).Value = mtbCedula.Text.Trim();
 
                     //comparando las fechas de inicio y final
@@ -160,7 +162,7 @@ namespace GestionDeRecursosHumanos.Views
                     command.Parameters.AddWithValue("@positionOccupied", SqlDbType.VarChar).Value = tbOccuppedPosition.Text.Trim();
                     command.Parameters.AddWithValue("@beginDate", SqlDbType.DateTime).Value = dtpBeginDate.Value;
                     command.Parameters.AddWithValue("@finishDate", SqlDbType.DateTime).Value = dtpFinishDate.Value;
-                    command.Parameters.AddWithValue("@salary", SqlDbType.Decimal).Value = mtbSalary.Text.Trim();
+                    command.Parameters.AddWithValue("@salary", SqlDbType.Decimal).Value = Convert.ToDecimal(mtbSalary.Text);
                     command.Parameters.AddWithValue("@cedula", SqlDbType.VarChar).Value = mtbCedula.Text.Trim();
 
                     //comparando las fechas de inicio y final
@@ -256,7 +258,7 @@ namespace GestionDeRecursosHumanos.Views
                     btnUpdate.Visible = true;
                     btnAccept.Visible = false;
                 }
-                else if (dgvJobExperiences.Columns[e.ColumnIndex].Name == "delete")
+                else if (dgvJobExperiences.Columns[e.ColumnIndex].Name == "ELIMINAR")
                 {
                     deleteData(e);
                 }
@@ -279,7 +281,45 @@ namespace GestionDeRecursosHumanos.Views
 
         public void search()
         {
-            throw new NotImplementedException();
+            try
+            {
+                dgvJobExperiences.Rows.Clear();
+                int numRow = 0;
+                DataSet ds = new DataSet();
+
+                SqlCommand command = new SqlCommand("obtenerExperienciaLaboralLike", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@nombreLike", SqlDbType.VarChar).Value = "%" + tbSearch.Text.Trim() + "%";
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(ds);
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        dgvJobExperiences.Rows.Add();
+                        dgvJobExperiences.Rows[numRow].Cells[0].Value = Convert.ToString(row["ID"]);//"ID" is the name of the column in the DB.
+                        dgvJobExperiences.Rows[numRow].Cells[1].Value = Convert.ToString(row["empresa"]);
+                        dgvJobExperiences.Rows[numRow].Cells[2].Value = Convert.ToString(row["puestoOcupado"]);
+                        dgvJobExperiences.Rows[numRow].Cells[3].Value = Convert.ToDateTime(row["fechaDesde"]).ToString("dd/MM/yyyy");
+                        dgvJobExperiences.Rows[numRow].Cells[4].Value = Convert.ToDateTime(row["fechaHasta"]).ToString("dd/MM/yyyy");
+                        dgvJobExperiences.Rows[numRow].Cells[5].Value = Convert.ToString(row["salario"]);
+                        dgvJobExperiences.Rows[numRow].Cells[6].Value = Convert.ToString(row["cedula"]);
+                        numRow++;
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            search();
         }
     }
 }

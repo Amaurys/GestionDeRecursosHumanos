@@ -89,6 +89,17 @@ END
 GO
 
 GO
+CREATE PROCEDURE obtenerIdiomaLike(
+	@nombreLike nvarchar(50))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM IDIOMAS
+	WHERE nombre like @nombreLike;
+END
+GO
+
+GO
 CREATE PROCEDURE insertarActualizarIdioma(
 	@mode char(1) ,
 	@id int = '', 
@@ -137,6 +148,17 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 	SELECT * FROM COMPETENCIAS;
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerCompetenciaLike(
+	@nombreLike nvarchar(50))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM COMPETENCIAS 
+	WHERE descripcion like @nombreLike;
 END
 GO
 
@@ -247,6 +269,17 @@ END
 GO
 
 GO
+CREATE PROCEDURE obtenerNivelDeCapLike(
+	@nombreLike nvarchar(50))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM NIVELESCAPACITACIONES
+	WHERE nombre like @nombreLike;
+END
+GO
+
+GO
 CREATE PROCEDURE insertarActualizarNivelDeCap(
 	@mode char(1) ,
 	@id int = '', 
@@ -296,6 +329,18 @@ BEGIN
 	SET NOCOUNT ON;
 	select c.id,c.nombre,c.descripcion,d.nombre as 'nivel de capacitacion',c.fechaDesde,c.fechaHasta,c.institucion,c.cedulaTitular from CAPACITACIONES c
 	INNER JOIN NIVELESCAPACITACIONES d on c.id = d.id;
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerCapacitacionLike(
+	@nombreLike nvarchar(50))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select c.id,c.nombre,c.descripcion,d.nombre as 'nivel de capacitacion',c.fechaDesde,c.fechaHasta,c.institucion,c.cedulaTitular from CAPACITACIONES c
+	INNER JOIN NIVELESCAPACITACIONES d on c.id = d.id
+	WHERE c.nombre like @nombreLike;
 END
 GO
 
@@ -419,6 +464,16 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 	SELECT * FROM EXPERIENCIASLABORALES;
+END
+GO
+
+GO
+CREATE PROCEDURE obtenerExperienciaLaboralLike(
+	@nombreLike nvarchar(50))
+AS
+BEGIN
+	SELECT * FROM EXPERIENCIASLABORALES
+	WHERE empresa like @nombreLike;
 END
 GO
 

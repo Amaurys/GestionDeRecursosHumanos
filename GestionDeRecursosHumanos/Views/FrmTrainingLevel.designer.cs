@@ -34,14 +34,16 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvTrainingLevel = new System.Windows.Forms.DataGridView();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrainingLevel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,11 +105,37 @@
             this.Nombre,
             this.EDITAR,
             this.delete});
-            this.dgvTrainingLevel.Location = new System.Drawing.Point(28, 115);
+            this.dgvTrainingLevel.Location = new System.Drawing.Point(24, 186);
             this.dgvTrainingLevel.Name = "dgvTrainingLevel";
             this.dgvTrainingLevel.Size = new System.Drawing.Size(443, 203);
             this.dgvTrainingLevel.TabIndex = 22;
             this.dgvTrainingLevel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrainingLevel_CellContentClick);
+            // 
+            // ID
+            // 
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.Frozen = true;
+            this.Nombre.HeaderText = "NOMBRE";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // EDITAR
+            // 
+            this.EDITAR.HeaderText = "EDITAR";
+            this.EDITAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
+            this.EDITAR.Name = "EDITAR";
+            // 
+            // delete
+            // 
+            this.delete.HeaderText = "ELIMINAR";
+            this.delete.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
+            this.delete.Name = "delete";
             // 
             // dataGridViewImageColumn1
             // 
@@ -142,38 +170,35 @@
             this.btnUpdate.Visible = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // ID
+            // btnSearch
             // 
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
+            this.btnSearch.BackgroundImage = global::GestionDeRecursosHumanos.Properties.Resources.lupa2;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSearch.Location = new System.Drawing.Point(317, 138);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(74, 42);
+            this.btnSearch.TabIndex = 66;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // Nombre
+            // tbSearch
             // 
-            this.Nombre.Frozen = true;
-            this.Nombre.HeaderText = "NOMBRE";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // EDITAR
-            // 
-            this.EDITAR.HeaderText = "EDITAR";
-            this.EDITAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
-            this.EDITAR.Name = "EDITAR";
-            // 
-            // delete
-            // 
-            this.delete.HeaderText = "ELIMINAR";
-            this.delete.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
-            this.delete.Name = "delete";
+            this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbSearch.Location = new System.Drawing.Point(98, 150);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(213, 20);
+            this.tbSearch.TabIndex = 65;
             // 
             // FrmTrainingLevel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(497, 344);
+            this.ClientSize = new System.Drawing.Size(497, 414);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAccept);
@@ -207,5 +232,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewImageColumn EDITAR;
         private System.Windows.Forms.DataGridViewImageColumn delete;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox tbSearch;
     }
 }

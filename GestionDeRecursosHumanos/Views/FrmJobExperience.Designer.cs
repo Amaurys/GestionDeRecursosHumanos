@@ -57,6 +57,8 @@
             this.mtbSalary = new System.Windows.Forms.MaskedTextBox();
             this.mtbCedula = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJobExperiences)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +80,7 @@
             this.CEDULA,
             this.edit,
             this.ELIMINAR});
-            this.dgvJobExperiences.Location = new System.Drawing.Point(62, 221);
+            this.dgvJobExperiences.Location = new System.Drawing.Point(63, 287);
             this.dgvJobExperiences.Name = "dgvJobExperiences";
             this.dgvJobExperiences.Size = new System.Drawing.Size(956, 203);
             this.dgvJobExperiences.TabIndex = 53;
@@ -286,7 +288,7 @@
             // mtbSalary
             // 
             this.mtbSalary.Location = new System.Drawing.Point(835, 113);
-            this.mtbSalary.Mask = "000000.00";
+            this.mtbSalary.Mask = "00000000";
             this.mtbSalary.Name = "mtbSalary";
             this.mtbSalary.Size = new System.Drawing.Size(100, 20);
             this.mtbSalary.TabIndex = 59;
@@ -308,12 +310,34 @@
             this.label7.TabIndex = 60;
             this.label7.Text = "CÉDULA";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::GestionDeRecursosHumanos.Properties.Resources.lupa2;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSearch.Location = new System.Drawing.Point(628, 239);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(74, 42);
+            this.btnSearch.TabIndex = 64;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbSearch.Location = new System.Drawing.Point(409, 251);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(213, 20);
+            this.tbSearch.TabIndex = 63;
+            // 
             // FrmJobExperience
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(1028, 456);
+            this.ClientSize = new System.Drawing.Size(1067, 548);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.mtbCedula);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.mtbSalary);
@@ -373,5 +397,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CEDULA;
         private System.Windows.Forms.DataGridViewImageColumn edit;
         private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox tbSearch;
     }
 }

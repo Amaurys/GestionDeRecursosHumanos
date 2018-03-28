@@ -35,6 +35,7 @@ namespace GestionDeRecursosHumanos.Views
                 clearTextBox();
                 globalMode = "0";
             }
+            showData();
         }
 
         public void clearTextBox()
@@ -232,7 +233,6 @@ namespace GestionDeRecursosHumanos.Views
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cancelAction();
-            showData();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
