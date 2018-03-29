@@ -147,8 +147,8 @@ namespace GestionDeRecursosHumanos.Views
                         }
                         else
                         {
-                            MessageBox.Show("Algo pasó.", "Algo pasó.");
-
+                            MessageBox.Show("Algo pasó", "No se pudo ejecutar la acción. Favor de revisar su conexión " +
+                        "a la Base de Datos o comuníquese con el administrador.");
                         }
                     }
                     else if (mode == "1")
@@ -182,8 +182,8 @@ namespace GestionDeRecursosHumanos.Views
                         }
                         else
                         {
-                            MessageBox.Show("Algo pasó.", "Algo pasó.");
-
+                            MessageBox.Show("Algo pasó", "No se pudo ejecutar la acción. Favor de revisar su conexión " +
+                         "a la Base de Datos o comuníquese con el administrador.");
                         }
 
                     }

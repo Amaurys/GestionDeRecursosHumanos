@@ -15,8 +15,7 @@ using System.Windows.Forms;
 namespace GestionDeRecursosHumanos.Views
 {
     public partial class FrmLanguage : Form, Maintainable
-    {
-        //DatabaseConnection dbc = new DatabaseConnection();
+    {        
         string globalMode = "0"; //insert = 0; update = 1.
 
         public FrmLanguage()
@@ -87,14 +86,14 @@ namespace GestionDeRecursosHumanos.Views
             }
         }
 
-        public void insertUpdateData(string insertMode)
+        public void insertUpdateData(string mode)
         {
             SqlCommand command = new SqlCommand("insertarActualizarIdioma", Program.conn.cnn);
             command.CommandType = CommandType.StoredProcedure;
 
-            if (insertMode  == "0")
+            if (mode  == "0")
             {
-                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = insertMode;
+                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
                 command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = 0;
                 command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
                 command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
@@ -108,13 +107,13 @@ namespace GestionDeRecursosHumanos.Views
                 }
                 else
                 {
-                    MessageBox.Show("Algo pasó.","Algo pasó.");
-
+                    MessageBox.Show("Algo pasó", "No se pudo ejecutar la acción. Favor de revisar su conexión " +
+                         "a la Base de Datos o comuníquese con el administrador.");
                 }
             }
-            else if(insertMode == "1")
+            else if(mode == "1")
             {
-                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = insertMode;
+                command.Parameters.AddWithValue("@mode", SqlDbType.Char).Value = mode;
                 command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = tbId.Text.Trim();
                 command.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = tbName.Text.Trim();
                 command.Parameters.AddWithValue("@descr", SqlDbType.VarChar).Value = tbDescription.Text.Trim();
@@ -131,8 +130,8 @@ namespace GestionDeRecursosHumanos.Views
                 }
                 else
                 {
-                    MessageBox.Show("Algo pasó.", "Algo pasó.");
-
+                    MessageBox.Show("Algo pasó", "No se pudo ejecutar la acción. Favor de revisar su conexión " +
+                         "a la Base de Datos o comuníquese con el administrador.");
                 }
                 
             }

@@ -83,6 +83,13 @@ namespace GestionDeRecursosHumanos
             frmRegisterUser.Show();
         }
 
+        private void openFormRiskLevel()
+        {
+            FrmRiskLevel frmRiskLevel = new FrmRiskLevel();
+            frmRiskLevel.MdiParent = this;
+            frmRiskLevel.Show();
+        }
+
         private void iToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFormLanguage();
@@ -137,5 +144,12 @@ namespace GestionDeRecursosHumanos
         {
             Application.Exit(); //With this method the application will exit. 
         }
+
+        private void nivelesDeRiesgoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFormRiskLevel();
+        }
+
+        
     }
 }

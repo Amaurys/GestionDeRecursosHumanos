@@ -215,6 +215,17 @@ BEGIN
 END
 GO
 
+GO
+CREATE PROCEDURE obtenerNivelDeRiesgoLike(
+	@nombreLike nvarchar(50))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT * FROM NIVELESRIESGO
+	WHERE nombre like @nombreLike;
+END
+GO
+
 --insertarActualizarNivelDeRiesgo 0,0,BAJO
 
 GO

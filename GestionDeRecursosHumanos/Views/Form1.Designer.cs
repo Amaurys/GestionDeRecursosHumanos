@@ -44,6 +44,7 @@ namespace GestionDeRecursosHumanos
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.candidatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nivelesDeRiesgoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +72,8 @@ namespace GestionDeRecursosHumanos
             this.departamentosToolStripMenuItem,
             this.experienciasLaboralesToolStripMenuItem,
             this.puestosLaboralesToolStripMenuItem,
-            this.cOMPETENCIAToolStripMenuItem});
+            this.cOMPETENCIAToolStripMenuItem,
+            this.nivelesDeRiesgoToolStripMenuItem});
             this.mantenimientoToolStripMenuItem.Name = "mantenimientoToolStripMenuItem";
             this.mantenimientoToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.mantenimientoToolStripMenuItem.Text = "Mantenimiento";
@@ -146,6 +148,13 @@ namespace GestionDeRecursosHumanos
             this.registrarUsuarioToolStripMenuItem.Text = "Registrar Usuario";
             this.registrarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.registrarUsuarioToolStripMenuItem_Click);
             // 
+            // nivelesDeRiesgoToolStripMenuItem
+            // 
+            this.nivelesDeRiesgoToolStripMenuItem.Name = "nivelesDeRiesgoToolStripMenuItem";
+            this.nivelesDeRiesgoToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.nivelesDeRiesgoToolStripMenuItem.Text = "Niveles de Riesgo";
+            this.nivelesDeRiesgoToolStripMenuItem.Click += new System.EventHandler(this.nivelesDeRiesgoToolStripMenuItem_Click);
+            // 
             // mdiParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,6 +195,7 @@ namespace GestionDeRecursosHumanos
         private System.Windows.Forms.ToolStripMenuItem cOMPETENCIAToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem candidatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarUsuarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nivelesDeRiesgoToolStripMenuItem;
     }
 
     
