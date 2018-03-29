@@ -190,7 +190,8 @@ namespace GestionDeRecursosHumanos.Views
             tbId.Text = dt.Rows[0]["ID"].ToString();
             tbName.Text = dt.Rows[0]["NOMBRE"].ToString();
             tbDescription.Text = dt.Rows[0]["DESCRIPCION"].ToString();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }

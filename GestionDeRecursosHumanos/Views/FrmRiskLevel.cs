@@ -75,7 +75,15 @@ namespace GestionDeRecursosHumanos.Views
 
         public void getDataForUpdate(DataTable dt)
         {
-            throw new NotImplementedException();
+            try
+            {
+                tbId.Text = dt.Rows[0]["ID"].ToString();
+                tbName.Text = dt.Rows[0]["NOMBRE"].ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         public DataTable getDataToTextBox(int id)
@@ -206,6 +214,48 @@ namespace GestionDeRecursosHumanos.Views
             "connectionString variable with a connection string that is " +
             "valid for your system. \n " + e.ToString());
             }
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            insertUpdateData(globalMode);
+        }
+
+        private void dgvRiskLevel_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvRiskLevel.Columns[e.ColumnIndex].Name == "EDITAR")
+                {
+                    globalMode = "1";
+                    getDataForUpdate(getDataToTextBox(Convert.ToInt32(dgvRiskLevel.Rows[e.RowIndex].Cells[0].Value.ToString())));
+                    btnUpdate.Visible = true;
+                    btnAccept.Visible = false;
+                }
+                else if (dgvRiskLevel.Columns[e.ColumnIndex].Name == "ELIMINAR")
+                {
+                    deleteData(e);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            insertUpdateData(globalMode);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            cancelAction();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            search();
         }
     }
 }

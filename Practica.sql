@@ -792,6 +792,7 @@ GO
 
 ------Usuarios--------------------------------------------select * from usuarios
 --1	admin	ADMINISTRADOR	lGKhkUvThw5+qE/OxJhPpA==	ADMINISTRADOR
+--2	asanchez	AMAURYS SANCHEZ	MoC8yU7TqCjbo9FxVlEYiQ== (123456)	NO ES ADMINISTRADOR
 GO
 create PROCEDURE insertarUsuario(
 	@nombreUsuario nvarchar(60),

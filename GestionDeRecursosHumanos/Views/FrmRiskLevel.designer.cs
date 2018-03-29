@@ -103,6 +103,7 @@
             this.btnSearch.Size = new System.Drawing.Size(74, 42);
             this.btnSearch.TabIndex = 68;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // tbSearch
             // 
@@ -127,8 +128,10 @@
             this.ELIMINAR});
             this.dgvRiskLevel.Location = new System.Drawing.Point(33, 227);
             this.dgvRiskLevel.Name = "dgvRiskLevel";
+            this.dgvRiskLevel.ReadOnly = true;
             this.dgvRiskLevel.Size = new System.Drawing.Size(447, 203);
             this.dgvRiskLevel.TabIndex = 66;
+            this.dgvRiskLevel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRiskLevel_CellContentClick);
             // 
             // btnCancel
             // 
@@ -138,6 +141,7 @@
             this.btnCancel.TabIndex = 65;
             this.btnCancel.Text = "CANCELAR";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnUpdate
             // 
@@ -148,6 +152,7 @@
             this.btnUpdate.Text = "ACTUALIZAR";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Visible = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAccept
             // 
@@ -157,6 +162,7 @@
             this.btnAccept.TabIndex = 63;
             this.btnAccept.Text = "ACEPTAR";
             this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // ID
             // 
