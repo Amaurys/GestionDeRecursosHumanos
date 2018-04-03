@@ -24,6 +24,7 @@ namespace GestionDeRecursosHumanos.Views
             if (tbUser.Text != "" && tbPassword.Text != "")
             {
                 string password = "";
+                bool isAdmin = true;
                 bool ifExist = false;
                 DataSet ds = new DataSet();
 
@@ -37,7 +38,13 @@ namespace GestionDeRecursosHumanos.Views
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
+                    {
                         password = row["contrasena"].ToString();
+                        if (row["rol"].ToString() ==  "NO ES ADMINISTRADOR")
+                        {
+                            isAdmin = false;
+                        }
+                    }
                     ifExist = true;
                 }
 
@@ -47,6 +54,10 @@ namespace GestionDeRecursosHumanos.Views
                     {
                         mdiParent mdiParent = new mdiParent();
                         mdiParent.Show();
+                        if (isAdmin == false)
+                        {
+                            mdiParent.mantenimientoToolStripMenuItem.Visible = false;
+                        }
                         this.Hide();
                     }
                     else
