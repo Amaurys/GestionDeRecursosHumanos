@@ -45,7 +45,8 @@ namespace GestionDeRecursosHumanos
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.candidatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,14 +157,26 @@ namespace GestionDeRecursosHumanos
             this.registrarUsuarioToolStripMenuItem.Text = "Registrar Usuario";
             this.registrarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.registrarUsuarioToolStripMenuItem_Click);
             // 
-            // label1
+            // lblUserName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(946, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.BackColor = System.Drawing.Color.White;
+            this.lblUserName.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Location = new System.Drawing.Point(671, 1);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(57, 22);
+            this.lblUserName.TabIndex = 3;
+            this.lblUserName.Text = "label1";
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(953, 2);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 22);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Cerrar Sesión";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // mdiParent
             // 
@@ -172,7 +185,8 @@ namespace GestionDeRecursosHumanos
             this.BackColor = System.Drawing.Color.Teal;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1028, 659);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.IsMdiContainer = true;
@@ -181,7 +195,7 @@ namespace GestionDeRecursosHumanos
             this.Name = "mdiParent";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestor de Recurso Humanos";
+            this.Text = "BIENVENIDO USUARIO";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mdiParent_FormClosed);
             this.menuStrip1.ResumeLayout(false);
@@ -204,10 +218,11 @@ namespace GestionDeRecursosHumanos
         private System.Windows.Forms.ToolStripMenuItem puestosLaboralesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cOMPETENCIAToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem candidatosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem registrarUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nivelesDeRiesgoToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem mantenimientoToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.ToolStripMenuItem registrarUsuarioToolStripMenuItem;
+        public System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.Button btnLogout;
     }
 
     

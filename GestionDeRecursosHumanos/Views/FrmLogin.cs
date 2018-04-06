@@ -27,6 +27,7 @@ namespace GestionDeRecursosHumanos.Views
                 bool isAdmin = true;
                 bool ifExist = false;
                 DataSet ds = new DataSet();
+                mdiParent mdiParent = new mdiParent();
 
                 SqlCommand command = new SqlCommand("iniciarSesion", Program.conn.cnn);
                 command.CommandType = CommandType.StoredProcedure;
@@ -44,6 +45,7 @@ namespace GestionDeRecursosHumanos.Views
                         {
                             isAdmin = false;
                         }
+                        mdiParent.lblUserName.Text = "Bienvenido " + row["nombrePila"].ToString();
                     }
                     ifExist = true;
                 }
@@ -51,12 +53,12 @@ namespace GestionDeRecursosHumanos.Views
                 if (ifExist)
                 {
                     if (Cryptography.Decrypt(password).Equals(tbPassword.Text))
-                    {
-                        mdiParent mdiParent = new mdiParent();
+                    {                        
                         mdiParent.Show();
                         if (isAdmin == false)
                         {
                             mdiParent.mantenimientoToolStripMenuItem.Visible = false;
+                            mdiParent.registrarUsuarioToolStripMenuItem.Visible = false;
                         }
                         this.Hide();
                     }

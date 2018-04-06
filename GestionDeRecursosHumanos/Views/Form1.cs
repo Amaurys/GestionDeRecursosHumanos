@@ -13,6 +13,7 @@ namespace GestionDeRecursosHumanos
 {
     public partial class mdiParent : Form
     {
+       
         public mdiParent()
         {
             InitializeComponent();
@@ -150,6 +151,16 @@ namespace GestionDeRecursosHumanos
             openFormRiskLevel();
         }
 
-        
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            logout();
+        }
+
+        private void logout()
+        {
+            FrmLogin login = new FrmLogin();
+            login.Show();
+            this.Hide();
+        }
     }
 }
