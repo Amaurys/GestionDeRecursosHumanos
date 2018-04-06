@@ -121,6 +121,12 @@
     <Compile Include="Views\FrmJobExperience.Designer.cs">
       <DependentUpon>FrmJobExperience.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmJobVacancy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmJobVacancy.Designer.cs">
+      <DependentUpon>FrmJobVacancy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmLanguage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmJobExperience.resx">
       <DependentUpon>FrmJobExperience.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmJobVacancy.resx">
+      <DependentUpon>FrmJobVacancy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmLanguage.resx">
       <DependentUpon>FrmLanguage.cs</DependentUpon>

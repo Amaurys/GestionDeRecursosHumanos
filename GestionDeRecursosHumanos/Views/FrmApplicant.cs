@@ -24,7 +24,7 @@ namespace GestionDeRecursosHumanos.Views
         private void bindComboBoxPosition()
         {
             try
-            {
+            {   
                 DataSet ds = new DataSet();
                 SqlCommand command = new SqlCommand("obtenerPuesto", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
                 command.CommandType = CommandType.StoredProcedure;
