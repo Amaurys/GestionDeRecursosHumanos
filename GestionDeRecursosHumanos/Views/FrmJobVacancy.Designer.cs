@@ -38,7 +38,7 @@
             this.ClientSize = new System.Drawing.Size(864, 363);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmJobVacancy";
-            this.Text = "FrmJobVacancy";
+            this.Text = "VACANTES";
             this.ResumeLayout(false);
 
         }

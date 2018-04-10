@@ -47,6 +47,9 @@ namespace GestionDeRecursosHumanos
             this.registrarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUserName = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.vacantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aplicarAVacanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarVacantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +59,8 @@ namespace GestionDeRecursosHumanos
             this.mantenimientoToolStripMenuItem,
             this.empleadosToolStripMenuItem,
             this.candidatosToolStripMenuItem,
-            this.registrarUsuarioToolStripMenuItem});
+            this.registrarUsuarioToolStripMenuItem,
+            this.vacantesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1028, 24);
@@ -178,6 +182,27 @@ namespace GestionDeRecursosHumanos
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // vacantesToolStripMenuItem
+            // 
+            this.vacantesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aplicarAVacanteToolStripMenuItem,
+            this.modificarVacantesToolStripMenuItem});
+            this.vacantesToolStripMenuItem.Name = "vacantesToolStripMenuItem";
+            this.vacantesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.vacantesToolStripMenuItem.Text = "Vacantes";
+            // 
+            // aplicarAVacanteToolStripMenuItem
+            // 
+            this.aplicarAVacanteToolStripMenuItem.Name = "aplicarAVacanteToolStripMenuItem";
+            this.aplicarAVacanteToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.aplicarAVacanteToolStripMenuItem.Text = "Aplicar a vacante";
+            // 
+            // modificarVacantesToolStripMenuItem
+            // 
+            this.modificarVacantesToolStripMenuItem.Name = "modificarVacantesToolStripMenuItem";
+            this.modificarVacantesToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.modificarVacantesToolStripMenuItem.Text = "Modificar vacantes";
+            // 
             // mdiParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +248,9 @@ namespace GestionDeRecursosHumanos
         public System.Windows.Forms.ToolStripMenuItem registrarUsuarioToolStripMenuItem;
         public System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.ToolStripMenuItem vacantesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aplicarAVacanteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarVacantesToolStripMenuItem;
     }
 
     

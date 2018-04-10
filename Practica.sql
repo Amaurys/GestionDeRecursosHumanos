@@ -21,7 +21,7 @@ CREATE TABLE NIVELESRIESGO(id int primary Key identity,nombre varchar(60)not nul
 CREATE TABLE CANDIDATOS(id int primary key identity,cedula varchar(13)not null, nombre varchar(60) not null,
 						puestoAspira varchar(60) not null, idDepartamento int not null,salarioAspira decimal(8,2), 
 						principalesCompetencias text,principalesCapacitaciones text, idExperienciaLaboral int not null,
-						recomendado varchar(60));
+						recomendado varchar(60), telefono nchar(10), direccion nvarchar(200), correoElectronico nvarchar(50));
 						
 CREATE TABLE DEPARTAMENTOS(id int primary key identity,nombre varchar(60) not null,descripcion varchar(100));
 
@@ -29,7 +29,8 @@ CREATE TABLE EXPERIENCIASLABORALES(id int primary key identity,empresa varchar(6
 									fechaDesde datetime,fechaHasta datetime,salario decimal(8,2),cedula varchar(13));
 
 CREATE TABLE EMPLEADOS(id int primary key identity,cedula varchar(13) not null,nombre varchar(60) not null,fechaIngreso datetime not null,
-						 idPuesto int not null,idDepartamento int not null,salarioMensual decimal(8,2),estado bit);
+						 idPuesto int not null,idDepartamento int not null,salarioMensual decimal(8,2),estado bit, telefono nchar(10), 
+						 direccion nvarchar(200), correoElectronico nvarchar(50));
 
 CREATE TABLE usuarios(id int identity, nombreUsuario varchar(60) not null, nombrePila varchar(60) not null,
 						contrasena varchar(30)not null, rol varchar(20) not null, 
@@ -40,8 +41,12 @@ CREATE TABLE usuarios(id int identity, nombreUsuario varchar(60) not null, nombr
 CREATE TABLE COMPETENCIASPERSONAS(id int primary key identity,cedula varchar(13) not null,idCompetencia int not null);
 
 CREATE TABLE IDIOMASPERSONAS(ID int primary key identity,cedula varchar(13) not null,idIdioma int not null);
-					
-					
+
+CREATE TABLE VACANTES(ID int primary key identity,nombreVacante nvarchar(50) not null,idDepartamento int,detalleVacante nvarchar(300),fechaVacante date,estado bit);
+
+/*INSERT INTO VACANTES VALUES('PROGRAMADOR C#',1,'PROGRAMADOR C#, 1 AÑO DE EXPERIENCIA, CERTIFICACIONES MICROSOFT PREFERIBLE, CONOCIMIENTOS EN MVC Y MANEJO DE CONTROLADOR DE VERSIONES',
+								'2018/04/05',1);*/
+
 --FOREIGN KEYS
 ALTER TABLE PUESTOS
 ADD CONSTRAINT FK_Puestos_NivlesRiesgos FOREIGN KEY (idNivelRiesgo) 
@@ -70,6 +75,10 @@ ALTER TABLE COMPETENCIASPERSONAS
 ALTER TABLE IDIOMASPERSONAS
 	ADD CONSTRAINT FK_IdiomasPersonas_Idiomas FOREIGN KEY (idIdioma)
 	REFERENCES IDIOMAS(id);
+
+ALTER TABLE VACANTES 
+ADD CONSTRAINT FK_Vacantes_Departamentos FOREIGN KEY (idDepartamento)
+	REFERENCES Departamentos(id)
 
 ---------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------
