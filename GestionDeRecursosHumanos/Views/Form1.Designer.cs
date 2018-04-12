@@ -45,11 +45,11 @@ namespace GestionDeRecursosHumanos
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.candidatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.vacantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aplicarAVacanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarVacantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -161,27 +161,6 @@ namespace GestionDeRecursosHumanos
             this.registrarUsuarioToolStripMenuItem.Text = "Registrar Usuario";
             this.registrarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.registrarUsuarioToolStripMenuItem_Click);
             // 
-            // lblUserName
-            // 
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.BackColor = System.Drawing.Color.White;
-            this.lblUserName.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Location = new System.Drawing.Point(671, 1);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(57, 22);
-            this.lblUserName.TabIndex = 3;
-            this.lblUserName.Text = "label1";
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Location = new System.Drawing.Point(953, 2);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(75, 22);
-            this.btnLogout.TabIndex = 5;
-            this.btnLogout.Text = "Cerrar Sesión";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
             // vacantesToolStripMenuItem
             // 
             this.vacantesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -202,6 +181,27 @@ namespace GestionDeRecursosHumanos
             this.modificarVacantesToolStripMenuItem.Name = "modificarVacantesToolStripMenuItem";
             this.modificarVacantesToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.modificarVacantesToolStripMenuItem.Text = "Modificar vacantes";
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.BackColor = System.Drawing.Color.White;
+            this.lblUserName.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Location = new System.Drawing.Point(671, 1);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(57, 22);
+            this.lblUserName.TabIndex = 3;
+            this.lblUserName.Text = "label1";
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(953, 2);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 22);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Cerrar Sesión";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // mdiParent
             // 
