@@ -824,3 +824,15 @@ BEGIN
 	select * from usuarios where nombreUsuario = @user;
 END
 GO
+
+use recursosHumanos;
+select * from VACANTES;
+
+GO
+CREATE PROCEDURE mostrarVacante
+AS
+BEGIN
+	SET NOCOUNT ON;
+	select nombreVacante from VACANTES;
+END
+GO
