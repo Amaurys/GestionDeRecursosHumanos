@@ -109,6 +109,12 @@
     <Compile Include="Views\FrmDepartment.designer.cs">
       <DependentUpon>FrmDepartment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmDetailVacancy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmDetailVacancy.Designer.cs">
+      <DependentUpon>FrmDetailVacancy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmEmployees.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmDepartment.resx">
       <DependentUpon>FrmDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmDetailVacancy.resx">
+      <DependentUpon>FrmDetailVacancy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmEmployees.resx">
       <DependentUpon>FrmEmployees.cs</DependentUpon>

@@ -173,23 +173,24 @@ namespace GestionDeRecursosHumanos
             // aplicarAVacanteToolStripMenuItem
             // 
             this.aplicarAVacanteToolStripMenuItem.Name = "aplicarAVacanteToolStripMenuItem";
-            this.aplicarAVacanteToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.aplicarAVacanteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aplicarAVacanteToolStripMenuItem.Text = "Aplicar a vacante";
+            this.aplicarAVacanteToolStripMenuItem.Click += new System.EventHandler(this.aplicarAVacanteToolStripMenuItem_Click);
             // 
             // modificarVacantesToolStripMenuItem
             // 
             this.modificarVacantesToolStripMenuItem.Name = "modificarVacantesToolStripMenuItem";
-            this.modificarVacantesToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.modificarVacantesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.modificarVacantesToolStripMenuItem.Text = "Modificar vacantes";
             // 
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.BackColor = System.Drawing.Color.White;
-            this.lblUserName.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserName.Location = new System.Drawing.Point(671, 1);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(57, 22);
+            this.lblUserName.Size = new System.Drawing.Size(66, 24);
             this.lblUserName.TabIndex = 3;
             this.lblUserName.Text = "label1";
             // 

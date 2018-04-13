@@ -13,7 +13,7 @@ namespace GestionDeRecursosHumanos
 {
     public partial class mdiParent : Form
     {
-       
+
         public mdiParent()
         {
             InitializeComponent();
@@ -26,7 +26,8 @@ namespace GestionDeRecursosHumanos
             frmLanguage.Show();
         }
 
-        public void openFormTrainingLevel() {
+        public void openFormTrainingLevel()
+        {
             FrmTrainingLevel frmTrainingLevel = new FrmTrainingLevel();
             frmTrainingLevel.MdiParent = this;
             frmTrainingLevel.Show();
@@ -90,6 +91,14 @@ namespace GestionDeRecursosHumanos
             frmRiskLevel.MdiParent = this;
             frmRiskLevel.Show();
         }
+
+        private void openFormJobVacancy()
+        {
+            FrmJobVacancy frmJobVacancy = new FrmJobVacancy();
+            frmJobVacancy.MdiParent = this;
+            frmJobVacancy.Show();
+        }
+
 
         private void iToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -162,5 +171,12 @@ namespace GestionDeRecursosHumanos
             login.Show();
             this.Hide();
         }
+
+        private void aplicarAVacanteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFormJobVacancy();
+        }
+
+
     }
 }
