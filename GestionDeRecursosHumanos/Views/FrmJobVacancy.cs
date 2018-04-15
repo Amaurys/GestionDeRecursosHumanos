@@ -73,5 +73,44 @@ namespace GestionDeRecursosHumanos.Views
                 MessageBox.Show(ex.ToString(),"Error mostrando la vacante.");
             }           
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            search();
+        }
+
+        public void search()
+        {
+                try
+                {
+                    dgvVacancy.Rows.Clear();
+                    int numRow = 0;
+                    DataSet ds = new DataSet();
+
+                    SqlCommand command = new SqlCommand("mostrarVacanteLike", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@nombreLike", SqlDbType.VarChar).Value = "%" + tbSearch.Text.Trim() + "%";
+
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    dataAdapter.Fill(ds);
+
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        foreach (DataRow row in ds.Tables[0].Rows)
+                        {
+                        dgvVacancy.Rows.Add();
+                        dgvVacancy.Rows[numRow].Cells[0].Value = Convert.ToString(row["ID"]);
+                        dgvVacancy.Rows[numRow].Cells[1].Value = Convert.ToString(row["nombreVacante"]);
+                        numRow++;
+                    }
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
+            
+        }
     }
 }

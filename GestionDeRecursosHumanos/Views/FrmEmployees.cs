@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +16,8 @@ namespace GestionDeRecursosHumanos.Views
 {
     public partial class FrmEmployees : Form, Maintainable
     {
-       // static MyMessageBox newMessageBox;
+        // static MyMessageBox newMessageBox;
+        DataTable myDT = new DataTable();
 
         public FrmEmployees()
         {
@@ -64,6 +67,7 @@ namespace GestionDeRecursosHumanos.Views
                 command.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 dataAdapter.Fill(ds);
+                dataAdapter.Fill(myDT);
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -85,7 +89,7 @@ namespace GestionDeRecursosHumanos.Views
                         else
                         {
                             dgvEmployees.Rows[numRow].Cells[7].Value = "INACTIVO";
-                        }                        
+                        }
 
                         numRow++;
                     }
@@ -108,7 +112,7 @@ namespace GestionDeRecursosHumanos.Views
 
                 SqlCommand command = new SqlCommand("obtenerEmpleadoLike", Program.conn.cnn);//"Program.conn.cnn" is the connection object.
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@nombreLike", SqlDbType.VarChar).Value = "%"+tbSearch.Text.Trim()+"%";
+                command.Parameters.AddWithValue("@nombreLike", SqlDbType.VarChar).Value = "%" + tbSearch.Text.Trim() + "%";
 
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 dataAdapter.Fill(ds);
@@ -145,7 +149,7 @@ namespace GestionDeRecursosHumanos.Views
                 MessageBox.Show(e.ToString());
             }
         }
-        
+
         public void viewEmployeeProfile(string cedula)
         {
             FrmViewEmployees frmViewEmployees = new FrmViewEmployees(cedula);
@@ -167,7 +171,7 @@ namespace GestionDeRecursosHumanos.Views
             string cedula = dgvEmployees.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
             try
             {
-                if (dgvEmployees.Columns[e.ColumnIndex].Name=="CEDULA")
+                if (dgvEmployees.Columns[e.ColumnIndex].Name == "CEDULA")
                 {
                     viewEmployeeProfile(cedula);
                 }
@@ -176,7 +180,54 @@ namespace GestionDeRecursosHumanos.Views
             {
 
                 throw;
-            }            
+            }
+        }
+
+        public void exportar()
+        {
+            try
+            {
+                foreach (DataRow row in myDT.Rows)
+                {
+                    string linea = "";
+                    foreach (DataColumn dc in myDT.Columns)
+                    {
+                        linea += row[dc].ToString() + ",";
+                    }
+                    writeFileLine(linea);
+                }
+
+                Process.Start(@"d:\prueba.csv");
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+            }
+            
+        }
+
+        private void writeFileLine(string pLine)
+        {
+            try
+            {
+                using (StreamWriter w = File.AppendText("d:\\prueba.csv"))
+                {
+                    w.WriteLine(pLine);
+                }
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+            }
+            
+        }
+
+        private void btnExportToExcel_Click(object sender, EventArgs e)
+        {
+            exportar();
         }
     }
 }

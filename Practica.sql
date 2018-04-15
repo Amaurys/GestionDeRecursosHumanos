@@ -838,6 +838,18 @@ BEGIN
 END
 GO
 
+GO
+create PROCEDURE mostrarVacanteLike(
+	@nombreLike nvarchar(50))
+AS
+BEGIN
+	SET NOCOUNT ON;	
+	select v.ID,v.nombreVacante,d.nombre as 'departamento',v.detalleVacante,v.fechaVacante,v.estado from VACANTES v
+	inner join DEPARTAMENTOS d on d.id = v.idDepartamento
+	where v.nombreVacante like @nombreLike
+END
+GO
+
 select * from CANDIDATOS
 
 GO
@@ -864,8 +876,20 @@ alter PROCEDURE detallesCandidato
 AS
 BEGIN 
 	SET NOCOUNT ON;
-	SELECT c.id,c.cedula,c.nombre,c.puestoAspira,d.nombre as 'Departamento',c.salarioAspira,c.recomendado,c.telefono,c.direccion,c.correoElectronico from CANDIDATOS c
+	SELECT c.id,c.cedula,c.nombre,c.puestoAspira,d.nombre as 'Departamento',c.salarioAspira,c.recomendado,c.telefono,c.direccion,c.correoElectronico, c.estado from CANDIDATOS c
 	inner join DEPARTAMENTOS d on d.id=c.idDepartamento;
+end
+go
+
+GO
+alter PROCEDURE detallesCandidatoLike (
+	@nombreLike nvarchar(50))
+AS
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT c.id,c.cedula,c.nombre,c.puestoAspira,d.nombre as 'Departamento',c.salarioAspira,c.recomendado,c.telefono,c.direccion,c.correoElectronico, c.estado from CANDIDATOS c
+	inner join DEPARTAMENTOS d on d.id=c.idDepartamento
+	where c.nombre like @nombreLike;
 end
 go
 
@@ -899,3 +923,5 @@ select * from EMPLEADOS
 
 select * from VACANTES
 select * from PUESTOS
+
+detallescandidato

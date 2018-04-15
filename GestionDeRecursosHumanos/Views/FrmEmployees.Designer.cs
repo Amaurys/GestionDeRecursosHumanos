@@ -37,14 +37,15 @@
             this.DEPARTAMENTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SALARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnExportToExcel = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,19 +130,6 @@
             this.ESTADO.Name = "ESTADO";
             this.ESTADO.ReadOnly = true;
             // 
-            // edit
-            // 
-            this.edit.Frozen = true;
-            this.edit.HeaderText = "EDITAR";
-            this.edit.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
-            this.edit.Name = "edit";
-            // 
-            // ELIMINAR
-            // 
-            this.ELIMINAR.HeaderText = "ELIMINAR";
-            this.ELIMINAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
-            this.ELIMINAR.Name = "ELIMINAR";
-            // 
             // tbSearch
             // 
             this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -160,6 +148,16 @@
             this.label1.TabIndex = 56;
             this.label1.Text = "EMPLEADOS";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(131, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(290, 15);
+            this.label2.TabIndex = 58;
+            this.label2.Text = "BUSQUEDA DE EMPLEADOS POR NOMBRE";
+            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.Frozen = true;
@@ -173,6 +171,17 @@
             this.dataGridViewImageColumn2.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel.BackgroundImage = global::GestionDeRecursosHumanos.Properties.Resources.excel;
+            this.btnExportToExcel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnExportToExcel.Location = new System.Drawing.Point(465, 369);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Size = new System.Drawing.Size(94, 63);
+            this.btnExportToExcel.TabIndex = 59;
+            this.btnExportToExcel.UseVisualStyleBackColor = true;
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
             // btnSearch
             // 
             this.btnSearch.BackgroundImage = global::GestionDeRecursosHumanos.Properties.Resources.lupa2;
@@ -184,15 +193,18 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // label2
+            // edit
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(131, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(290, 15);
-            this.label2.TabIndex = 58;
-            this.label2.Text = "BUSQUEDA DE EMPLEADOS POR NOMBRE";
+            this.edit.Frozen = true;
+            this.edit.HeaderText = "EDITAR";
+            this.edit.Image = global::GestionDeRecursosHumanos.Properties.Resources.edit_icon;
+            this.edit.Name = "edit";
+            // 
+            // ELIMINAR
+            // 
+            this.ELIMINAR.HeaderText = "ELIMINAR";
+            this.ELIMINAR.Image = global::GestionDeRecursosHumanos.Properties.Resources.delete_icon;
+            this.ELIMINAR.Name = "ELIMINAR";
             // 
             // FrmEmployees
             // 
@@ -200,6 +212,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(1028, 530);
+            this.Controls.Add(this.btnExportToExcel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label1);
@@ -234,5 +247,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnExportToExcel;
     }
 }

@@ -34,6 +34,8 @@
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.requestNameField = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.seeRequestField = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVacancy)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +71,7 @@
             this.id,
             this.requestNameField,
             this.seeRequestField});
-            this.dgvVacancy.Location = new System.Drawing.Point(12, 136);
+            this.dgvVacancy.Location = new System.Drawing.Point(12, 185);
             this.dgvVacancy.Name = "dgvVacancy";
             this.dgvVacancy.Size = new System.Drawing.Size(548, 203);
             this.dgvVacancy.TabIndex = 2;
@@ -103,12 +105,34 @@
             this.seeRequestField.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.seeRequestField.Width = 180;
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::GestionDeRecursosHumanos.Properties.Resources.lupa2;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSearch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSearch.Location = new System.Drawing.Point(368, 137);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(74, 42);
+            this.btnSearch.TabIndex = 66;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbSearch.Location = new System.Drawing.Point(149, 149);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(213, 20);
+            this.tbSearch.TabIndex = 65;
+            // 
             // FrmJobVacancy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(576, 404);
+            this.ClientSize = new System.Drawing.Size(576, 428);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.dgvVacancy);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -127,5 +151,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn requestNameField;
         private System.Windows.Forms.DataGridViewImageColumn seeRequestField;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox tbSearch;
     }
 }
