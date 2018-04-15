@@ -187,10 +187,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Franklin Gothic Book", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(168, 110);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(131, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(263, 16);
+            this.label2.Size = new System.Drawing.Size(290, 15);
             this.label2.TabIndex = 58;
             this.label2.Text = "BUSQUEDA DE EMPLEADOS POR NOMBRE";
             // 

@@ -173,14 +173,14 @@ namespace GestionDeRecursosHumanos
             // aplicarAVacanteToolStripMenuItem
             // 
             this.aplicarAVacanteToolStripMenuItem.Name = "aplicarAVacanteToolStripMenuItem";
-            this.aplicarAVacanteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aplicarAVacanteToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.aplicarAVacanteToolStripMenuItem.Text = "Aplicar a vacante";
             this.aplicarAVacanteToolStripMenuItem.Click += new System.EventHandler(this.aplicarAVacanteToolStripMenuItem_Click);
             // 
             // modificarVacantesToolStripMenuItem
             // 
             this.modificarVacantesToolStripMenuItem.Name = "modificarVacantesToolStripMenuItem";
-            this.modificarVacantesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modificarVacantesToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.modificarVacantesToolStripMenuItem.Text = "Modificar vacantes";
             // 
             // lblUserName
@@ -188,7 +188,7 @@ namespace GestionDeRecursosHumanos
             this.lblUserName.AutoSize = true;
             this.lblUserName.BackColor = System.Drawing.Color.White;
             this.lblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Location = new System.Drawing.Point(671, 1);
+            this.lblUserName.Location = new System.Drawing.Point(617, -1);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(66, 24);
             this.lblUserName.TabIndex = 3;
@@ -221,7 +221,7 @@ namespace GestionDeRecursosHumanos
             this.Name = "mdiParent";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BIENVENIDO USUARIO";
+            this.Text = "GESTIÓN DE RECURSOS HUMANOS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mdiParent_FormClosed);
             this.menuStrip1.ResumeLayout(false);

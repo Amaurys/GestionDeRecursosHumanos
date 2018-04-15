@@ -213,7 +213,7 @@ namespace GestionDeRecursosHumanos.Views
                         if (Convert.ToInt32(row["ESTADO"]) == 1)
                         {
                             dgvCompetence.Rows[numRow].Cells[2].Value = "ACTIVO";
-                        }
+                        }   
                         else
                         {
                             dgvCompetence.Rows[numRow].Cells[2].Value = "INACTIVO";

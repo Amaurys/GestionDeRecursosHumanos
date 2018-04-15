@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -189,8 +189,8 @@
             // 
             // ID
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ID.DefaultCellStyle = dataGridViewCellStyle1;
             this.ID.Frozen = true;
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
@@ -350,6 +350,7 @@
             this.mtbCedula.Name = "mtbCedula";
             this.mtbCedula.Size = new System.Drawing.Size(100, 20);
             this.mtbCedula.TabIndex = 46;
+            this.mtbCedula.Leave += new System.EventHandler(this.mtbCedula_Leave);
             // 
             // btnSearch
             // 
@@ -376,7 +377,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(1092, 438);
+            this.ClientSize = new System.Drawing.Size(1109, 438);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.mtbCedula);

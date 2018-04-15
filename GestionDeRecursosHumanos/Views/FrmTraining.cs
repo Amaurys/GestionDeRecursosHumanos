@@ -145,8 +145,8 @@ namespace GestionDeRecursosHumanos.Views
                 }
                 else
                 {
-                    MessageBox.Show("Algo pasó", "No se pudo ejecutar la acción. Favor de revisar su conexión " +
-                        "a la Base de Datos o comuníquese con el administrador.");
+                    MessageBox.Show("No se pudo ejecutar la acción. Favor de revisar su conexión " +
+                        "a la Base de Datos o comuníquese con el administrador.", "Algo pasó");
 
                 }
             }
@@ -171,7 +171,7 @@ namespace GestionDeRecursosHumanos.Views
             
                 int result = command.ExecuteNonQuery();
                 
-                if (result == 1)
+                if (result == -1)
                 {
                     MessageBox.Show("Información guardada.");
                     showData();
@@ -182,8 +182,8 @@ namespace GestionDeRecursosHumanos.Views
                 }
                 else
                 {
-                    MessageBox.Show("Algo pasó", "No se pudo ejecutar la acción. Favor de revisar su conexión " +
-                        "a la Base de Datos o comuníquese con el administrador.");
+                    MessageBox.Show("No se pudo ejecutar la acción. Favor de revisar su conexión " +
+                        "a la Base de Datos o comuníquese con el administrador.", "Algo pasó");
 
                 }
 
@@ -306,9 +306,14 @@ namespace GestionDeRecursosHumanos.Views
             }
 
             if (vnTotal % 10 == 0)
+            {
+                MessageBox.Show("Cédula existe.");
                 return true;
-            else
+            }
+            else {
+                MessageBox.Show("Cédula NO existe.");
                 return false;
+            }
         }
 
         public void search()
@@ -353,6 +358,11 @@ namespace GestionDeRecursosHumanos.Views
         private void btnSearch_Click(object sender, EventArgs e)
         {
             search();
+        }
+
+        private void mtbCedula_Leave(object sender, EventArgs e)
+        {
+            validaCedula(mtbCedula.Text);
         }
     }
 }

@@ -20,7 +20,7 @@ CREATE TABLE NIVELESRIESGO(id int primary Key identity,nombre varchar(60)not nul
 
 CREATE TABLE CANDIDATOS(id int primary key identity,cedula varchar(13)not null, nombre varchar(60) not null,
 						puestoAspira varchar(60) not null, idDepartamento int not null,salarioAspira decimal(8,2), 
-						principalesCompetencias text,principalesCapacitaciones text, idExperienciaLaboral int not null,
+						principalesCompetencias text,principalesCapacitaciones text, idExperienciaLaboral int,
 						recomendado varchar(60), telefono nchar(10), direccion nvarchar(200), correoElectronico nvarchar(50));
 						
 CREATE TABLE DEPARTAMENTOS(id int primary key identity,nombre varchar(60) not null,descripcion varchar(100));
@@ -761,15 +761,16 @@ BEGIN
 END
 GO
 
---Ver Perfil del empleado----------------------------- select * from EMPLEADO
+--Ver Perfil del empleado----------------------------- select * from EMPLEADOs
 
 GO
-CREATE PROCEDURE obtenerEmpleadoConCedula(
+create PROCEDURE obtenerEmpleadoConCedula(
 	@cedula nvarchar(13))
 AS
 BEGIN
 	SET NOCOUNT ON;
-	select emp.id,emp.cedula,emp.nombre,emp.fechaIngreso,pue.nombre as 'puesto',dep.nombre as 'departamento',emp.salarioMensual,emp.estado from EMPLEADOS emp
+	select emp.id,emp.cedula,emp.nombre,emp.fechaIngreso,pue.nombre as 'puesto',dep.nombre as 'departamento',emp.salarioMensual,emp.estado,
+			emp.telefono,emp.direccion,emp.correoElectronico from EMPLEADOS emp
 	INNER JOIN PUESTOS pue on emp.idPuesto = pue.id
 	INNER JOIN DEPARTAMENTOS dep on emp.idDepartamento = dep.id
 	where cedula = @cedula;
@@ -825,14 +826,76 @@ BEGIN
 END
 GO
 
-use recursosHumanos;
-select * from VACANTES;
+
 
 GO
-CREATE PROCEDURE mostrarVacante
+create PROCEDURE mostrarVacante
+AS
+BEGIN
+	SET NOCOUNT ON;	
+	select v.ID,v.nombreVacante,d.nombre as 'departamento',v.detalleVacante,v.fechaVacante,v.estado from VACANTES v
+	inner join DEPARTAMENTOS d on d.id = v.idDepartamento
+END
+GO
+
+select * from CANDIDATOS
+
+GO
+create PROCEDURE agregarCandidato(
+	@cedula nvarchar(13),
+	@nombre nvarchar(100),
+	@puestoAspira nvarchar(50),
+	@departamento nvarchar(50),
+	@salarioAspira decimal(8,2),
+	@recomendado nvarchar(100),
+	@telefono nvarchar(10),
+	@direccion nvarchar(250),
+	@correo nvarchar(50))
 AS
 BEGIN
 	SET NOCOUNT ON;
-	select nombreVacante from VACANTES;
+	INSERT INTO CANDIDATOS(cedula,nombre,puestoAspira,idDepartamento,salarioAspira,recomendado,telefono,direccion,correoElectronico,estado) 
+			values(@cedula,@nombre,@puestoAspira,(select id from DEPARTAMENTOS where nombre = @departamento),@salarioAspira,@recomendado,@telefono,@direccion,@correo,1);
 END
 GO
+
+GO
+alter PROCEDURE detallesCandidato
+AS
+BEGIN 
+	SET NOCOUNT ON;
+	SELECT c.id,c.cedula,c.nombre,c.puestoAspira,d.nombre as 'Departamento',c.salarioAspira,c.recomendado,c.telefono,c.direccion,c.correoElectronico from CANDIDATOS c
+	inner join DEPARTAMENTOS d on d.id=c.idDepartamento;
+end
+go
+
+GO
+alter PROCEDURE candidatoAEmpleado(
+	@cedula nvarchar(13),
+	@nombre nvarchar(100),
+	@fechaIngreso date,
+	@puestoAspira nvarchar(50),
+	@departamento nvarchar(50),
+	@salarioMensual decimal(8,2),
+	@telefono nvarchar(10),
+	@direccion nvarchar(250),
+	@correo nvarchar(50))
+AS
+BEGIN
+	SET NOCOUNT ON;
+	insert into EMPLEADOS(cedula,nombre,fechaIngreso,idPuesto,idDepartamento,salarioMensual,estado,telefono,direccion,correoElectronico)
+		 values(@cedula,@nombre,@fechaIngreso,(select id from PUESTOS where nombre = @puestoAspira),
+		(select id from DEPARTAMENTOS where nombre = @departamento),@salarioMensual,1,@telefono,@direccion,@correo);
+
+	UPDATE CANDIDATOS 
+		SET estado = 0
+		where cedula = @cedula;
+END
+GO
+
+select * from CANDIDATOS
+select * from EMPLEADOS
+
+
+select * from VACANTES
+select * from PUESTOS

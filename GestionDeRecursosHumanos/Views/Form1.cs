@@ -73,7 +73,7 @@ namespace GestionDeRecursosHumanos
         }
         private void openFormApplicant()
         {
-            FrmApplicant frmApplicant = new FrmApplicant();
+            FrmApplicantsToEmployee frmApplicant = new FrmApplicantsToEmployee();
             frmApplicant.MdiParent = this;
             frmApplicant.Show();
         }

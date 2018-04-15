@@ -13,6 +13,7 @@ namespace GestionDeRecursosHumanos.Views
 {
     public partial class FrmJobVacancy : Form
     {
+        int vacancyId;
         public FrmJobVacancy()
         {
             InitializeComponent();
@@ -37,7 +38,8 @@ namespace GestionDeRecursosHumanos.Views
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         dgvVacancy.Rows.Add();
-                        dgvVacancy.Rows[numRow].Cells[0].Value = Convert.ToString(row["nombreVacante"]);
+                        dgvVacancy.Rows[numRow].Cells[0].Value = Convert.ToString(row["ID"]);
+                        dgvVacancy.Rows[numRow].Cells[1].Value = Convert.ToString(row["nombreVacante"]);
                         numRow++;
                     }
 
@@ -51,10 +53,25 @@ namespace GestionDeRecursosHumanos.Views
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void dgvVacancy_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            FrmLanguage frm = new FrmLanguage();
-            frm.ShowDialog();
+            try
+            {
+                if (dgvVacancy.Columns[e.ColumnIndex].Name == "seeRequestField")
+                {
+                    FrmDetailVacancy detailVacancy = new FrmDetailVacancy(Convert.ToInt32(dgvVacancy.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                    detailVacancy.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString(),"Error mostrando la vacante.");
+            }           
         }
     }
 }

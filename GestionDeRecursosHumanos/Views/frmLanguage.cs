@@ -1,4 +1,4 @@
-﻿using GestionDeRecursosHumanos;
+﻿    using GestionDeRecursosHumanos;
 using GestionDeRecursosHumanos.controller;
 using GestionDeRecursosHumanos.Model;
 using System;

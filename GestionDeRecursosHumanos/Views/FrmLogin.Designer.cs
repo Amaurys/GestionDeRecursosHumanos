@@ -111,6 +111,7 @@
             this.btnApplyToVacant.TabIndex = 7;
             this.btnApplyToVacant.Text = "APLICAR A VACANTE";
             this.btnApplyToVacant.UseVisualStyleBackColor = true;
+            this.btnApplyToVacant.Click += new System.EventHandler(this.btnApplyToVacant_Click);
             // 
             // FrmLogin
             // 
